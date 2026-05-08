@@ -1,5 +1,6 @@
 ﻿using RetailPOSA.Models;
 using RetailPOSA.Services;
+using RetailPOSA.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

@@ -30,7 +30,8 @@ namespace RetailPOSA.UserControls
 
             uf.ShowDialog();
 
-            uf.Dispose();
+            LoadUserTable();
+            //uf.Dispose();
         }
 
         private void LoadUserTable()
