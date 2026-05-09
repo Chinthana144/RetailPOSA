@@ -30,6 +30,13 @@ namespace RetailPOSA.Forms
             pnlContent.Controls.Add(uc);
         }//load control
 
+        private void btnNavCategories_Click(object sender, EventArgs e)
+        {
+            CategoryControl uc = new CategoryControl();
+
+            loadControl(uc);
+        }
+
         private void btnNavProducts_Click(object sender, EventArgs e)
         {
             ProductControl pc = new ProductControl();
@@ -43,5 +50,7 @@ namespace RetailPOSA.Forms
 
             loadControl(uc);
         }
+
+        
     }//class
 }

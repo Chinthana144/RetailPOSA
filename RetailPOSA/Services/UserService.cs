@@ -27,12 +27,15 @@ namespace RetailPOSA.Services
         //UPDATE USER
         public int UpdateUser(int id, int roleId, string username)
         {
-            string query = "UPDATE users SET role_id = @role_id, username = @username" +
+            string query = "UPDATE users SET role_id = @role_id, username = @username " +
                 "WHERE user_id = @id;";
+
             Dictionary<string, object> parameters = new Dictionary<string, object>();
+
             parameters.Add("@id", id);
             parameters.Add("@role_id", roleId);
             parameters.Add("@username", username);
+
             return db.ExecuteNonQuery(query, parameters);
         }//update user
 

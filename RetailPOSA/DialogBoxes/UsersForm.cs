@@ -28,9 +28,14 @@ namespace RetailPOSA.DialogBoxes
 
         private void UsersForm_Load(object sender, EventArgs e)
         {
+            btnAddUser.Text = "Add User";
+
             loadRoles();
 
-            loadUserData();
+            if (userID > 0)
+            {
+                loadUserData();
+            }
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)
@@ -41,21 +46,26 @@ namespace RetailPOSA.DialogBoxes
             users.username = txtUsername.Text;
             users.password = txtPassword.Text;
 
-            //check null
-            if (string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPassword.Text))
-            { 
-                MessageBox.Show("Please fill in all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             UserService service = new UserService();
 
             if (userID > 0)
-            { 
+            {
+                //check null
+                if (string.IsNullOrEmpty(txtUsername.Text))
+                {
+                    MessageBox.Show("Please fill in all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 service.UpdateUser(userID, users.role_id, users.username);
             }
             else
             {
+                //check null
+                if (string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPassword.Text))
+                {
+                    MessageBox.Show("Please fill in all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 service.InsertUser(users.role_id, users.username, users.password);
             }
 

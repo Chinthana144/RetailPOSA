@@ -60,15 +60,8 @@ namespace RetailPOSA.UserControls
 
                 selectedId = Convert.ToInt32(row.Cells["user_id"].Value);
 
-                //MessageBox.Show("Selected User ID: " + selectedId);
-
-                //UsersForm uf = new UsersForm(selectedId);
-
-                //uf.ShowDialog();
-
                 if (selectedId > 0) { btnEditUser.Enabled = true; }
 
-                //LoadUserTable();
             }
         }
 
@@ -79,6 +72,8 @@ namespace RetailPOSA.UserControls
                 UsersForm uf = new UsersForm(selectedId);
                 uf.ShowDialog();
                 LoadUserTable();
+
+                btnEditUser.Enabled = false;
             }
         }
     }//class
