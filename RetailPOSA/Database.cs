@@ -18,13 +18,27 @@ namespace RetailPOSA
         }//get connection
 
         // SELECT queries
-        public DataTable ExecuteQuery(string query)
+        public DataTable ExecuteQuery(string query, Dictionary<string, object> parameters = null)
         {
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
 
-                MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                // Add parameters
+                if (parameters != null)
+                {
+                    foreach (var param in parameters)
+                    {
+                        cmd.Parameters.AddWithValue(
+                            param.Key,
+                            param.Value
+                        );
+                    }
+                }
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
 
                 DataTable dt = new DataTable();
 
@@ -33,6 +47,15 @@ namespace RetailPOSA
                 return dt;
             }
         }//execute query
+        //        MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
+
+        //        DataTable dt = new DataTable();
+
+        //        adapter.Fill(dt);
+
+        //        return dt;
+        //    }
+        //}//execute query
 
         // INSERT UPDATE DELETE
         public int ExecuteNonQuery(string query, Dictionary<string, object> parameters)

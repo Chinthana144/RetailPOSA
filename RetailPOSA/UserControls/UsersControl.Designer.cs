@@ -31,6 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddUser = new System.Windows.Forms.Button();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
+            this.btnEditUser = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,12 +75,26 @@
             this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUsers.Size = new System.Drawing.Size(1080, 548);
             this.dgvUsers.TabIndex = 2;
+            this.dgvUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellClick);
+            // 
+            // btnEditUser
+            // 
+            this.btnEditUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditUser.Location = new System.Drawing.Point(966, 635);
+            this.btnEditUser.Name = "btnEditUser";
+            this.btnEditUser.Size = new System.Drawing.Size(133, 40);
+            this.btnEditUser.TabIndex = 3;
+            this.btnEditUser.Text = "Edit User";
+            this.btnEditUser.UseVisualStyleBackColor = true;
+            this.btnEditUser.Click += new System.EventHandler(this.btnEditUser_Click);
             // 
             // UsersControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.Controls.Add(this.btnEditUser);
             this.Controls.Add(this.dgvUsers);
             this.Controls.Add(this.btnAddUser);
             this.Controls.Add(this.label1);
@@ -97,5 +112,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAddUser;
         private System.Windows.Forms.DataGridView dgvUsers;
+        private System.Windows.Forms.Button btnEditUser;
     }
 }

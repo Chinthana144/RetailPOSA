@@ -31,7 +31,7 @@
             this.lblDialogTitle = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.cmbRoles = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -70,15 +70,15 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Username";
             // 
-            // label2
+            // lblPassword
             // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(32, 220);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 16);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Password";
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblPassword.Location = new System.Drawing.Point(32, 220);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(67, 16);
+            this.lblPassword.TabIndex = 5;
+            this.lblPassword.Text = "Password";
             // 
             // txtPassword
             // 
@@ -133,7 +133,7 @@
             this.Controls.Add(this.btnAddUser);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbRoles);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtUsername);
@@ -154,7 +154,7 @@
         private System.Windows.Forms.Label lblDialogTitle;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.ComboBox cmbRoles;
         private System.Windows.Forms.Label label3;

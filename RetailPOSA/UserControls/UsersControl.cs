@@ -14,6 +14,8 @@ namespace RetailPOSA.UserControls
 {
     public partial class UsersControl : UserControl
     {
+        private int selectedId = 0;
+
         public UsersControl()
         {
             InitializeComponent();
@@ -22,11 +24,14 @@ namespace RetailPOSA.UserControls
         private void UsersControl_Load(object sender, EventArgs e)
         {
             LoadUserTable();
+
+            btnEditUser.Enabled = false;
+
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            UsersForm uf = new UsersForm();
+            UsersForm uf = new UsersForm(0);
 
             uf.ShowDialog();
 
@@ -47,5 +52,34 @@ namespace RetailPOSA.UserControls
 
         }//load users table
 
+        private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgvUsers.Rows[e.RowIndex];
+
+                selectedId = Convert.ToInt32(row.Cells["user_id"].Value);
+
+                //MessageBox.Show("Selected User ID: " + selectedId);
+
+                //UsersForm uf = new UsersForm(selectedId);
+
+                //uf.ShowDialog();
+
+                if (selectedId > 0) { btnEditUser.Enabled = true; }
+
+                //LoadUserTable();
+            }
+        }
+
+        private void btnEditUser_Click(object sender, EventArgs e)
+        {
+            if (selectedId > 0)
+            {
+                UsersForm uf = new UsersForm(selectedId);
+                uf.ShowDialog();
+                LoadUserTable();
+            }
+        }
     }//class
 }
