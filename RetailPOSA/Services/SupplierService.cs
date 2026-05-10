@@ -65,5 +65,17 @@ namespace RetailPOSA.Services
             return db.ExecuteQuery(query, parameters);
         }//get supplier by id
 
+        public DataTable SearchSupplier(string searchText)
+        { 
+            string query = "SELECT id, company_name, supplier_name, contact_no FROM suppliers " +
+                "WHERE status = 1 AND (company_name LIKE @search OR supplier_name LIKE @search OR contact_no LIKE @search) " +
+                "LIMIT 50;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@search", $"%{searchText}%");
+
+            return db.ExecuteQuery(query, parameters);
+        }//search supplier
+
     }//class
 }

@@ -35,23 +35,26 @@ namespace RetailPOSA.Forms
         private void btnNavCategories_Click(object sender, EventArgs e)
         {
             CategoryControl uc = new CategoryControl();
-
             loadControl(uc);
         }
 
         private void btnNavProducts_Click(object sender, EventArgs e)
         {
             ProductControl pc = new ProductControl();
-
             loadControl(pc);
         }//products
 
         private void btnNavSuppliers_Click(object sender, EventArgs e)
         {
             SupplierControl uc = new SupplierControl();
-
             loadControl(uc);
         }//suppliers
+
+        private void btnNavGRN_Click(object sender, EventArgs e)
+        {
+            GrnHeaderControl uc = new GrnHeaderControl();
+            loadControl(uc);
+        }//grn
 
         private void btnNavUsers_Click(object sender, EventArgs e)
         {

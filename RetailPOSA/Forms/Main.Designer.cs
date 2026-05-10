@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.pnlSidebar = new System.Windows.Forms.Panel();
+            this.lblRole = new System.Windows.Forms.Label();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnNavSuppliers = new System.Windows.Forms.Button();
             this.btnNavCategories = new System.Windows.Forms.Button();
             this.btnNavAccess = new System.Windows.Forms.Button();
             this.btnNavUsers = new System.Windows.Forms.Button();
@@ -41,10 +45,6 @@
             this.btnNavPOS = new System.Windows.Forms.Button();
             this.btnNavProducts = new System.Windows.Forms.Button();
             this.pnlContent = new System.Windows.Forms.Panel();
-            this.btnNavSuppliers = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblUsername = new System.Windows.Forms.Label();
-            this.lblRole = new System.Windows.Forms.Label();
             this.pnlSidebar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,6 +71,48 @@
             this.pnlSidebar.Name = "pnlSidebar";
             this.pnlSidebar.Size = new System.Drawing.Size(256, 796);
             this.pnlSidebar.TabIndex = 0;
+            // 
+            // lblRole
+            // 
+            this.lblRole.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblRole.AutoSize = true;
+            this.lblRole.Location = new System.Drawing.Point(12, 772);
+            this.lblRole.Name = "lblRole";
+            this.lblRole.Size = new System.Drawing.Size(36, 16);
+            this.lblRole.TabIndex = 14;
+            this.lblRole.Text = "Role";
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Location = new System.Drawing.Point(11, 751);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(70, 16);
+            this.lblUsername.TabIndex = 13;
+            this.lblUsername.Text = "Username";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(34, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(191, 36);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Nexora POS";
+            // 
+            // btnNavSuppliers
+            // 
+            this.btnNavSuppliers.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnNavSuppliers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNavSuppliers.Location = new System.Drawing.Point(1, 204);
+            this.btnNavSuppliers.Name = "btnNavSuppliers";
+            this.btnNavSuppliers.Size = new System.Drawing.Size(253, 41);
+            this.btnNavSuppliers.TabIndex = 11;
+            this.btnNavSuppliers.Text = "Suppliers";
+            this.btnNavSuppliers.UseVisualStyleBackColor = false;
+            this.btnNavSuppliers.Click += new System.EventHandler(this.btnNavSuppliers_Click);
             // 
             // btnNavCategories
             // 
@@ -155,12 +197,13 @@
             // 
             this.btnNavGRN.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnNavGRN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNavGRN.Location = new System.Drawing.Point(1, 304);
+            this.btnNavGRN.Location = new System.Drawing.Point(1, 254);
             this.btnNavGRN.Name = "btnNavGRN";
             this.btnNavGRN.Size = new System.Drawing.Size(253, 41);
             this.btnNavGRN.TabIndex = 3;
             this.btnNavGRN.Text = "GRN";
             this.btnNavGRN.UseVisualStyleBackColor = false;
+            this.btnNavGRN.Click += new System.EventHandler(this.btnNavGRN_Click);
             // 
             // btnNavInventory
             // 
@@ -177,7 +220,7 @@
             // 
             this.btnNavPOS.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnNavPOS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNavPOS.Location = new System.Drawing.Point(1, 254);
+            this.btnNavPOS.Location = new System.Drawing.Point(1, 304);
             this.btnNavPOS.Name = "btnNavPOS";
             this.btnNavPOS.Size = new System.Drawing.Size(253, 41);
             this.btnNavPOS.TabIndex = 1;
@@ -203,48 +246,6 @@
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Size = new System.Drawing.Size(1063, 796);
             this.pnlContent.TabIndex = 1;
-            // 
-            // btnNavSuppliers
-            // 
-            this.btnNavSuppliers.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnNavSuppliers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNavSuppliers.Location = new System.Drawing.Point(1, 204);
-            this.btnNavSuppliers.Name = "btnNavSuppliers";
-            this.btnNavSuppliers.Size = new System.Drawing.Size(253, 41);
-            this.btnNavSuppliers.TabIndex = 11;
-            this.btnNavSuppliers.Text = "Suppliers";
-            this.btnNavSuppliers.UseVisualStyleBackColor = false;
-            this.btnNavSuppliers.Click += new System.EventHandler(this.btnNavSuppliers_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(34, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(191, 36);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Nexora POS";
-            // 
-            // lblUsername
-            // 
-            this.lblUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(11, 751);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(70, 16);
-            this.lblUsername.TabIndex = 13;
-            this.lblUsername.Text = "Username";
-            // 
-            // lblRole
-            // 
-            this.lblRole.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblRole.AutoSize = true;
-            this.lblRole.Location = new System.Drawing.Point(12, 772);
-            this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(36, 16);
-            this.lblRole.TabIndex = 14;
-            this.lblRole.Text = "Role";
             // 
             // Main
             // 

@@ -94,5 +94,16 @@ namespace RetailPOSA.UserControls
 
             loadSuppliers();
         }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            SupplierService service = new SupplierService();
+
+            DataTable dt = new DataTable();
+
+            dt = service.SearchSupplier(txtSearch.Text);
+
+            dgvSuppliers.DataSource = dt;
+        }
     }//class
 }

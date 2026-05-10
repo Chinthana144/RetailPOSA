@@ -102,6 +102,12 @@
     <Compile Include="DialogBoxes\CategoryForm.Designer.cs">
       <DependentUpon>CategoryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DialogBoxes\GrnHeaderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogBoxes\GrnHeaderForm.Designer.cs">
+      <DependentUpon>GrnHeaderForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DialogBoxes\ProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,7 @@
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\GrnHeader.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Session.cs" />
     <Compile Include="Models\Supplier.cs" />
@@ -141,6 +148,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuthService.cs" />
     <Compile Include="Services\CategoryService.cs" />
+    <Compile Include="Services\GrnHeaderService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\SupplierService.cs" />
     <Compile Include="Services\UserService.cs" />
@@ -149,6 +157,12 @@
     </Compile>
     <Compile Include="UserControls\CategoryControl.Designer.cs">
       <DependentUpon>CategoryControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\GrnHeaderControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\GrnHeaderControl.Designer.cs">
+      <DependentUpon>GrnHeaderControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ProductControl.cs">
       <SubType>UserControl</SubType>
@@ -170,6 +184,9 @@
     </Compile>
     <EmbeddedResource Include="DialogBoxes\CategoryForm.resx">
       <DependentUpon>CategoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogBoxes\GrnHeaderForm.resx">
+      <DependentUpon>GrnHeaderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DialogBoxes\ProductForm.resx">
       <DependentUpon>ProductForm.cs</DependentUpon>
@@ -197,6 +214,9 @@
     </Compile>
     <EmbeddedResource Include="UserControls\CategoryControl.resx">
       <DependentUpon>CategoryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\GrnHeaderControl.resx">
+      <DependentUpon>GrnHeaderControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ProductControl.resx">
       <DependentUpon>ProductControl.cs</DependentUpon>
