@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using RetailPOSA.Forms;
+using RetailPOSA.Services;
 
 namespace RetailPOSA
 {
@@ -20,26 +22,32 @@ namespace RetailPOSA
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            //remove this after test is done
+            txtUsername.Text = "Chinthana";
+            txtPassword.Text = "bluecat4";
         }
 
-        private void btnCreate_Click(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e)
         {
-            Database db = new Database();
+            AuthService authService = new AuthService();
 
-            try
+            int result = authService.Login(txtUsername.Text, txtPassword.Text);
+
+            if (result == 1)
             {
-                MySqlConnection conn = db.GetConnection();
+                this.Hide();
 
-                conn.Open();
+                Main main = new Main();
 
-                MessageBox.Show("Connected Successfully!!!");
+                main.Show();
+
+                //MessageBox.Show("Login successful!");
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Connection Failed!!!" + ex.Message);
-                throw;
+            else 
+            { 
+                MessageBox.Show("Login failed. Please check your username and password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-        }
+        }//login
     }
 }

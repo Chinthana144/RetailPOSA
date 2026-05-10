@@ -57,7 +57,6 @@ namespace RetailPOSA.Services
             return db.ExecuteNonQuery(query, parameters);
         }//update product
 
-
         public DataTable GetAllProducts(int limit, int offset)
         {
             string query = "SELECT " +
@@ -103,5 +102,26 @@ namespace RetailPOSA.Services
 
             return db.ExecuteQuery(query, parameters);
         }//get product by id
+
+        public DataTable SearchProducts(string searchTerm)
+        { 
+            string query = "SELECT " +
+                "products.id, " +
+                "categories.name as category, " +
+                "products.barcode, " +
+                "products.name as product, " +
+                "products.second_name, " +
+                "products.is_weighted, " +
+                "products.has_expiry, " +
+                "products.minimum_stock " +
+                "FROM products " +
+                "INNER JOIN categories ON categories.id = products.category_id " +
+                "WHERE products.status = 1 AND (products.name LIKE @searchTerm OR products.barcode LIKE @searchTerm);";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@searchTerm", $"%{searchTerm}%");
+
+            return db.ExecuteQuery(query, parameters);
+        }//search products
     }//class
 }

@@ -1,4 +1,5 @@
-﻿using RetailPOSA.UserControls;
+﻿using RetailPOSA.Models;
+using RetailPOSA.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,7 +21,8 @@ namespace RetailPOSA.Forms
 
         private void Main_Load(object sender, EventArgs e)
         {
-
+            lblUsername.Text = Session.UserName;
+            lblRole.Text = Session.RoleName;
         }
 
         private void loadControl(UserControl uc)
@@ -42,13 +44,26 @@ namespace RetailPOSA.Forms
             ProductControl pc = new ProductControl();
 
             loadControl(pc);
-        }
+        }//products
+
+        private void btnNavSuppliers_Click(object sender, EventArgs e)
+        {
+            SupplierControl uc = new SupplierControl();
+
+            loadControl(uc);
+        }//suppliers
 
         private void btnNavUsers_Click(object sender, EventArgs e)
         {
             UsersControl uc = new UsersControl();
 
             loadControl(uc);
+        }//users
+
+        private void Main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //close the application when the main form is closed
+            Application.Exit();
         }
 
         

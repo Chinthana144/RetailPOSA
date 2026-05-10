@@ -102,6 +102,42 @@ namespace RetailPOSA.UserControls
             }
         }
 
-        
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            timer1.Stop();
+
+            timer1.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Stop();
+
+            if (txtSearch.Text.Trim() != "")
+            {
+                searchProducts();
+            }
+            else
+            {
+                loadProducts();
+            }
+
+        }//timer tick
+
+        private void searchProducts()
+        {
+            ProductService service = new ProductService();
+            DataTable dt = service.SearchProducts(txtSearch.Text);
+            dgvProducts.DataSource = dt;
+            dgvProducts.Columns["Id"].HeaderText = "ID";
+            dgvProducts.Columns["category"].HeaderText = "Category";
+            dgvProducts.Columns["barcode"].HeaderText = "Barcode";
+            dgvProducts.Columns["product"].HeaderText = "Product";
+            dgvProducts.Columns["second_name"].HeaderText = "Second Name";
+            dgvProducts.Columns["is_weighted"].HeaderText = "Scalable";
+            dgvProducts.Columns["has_expiry"].HeaderText = "Expiry";
+            dgvProducts.Columns["minimum_stock"].HeaderText = "Minimum Qty";
+        }//search products
+
     }//class
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.btnAddProduct = new System.Windows.Forms.Button();
@@ -35,6 +36,9 @@
             this.btnPrevious = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.lblPageNo = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,11 +135,43 @@
             this.lblPageNo.TabIndex = 9;
             this.lblPageNo.Text = "Page No:";
             // 
+            // txtSearch
+            // 
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(78)))), ((int)(((byte)(78)))));
+            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSearch.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.ForeColor = System.Drawing.Color.White;
+            this.txtSearch.Location = new System.Drawing.Point(635, 22);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(274, 32);
+            this.txtSearch.TabIndex = 10;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 300;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label2.Location = new System.Drawing.Point(578, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(56, 21);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Search";
+            // 
             // ProductControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.lblPageNo);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnPrevious);
@@ -161,5 +197,8 @@
         private System.Windows.Forms.Button btnPrevious;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Label lblPageNo;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label2;
     }
 }
