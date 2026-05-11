@@ -25,7 +25,7 @@ namespace RetailPOSA.Forms
             lblRole.Text = Session.RoleName;
         }
 
-        private void loadControl(UserControl uc)
+        public void loadControl(UserControl uc)
         { 
             pnlContent.Controls.Clear();
             uc.Dock = DockStyle.Fill;

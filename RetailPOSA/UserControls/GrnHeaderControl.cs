@@ -1,4 +1,5 @@
 ﻿using RetailPOSA.DialogBoxes;
+using RetailPOSA.Forms;
 using RetailPOSA.Services;
 using System;
 using System.Collections.Generic;
@@ -131,6 +132,14 @@ namespace RetailPOSA.UserControls
 
             //load grn header data to the datagridview
             loadGrnHeaders();
+        }
+
+        private void btnAddItems_Click(object sender, EventArgs e)
+        {
+            GrnDetailControl grnDetailControl = new GrnDetailControl(selectedID);
+
+            Main mainForm = (Main)Application.OpenForms["Main"];
+            mainForm.loadControl(grnDetailControl);
         }
     }//class
 }

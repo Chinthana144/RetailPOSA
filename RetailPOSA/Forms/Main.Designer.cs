@@ -244,14 +244,14 @@
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContent.Location = new System.Drawing.Point(256, 0);
             this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Size = new System.Drawing.Size(1063, 796);
+            this.pnlContent.Size = new System.Drawing.Size(1231, 796);
             this.pnlContent.TabIndex = 1;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1319, 796);
+            this.ClientSize = new System.Drawing.Size(1487, 796);
             this.Controls.Add(this.pnlContent);
             this.Controls.Add(this.pnlSidebar);
             this.Name = "Main";
