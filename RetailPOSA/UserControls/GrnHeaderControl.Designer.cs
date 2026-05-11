@@ -37,6 +37,9 @@
             this.dgvGrnHeaders = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.cmbStatus = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnAddItems = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrnHeaders)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +50,7 @@
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSearch.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.ForeColor = System.Drawing.Color.White;
-            this.txtSearch.Location = new System.Drawing.Point(624, 23);
+            this.txtSearch.Location = new System.Drawing.Point(604, 23);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(274, 32);
             this.txtSearch.TabIndex = 19;
@@ -58,7 +61,7 @@
             this.lblPageNo.AutoSize = true;
             this.lblPageNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPageNo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblPageNo.Location = new System.Drawing.Point(158, 668);
+            this.lblPageNo.Location = new System.Drawing.Point(158, 646);
             this.lblPageNo.Name = "lblPageNo";
             this.lblPageNo.Size = new System.Drawing.Size(94, 25);
             this.lblPageNo.TabIndex = 18;
@@ -68,7 +71,7 @@
             // 
             this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.Location = new System.Drawing.Point(270, 660);
+            this.btnNext.Location = new System.Drawing.Point(270, 638);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(132, 40);
             this.btnNext.TabIndex = 17;
@@ -79,7 +82,7 @@
             // 
             this.btnPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnPrevious.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrevious.Location = new System.Drawing.Point(5, 660);
+            this.btnPrevious.Location = new System.Drawing.Point(10, 638);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(132, 40);
             this.btnPrevious.TabIndex = 16;
@@ -90,18 +93,19 @@
             // 
             this.btnEditGrn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEditGrn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditGrn.Location = new System.Drawing.Point(931, 660);
+            this.btnEditGrn.Location = new System.Drawing.Point(901, 638);
             this.btnEditGrn.Name = "btnEditGrn";
             this.btnEditGrn.Size = new System.Drawing.Size(181, 40);
             this.btnEditGrn.TabIndex = 15;
             this.btnEditGrn.Text = "Edit GRN";
             this.btnEditGrn.UseVisualStyleBackColor = true;
+            this.btnEditGrn.Click += new System.EventHandler(this.btnEditGrn_Click);
             // 
             // btnAddGrn
             // 
             this.btnAddGrn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddGrn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddGrn.Location = new System.Drawing.Point(930, 19);
+            this.btnAddGrn.Location = new System.Drawing.Point(901, 19);
             this.btnAddGrn.Name = "btnAddGrn";
             this.btnAddGrn.Size = new System.Drawing.Size(181, 40);
             this.btnAddGrn.TabIndex = 14;
@@ -119,7 +123,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvGrnHeaders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvGrnHeaders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvGrnHeaders.Location = new System.Drawing.Point(5, 75);
+            this.dgvGrnHeaders.Location = new System.Drawing.Point(10, 75);
             this.dgvGrnHeaders.MultiSelect = false;
             this.dgvGrnHeaders.Name = "dgvGrnHeaders";
             this.dgvGrnHeaders.ReadOnly = true;
@@ -127,15 +131,16 @@
             this.dgvGrnHeaders.RowHeadersWidth = 51;
             this.dgvGrnHeaders.RowTemplate.Height = 24;
             this.dgvGrnHeaders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvGrnHeaders.Size = new System.Drawing.Size(1107, 576);
+            this.dgvGrnHeaders.Size = new System.Drawing.Size(1072, 554);
             this.dgvGrnHeaders.TabIndex = 13;
+            this.dgvGrnHeaders.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGrnHeaders_CellClick);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(5, 23);
+            this.label1.Location = new System.Drawing.Point(16, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 25);
             this.label1.TabIndex = 12;
@@ -147,17 +152,61 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(567, 29);
+            this.label2.Location = new System.Drawing.Point(547, 29);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 21);
             this.label2.TabIndex = 20;
             this.label2.Text = "Search";
+            // 
+            // cmbStatus
+            // 
+            this.cmbStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
+            this.cmbStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbStatus.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbStatus.ForeColor = System.Drawing.Color.White;
+            this.cmbStatus.FormattingEnabled = true;
+            this.cmbStatus.Items.AddRange(new object[] {
+            "Pending",
+            "Submitted",
+            "Canceled"});
+            this.cmbStatus.Location = new System.Drawing.Point(319, 25);
+            this.cmbStatus.Name = "cmbStatus";
+            this.cmbStatus.Size = new System.Drawing.Size(222, 32);
+            this.cmbStatus.TabIndex = 21;
+            this.cmbStatus.SelectedIndexChanged += new System.EventHandler(this.cmbStatus_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label3.Location = new System.Drawing.Point(256, 31);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(54, 21);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "Status";
+            // 
+            // btnAddItems
+            // 
+            this.btnAddItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddItems.Location = new System.Drawing.Point(714, 638);
+            this.btnAddItems.Name = "btnAddItems";
+            this.btnAddItems.Size = new System.Drawing.Size(181, 40);
+            this.btnAddItems.TabIndex = 23;
+            this.btnAddItems.Text = "Add Items";
+            this.btnAddItems.UseVisualStyleBackColor = true;
             // 
             // GrnHeaderControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.Controls.Add(this.btnAddItems);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cmbStatus);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.lblPageNo);
             this.Controls.Add(this.btnNext);
@@ -168,7 +217,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Name = "GrnHeaderControl";
-            this.Size = new System.Drawing.Size(1116, 718);
+            this.Size = new System.Drawing.Size(1096, 696);
             this.Load += new System.EventHandler(this.GrnHeaderControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrnHeaders)).EndInit();
             this.ResumeLayout(false);
@@ -187,5 +236,8 @@
         private System.Windows.Forms.DataGridView dgvGrnHeaders;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbStatus;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnAddItems;
     }
 }

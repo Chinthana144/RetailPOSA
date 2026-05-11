@@ -15,14 +15,23 @@ namespace RetailPOSA.DialogBoxes
     public partial class GrnHeaderForm : Form
     {
         private int supplierID = 0;
-        public GrnHeaderForm()
+        private int grnHeaderID = 0;
+        public GrnHeaderForm(int id)
         {
             InitializeComponent();
+
+            grnHeaderID = id;
         }
 
         private void GrnHeaderForm_Load(object sender, EventArgs e)
         {
             pnlSupplierResult.Visible = false;
+            btnAddGRN.Text = grnHeaderID > 0 ? "Update GRN" : "Add GRN";
+
+            if (grnHeaderID > 0)
+            {
+                loadGrnHeader();
+            }
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -68,18 +77,34 @@ namespace RetailPOSA.DialogBoxes
             int userID = Session.UserID;
             string date_created = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
-            int grnID = service.InsertGrnHeader(supplierID, txtInvoiceNo.Text, date_created, date_created, 0, 0, 0, 1, userID);
-
-            if (grnID > 0)
+            if (grnHeaderID > 0)
             {
-                //MessageBox.Show("GRN Header added successfully. GRN ID: " + grnID);
-                //this.DialogResult = DialogResult.OK;
-                this.Close();
+                // Update logic can be implemented here
+                service.UpdateGrnHeader(grnHeaderID, supplierID, txtInvoiceNo.Text, date_created, date_created, 0, 0, 0, 1, userID);
             }
             else
             {
-                MessageBox.Show("Failed to add GRN Header.");
+                // Insert logic can be implemented here
+                service.InsertGrnHeader(supplierID, txtInvoiceNo.Text, date_created, date_created, 0, 0, 0, 1, userID);
             }
+
+            this.Close();
+        }
+
+        private void loadGrnHeader()
+        { 
+            GrnHeaderService service = new GrnHeaderService();
+
+            DataTable dt = service.GetGrnHeaderByID(grnHeaderID);
+
+            if (dt != null)
+            {
+                txtInvoiceNo.Text = dt.Rows[0]["invoice_no"].ToString();
+                txtSearch.Text = dt.Rows[0]["company_name"].ToString() + " - " + dt.Rows[0]["supplier_name"].ToString() + " - " + dt.Rows[0]["contact_no"].ToString();
+                supplierID = Convert.ToInt32(dt.Rows[0]["supplier_id"].ToString());
+            }
+
+            pnlSupplierResult.Visible = false;
         }
     }//class
 }
