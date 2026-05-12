@@ -162,6 +162,7 @@
     <Compile Include="Services\CategoryService.cs" />
     <Compile Include="Services\GrnDetailService.cs" />
     <Compile Include="Services\GrnHeaderService.cs" />
+    <Compile Include="Services\InventoryService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\SupplierService.cs" />
     <Compile Include="Services\UserService.cs" />

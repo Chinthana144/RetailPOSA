@@ -61,6 +61,15 @@ namespace RetailPOSA.Services
             return db.ExecuteNonQuery(query, parameters);
         }//update grn header
 
+        public int UpdateGrnHeaderStatus(int id, int status)
+        {
+            string query = "UPDATE grn_header SET status = @status WHERE id = @id";
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@id", id);
+            parameters.Add("@status", status);
+            return db.ExecuteNonQuery(query, parameters);
+        }//update grn header status
+
         public DataTable GetAllGrnHeaders(int limit, int offset)
         {
             string query = "SELECT " +

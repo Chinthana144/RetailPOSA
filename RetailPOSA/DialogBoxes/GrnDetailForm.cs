@@ -105,7 +105,9 @@ namespace RetailPOSA.DialogBoxes
             decimal discount = Convert.ToDecimal(txtDiscount.Text);
             decimal finalPrice = Convert.ToDecimal(txtFinalPrice.Text);
 
-            int result = grnDetailService.InsertGrnDetail(grnID, productID, qty, freeQty, purchasePrice, sellingPrice, discount, finalPrice, isExpiry ? dtpExpiry.Value.ToString("yyyy-MM-dd") : null, 1);
+            decimal purchaseTotal = (qty) * purchasePrice;
+
+            int result = grnDetailService.InsertGrnDetail(grnID, productID, qty, freeQty, purchasePrice, sellingPrice, discount, finalPrice, isExpiry ? dtpExpiry.Value.ToString("yyyy-MM-dd") : null, purchaseTotal, 1);
 
             if (result == 0)
             { 
@@ -122,7 +124,5 @@ namespace RetailPOSA.DialogBoxes
 
             return decimal.TryParse(value, out _);
         }
-
-        
     }//class
-}
+}//namespace
