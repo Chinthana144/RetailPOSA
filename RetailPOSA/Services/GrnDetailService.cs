@@ -45,5 +45,13 @@ namespace RetailPOSA.Services
             return db.ExecuteQuery(query, parameters);
         }//get grn details by grn header id
 
+        public int DeleteGrnDetail(int grnDetailID)
+        {
+            string query = "DELETE FROM grn_details WHERE id = @id";
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@id", grnDetailID);
+            return db.ExecuteNonQuery(query, parameters);
+        }//delete grn detail
+
     }//class
 }

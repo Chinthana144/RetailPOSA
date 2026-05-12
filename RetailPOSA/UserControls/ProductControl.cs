@@ -57,6 +57,8 @@ namespace RetailPOSA.UserControls
             dgvProducts.Columns["minimum_stock"].HeaderText = "Minimum Qty";
 
             lblPageNo.Text = $"Page {currentPage}";
+
+            dgvProducts.Columns[0].Width = 50;
         }
 
         private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)

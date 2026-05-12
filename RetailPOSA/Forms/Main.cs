@@ -56,6 +56,12 @@ namespace RetailPOSA.Forms
             loadControl(uc);
         }//grn
 
+        private void btnNavInventory_Click(object sender, EventArgs e)
+        {
+            InventoryControl uc = new InventoryControl();
+            loadControl(uc);
+        }
+
         private void btnNavUsers_Click(object sender, EventArgs e)
         {
             UsersControl uc = new UsersControl();

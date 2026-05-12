@@ -141,5 +141,46 @@ namespace RetailPOSA.UserControls
             Main mainForm = (Main)Application.OpenForms["Main"];
             mainForm.loadControl(grnDetailControl);
         }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            GrnHeaderService grnHeaderService = new GrnHeaderService();
+
+            DataTable dt = grnHeaderService.SearchGrnHeader(txtSearch.Text, cmbStatus.Text, pageSize, (currentPage - 1) * pageSize);
+            dgvGrnHeaders.DataSource = dt;
+
+            dgvGrnHeaders.Columns["id"].HeaderText = "ID";
+            dgvGrnHeaders.Columns["date_submitted"].HeaderText = "Date Submitted";
+            dgvGrnHeaders.Columns["invoice_no"].HeaderText = "Invoice No";
+            dgvGrnHeaders.Columns["item_count"].HeaderText = "Item Count";
+            dgvGrnHeaders.Columns["purchase_price"].HeaderText = "Purchase Price";
+            dgvGrnHeaders.Columns["company_name"].HeaderText = "Company Name";
+            dgvGrnHeaders.Columns["username"].HeaderText = "Username";
+
+            lblPageNo.Text = $"Page {currentPage}";
+
+            dgvGrnHeaders.Columns["id"].Width = 50;
+
+            dgvGrnHeaders.Columns["supplier_id"].Visible = false;
+            dgvGrnHeaders.Columns["supplier_name"].Visible = false;
+            dgvGrnHeaders.Columns["date_created"].Visible = false;
+            dgvGrnHeaders.Columns["status"].Visible = false;
+
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if(currentPage > 1)
+            {
+                currentPage--;
+                loadGrnHeaders();
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            currentPage++;
+            loadGrnHeaders();
+        }
     }//class
 }

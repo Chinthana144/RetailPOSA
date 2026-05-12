@@ -184,6 +184,12 @@
     <Compile Include="UserControls\GrnHeaderControl.Designer.cs">
       <DependentUpon>GrnHeaderControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\InventoryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\InventoryControl.Designer.cs">
+      <DependentUpon>InventoryControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ProductControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -246,6 +252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\GrnHeaderControl.resx">
       <DependentUpon>GrnHeaderControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\InventoryControl.resx">
+      <DependentUpon>InventoryControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ProductControl.resx">
       <DependentUpon>ProductControl.cs</DependentUpon>

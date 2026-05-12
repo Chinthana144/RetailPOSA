@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +31,38 @@ namespace RetailPOSA.Services
 
             return db.ExecuteNonQuery(query, parameters);
         }//insert inventory
+
+        public DataTable GetInventory(int limit, int offset)
+        {
+            string query = "SELECT inventory.id, grn_header_id, product_id, " +
+                "barcode, products.name, second_name, initial_qty, current_qty, purchase_price, selling_price, discount, final_price " +
+                "FROM inventory " +
+                "INNER JOIN products ON products.id = inventory.product_id " +
+                "LIMIT @limit OFFSET @offset;";
+            
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@limit", limit);
+            parameters.Add("@offset", offset);
+
+            return db.ExecuteQuery(query, parameters);
+        }//get inventory
+
+        public DataTable SearchInventory(string searchTerm, int limit, int offset)
+        {
+            string query = "SELECT inventory.id, grn_header_id, product_id, " +
+                "barcode, products.name, second_name, initial_qty, current_qty, purchase_price, selling_price, discount, final_price " +
+                "FROM inventory " +
+                "INNER JOIN products ON products.id = inventory.product_id " +
+                "WHERE products.barcode LIKE @searchTerm OR products.name LIKE @searchTerm OR final_price LIKE @searchTerm " +
+                "LIMIT @limit OFFSET @offset;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@searchTerm", "%" + searchTerm + "%");
+            parameters.Add("@limit", limit);
+            parameters.Add("@offset", offset);
+
+            return db.ExecuteQuery(query, parameters);
+        }//search inventory
 
     }//class
 }

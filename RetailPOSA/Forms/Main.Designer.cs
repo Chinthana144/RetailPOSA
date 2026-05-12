@@ -215,6 +215,7 @@
             this.btnNavInventory.TabIndex = 2;
             this.btnNavInventory.Text = "Inventory";
             this.btnNavInventory.UseVisualStyleBackColor = false;
+            this.btnNavInventory.Click += new System.EventHandler(this.btnNavInventory_Click);
             // 
             // btnNavPOS
             // 

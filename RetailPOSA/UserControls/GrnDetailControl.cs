@@ -87,26 +87,7 @@ namespace RetailPOSA.UserControls
 
                 if (selectedID > 0) { btnDeleteProduct.Enabled = true; }
             }
-        }
-
-        private void loadGrnDetails()
-        { 
-            GrnDetailService grnDetailService = new GrnDetailService();
-
-            DataTable dt = grnDetailService.GetGrnDetailsByGrnHeaderID(grnID);
-
-            dgvGrnProducts.DataSource = dt;
-
-            dgvGrnProducts.Columns["id"].Width = 50;
-            dgvGrnProducts.Columns["product_id"].Visible = false;
-            dgvGrnProducts.Columns["grn_header_id"].Visible = false;
-
-            //get purchase total
-            decimal purchaseTotal = dt.AsEnumerable().Sum(row => row.Field<decimal>("purchase_total"));
-            lblPurchaseTotal.Text = "Purchase Total: " + purchaseTotal.ToString("0.00");
-
-            btnDeleteProduct.Enabled = false;
-        }
+        }//cell click event
 
         private void btnSubmitGrn_Click(object sender, EventArgs e)
         {
@@ -117,6 +98,9 @@ namespace RetailPOSA.UserControls
             InventoryService inventoryService = new InventoryService();
 
             GrnHeaderService grnHeaderService = new GrnHeaderService();
+
+            int itemCount = dt.Rows.Count;
+            decimal TotalPurchasePrice = dt.AsEnumerable().Sum(row => row.Field<decimal>("purchase_price"));
 
             foreach (DataRow row in dt.Rows)
             { 
@@ -135,10 +119,11 @@ namespace RetailPOSA.UserControls
 
             }//foreach
 
-            //Update GRN header status to completed
-            grnHeaderService.UpdateGrnHeaderStatus(grnID, 2);
+            string submittedDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
-            //MessageBox.Show("GRN submitted successfully!");
+            //Update GRN header status to completed
+            grnHeaderService.UpdateGrnHeaderStatus(grnID, submittedDate, itemCount, TotalPurchasePrice, 2);
+
             DialogResult result = MessageBox.Show("GRN submitted successfully! Do you want to print the GRN?", "Success", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (result == DialogResult.Yes)
             {
@@ -151,6 +136,50 @@ namespace RetailPOSA.UserControls
                 Main mainForm = (Main)Application.OpenForms["Main"];
                 mainForm.loadControl(grnHeaderControl);
             }
-        }
+        }//submit grn
+
+        private void btnDeleteProduct_Click(object sender, EventArgs e)
+        {
+            GrnDetailService grnDetailService = new GrnDetailService();
+
+            DialogResult result = MessageBox.Show("Are you sure you want to delete this product from the GRN?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                grnDetailService.DeleteGrnDetail(selectedID);
+                loadGrnDetails();
+            }
+        }//delete
+
+        private void loadGrnDetails()
+        {
+            GrnDetailService grnDetailService = new GrnDetailService();
+
+            DataTable dt = grnDetailService.GetGrnDetailsByGrnHeaderID(grnID);
+
+            dgvGrnProducts.DataSource = dt;
+
+            dgvGrnProducts.Columns["id"].Width = 50;
+            dgvGrnProducts.Columns["product_id"].Visible = false;
+            dgvGrnProducts.Columns["grn_header_id"].Visible = false;
+
+            dgvGrnProducts.Columns["product_name"].HeaderText = "Product Name";
+            dgvGrnProducts.Columns["qty"].HeaderText = "Qty";
+            dgvGrnProducts.Columns["free_qty"].HeaderText = "Free Qty";
+            dgvGrnProducts.Columns["purchase_price"].HeaderText = "Purchase Price";
+            dgvGrnProducts.Columns["selling_price"].HeaderText = "Selling Price";
+            dgvGrnProducts.Columns["discount"].HeaderText = "Discount";
+            dgvGrnProducts.Columns["final_price"].HeaderText = "Final Price";
+            dgvGrnProducts.Columns["expiry_date"].HeaderText = "Expiry Date";
+            dgvGrnProducts.Columns["purchase_total"].HeaderText = "Purchase Total";
+
+            //get purchase total
+            decimal purchaseTotal = dt.AsEnumerable().Sum(row => row.Field<decimal>("purchase_total"));
+            lblPurchaseTotal.Text = "Purchase Total: " + purchaseTotal.ToString("0.00");
+
+            btnDeleteProduct.Enabled = false;
+        }//laod grn details 
+
+        
     }//class
 }

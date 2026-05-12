@@ -54,6 +54,8 @@ namespace RetailPOSA.UserControls
             dgvSuppliers.Columns["contact_no"].HeaderText = "Contact";
 
             lblPageNo.Text = $"Page {currentPage}";
+
+            dgvSuppliers.Columns[0].Width = 50;
         }//get all suppliers
 
         private void dgvSuppliers_CellClick(object sender, DataGridViewCellEventArgs e)

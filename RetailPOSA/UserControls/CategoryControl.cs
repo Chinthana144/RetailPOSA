@@ -45,6 +45,8 @@ namespace RetailPOSA.UserControls
 
             dgvCategories.Columns[0].HeaderText = "ID";
             dgvCategories.Columns[1].HeaderText = "Name";
+
+            dgvCategories.Columns[0].Width = 50;
         }
 
         private void dgvCategories_CellClick(object sender, DataGridViewCellEventArgs e)

@@ -50,6 +50,8 @@ namespace RetailPOSA.UserControls
             dgvUsers.Columns[1].HeaderText = "Role";
             dgvUsers.Columns[2].HeaderText = "Username";
 
+            dgvUsers.Columns[0].Width = 50;
+
         }//load users table
 
         private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)

@@ -61,12 +61,18 @@ namespace RetailPOSA.Services
             return db.ExecuteNonQuery(query, parameters);
         }//update grn header
 
-        public int UpdateGrnHeaderStatus(int id, int status)
+        public int UpdateGrnHeaderStatus(int id, string submittedDate, int itemCount, decimal purchasePrice, int status)
         {
-            string query = "UPDATE grn_header SET status = @status WHERE id = @id";
+            string query = "UPDATE grn_header SET date_submitted=@submittedDate, item_count=@itemCount, purchase_price=@purchasePrice, status = @status WHERE id = @id";
+           
             Dictionary<string, object> parameters = new Dictionary<string, object>();
+
             parameters.Add("@id", id);
             parameters.Add("@status", status);
+            parameters.Add("@submittedDate", submittedDate);
+            parameters.Add("@itemCount", itemCount);
+            parameters.Add("@purchasePrice", purchasePrice);
+
             return db.ExecuteNonQuery(query, parameters);
         }//update grn header status
 
@@ -145,5 +151,50 @@ namespace RetailPOSA.Services
 
             return db.ExecuteQuery(query, parameters);
         }
+
+        public DataTable SearchGrnHeader(string searchTerm, string status, int limit, int offset)
+        {
+            int statusValue = 0;
+            switch (status) {
+                case "Pending": 
+                    statusValue = 1; 
+                    break;
+                case "Submitted":
+                    statusValue = 2;
+                    break;
+                case "Canceled":
+                    statusValue = 3;
+                    break;
+            }//switch
+
+            string query = "SELECT " +
+                "grn_header.id, " +
+                "grn_header.supplier_id, " +
+                "grn_header.date_created, " +
+                "grn_header.date_submitted, " +
+                "grn_header.invoice_no, " +
+                "grn_header.item_count, " +
+                "grn_header.purchase_price, " +
+                "grn_header.status, " +
+                "suppliers.company_name, " +
+                "suppliers.supplier_name, " +
+                "suppliers.contact_no, " +
+                "users.username " +
+                "FROM grn_header " +
+                "INNER JOIN suppliers ON suppliers.id = grn_header.supplier_id " +
+                "INNER JOIN users ON users.user_id = grn_header.user_id " +
+                "WHERE grn_header.status = @statusValue AND (invoice_no LIKE @searchTerm OR date_submitted LIKE @searchTerm OR company_name LIKE @searchTerm OR supplier_name LIKE @searchTerm OR contact_no LIKE @searchTerm) " +
+                "ORDER BY grn_header.id DESC " +
+                "LIMIT @limit OFFSET @offset;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@searchTerm", "%" + searchTerm + "%");
+            parameters.Add("@statusValue", statusValue);
+            parameters.Add("@limit", limit);
+            parameters.Add("@offset", offset);
+
+            return db.ExecuteQuery(query, parameters);
+
+        }//search grn header
     }//class
 }
