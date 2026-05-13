@@ -227,6 +227,7 @@
             this.btnNavPOS.TabIndex = 1;
             this.btnNavPOS.Text = "POS";
             this.btnNavPOS.UseVisualStyleBackColor = false;
+            this.btnNavPOS.Click += new System.EventHandler(this.btnNavPOS_Click);
             // 
             // btnNavProducts
             // 

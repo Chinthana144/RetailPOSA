@@ -38,6 +38,7 @@ namespace RetailPOSA.Services
                 "barcode, products.name, second_name, initial_qty, current_qty, purchase_price, selling_price, discount, final_price " +
                 "FROM inventory " +
                 "INNER JOIN products ON products.id = inventory.product_id " +
+                "WHERE current_qty > 0 " +
                 "LIMIT @limit OFFSET @offset;";
             
             Dictionary<string, object> parameters = new Dictionary<string, object>();
@@ -53,7 +54,7 @@ namespace RetailPOSA.Services
                 "barcode, products.name, second_name, initial_qty, current_qty, purchase_price, selling_price, discount, final_price " +
                 "FROM inventory " +
                 "INNER JOIN products ON products.id = inventory.product_id " +
-                "WHERE products.barcode LIKE @searchTerm OR products.name LIKE @searchTerm OR final_price LIKE @searchTerm " +
+                "WHERE current_qty > 0 AND (products.barcode LIKE @searchTerm OR products.name LIKE @searchTerm OR final_price LIKE @searchTerm) " +
                 "LIMIT @limit OFFSET @offset;";
 
             Dictionary<string, object> parameters = new Dictionary<string, object>();
@@ -63,6 +64,33 @@ namespace RetailPOSA.Services
 
             return db.ExecuteQuery(query, parameters);
         }//search inventory
+
+        public DataTable SearchActiveInventory(string searchTerm)
+        {
+            string query = "SELECT "+
+                "inventory.id, "+
+                "grn_header_id, "+
+                "product_id, " +
+                "barcode, "+
+                "products.name, "+
+                "second_name, "+
+                "is_weighted, "+
+                "has_expiry, " +
+                "initial_qty, " +
+                "current_qty, "+
+                "purchase_price, "+
+                "selling_price, "+
+                "discount, "+
+                "final_price " +
+                "FROM inventory " +
+                "INNER JOIN products ON products.id = inventory.product_id " +
+                "WHERE current_qty > 0 AND (products.barcode LIKE @searchTerm OR products.name LIKE @searchTerm OR final_price LIKE @searchTerm);";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@searchTerm", "%" + searchTerm + "%");
+
+            return db.ExecuteQuery(query, parameters);
+        }//search active inventory
 
     }//class
 }

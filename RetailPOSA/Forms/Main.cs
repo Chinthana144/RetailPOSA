@@ -62,6 +62,12 @@ namespace RetailPOSA.Forms
             loadControl(uc);
         }
 
+        private void btnNavPOS_Click(object sender, EventArgs e)
+        {
+            POSControl uc = new POSControl();
+            loadControl(uc);
+        }
+
         private void btnNavUsers_Click(object sender, EventArgs e)
         {
             UsersControl uc = new UsersControl();
