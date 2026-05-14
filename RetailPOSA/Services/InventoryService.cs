@@ -81,7 +81,8 @@ namespace RetailPOSA.Services
                 "purchase_price, "+
                 "selling_price, "+
                 "discount, "+
-                "final_price " +
+                "final_price, " +
+                "expiry_date " +
                 "FROM inventory " +
                 "INNER JOIN products ON products.id = inventory.product_id " +
                 "WHERE current_qty > 0 AND (products.barcode LIKE @searchTerm OR products.name LIKE @searchTerm OR final_price LIKE @searchTerm);";

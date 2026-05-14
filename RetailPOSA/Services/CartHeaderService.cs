@@ -29,10 +29,14 @@ namespace RetailPOSA.Services
             return db.ExecuteNonQuery(query, parameters);
         }//insert cart header
 
-        public DataTable GetCartHeader()
+        public DataTable GetCartHeader(int userID)
         {
-            string query = "SELECT * FROM cart_header WHERE status = 1 LIMIT 1;";
-            return db.ExecuteQuery(query);
+            string query = "SELECT * FROM cart_header WHERE status = 1 AND user_id = @userID LIMIT 1;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@userID", userID);
+
+            return db.ExecuteQuery(query, parameters);
         }//get cart header
 
     }//class

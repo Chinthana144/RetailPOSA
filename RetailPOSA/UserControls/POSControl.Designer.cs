@@ -36,16 +36,16 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnPay = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.btnClearCart = new System.Windows.Forms.Button();
+            this.lblItemCount = new System.Windows.Forms.Label();
+            this.lblDiscounts = new System.Windows.Forms.Label();
+            this.lblCartTotal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
             this.SuspendLayout();
             // 
@@ -150,17 +150,17 @@
             this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button3.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // btnPay
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button4.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(772, 635);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(332, 62);
-            this.button4.TabIndex = 16;
-            this.button4.Text = "Pay";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnPay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnPay.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPay.Location = new System.Drawing.Point(772, 635);
+            this.btnPay.Name = "btnPay";
+            this.btnPay.Size = new System.Drawing.Size(332, 62);
+            this.btnPay.TabIndex = 16;
+            this.btnPay.Text = "Pay";
+            this.btnPay.UseVisualStyleBackColor = false;
             // 
             // button5
             // 
@@ -230,79 +230,80 @@
             this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button9.Location = new System.Drawing.Point(888, 305);
+            this.button9.Location = new System.Drawing.Point(1004, 305);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(100, 100);
             this.button9.TabIndex = 21;
             this.button9.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button9.UseVisualStyleBackColor = false;
             // 
-            // button10
+            // btnClearCart
             // 
-            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button10.BackColor = System.Drawing.Color.Navy;
-            this.button10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button10.BackgroundImage")));
-            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button10.Location = new System.Drawing.Point(1004, 305);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(100, 100);
-            this.button10.TabIndex = 20;
-            this.button10.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button10.UseVisualStyleBackColor = false;
+            this.btnClearCart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClearCart.BackColor = System.Drawing.Color.Navy;
+            this.btnClearCart.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClearCart.BackgroundImage")));
+            this.btnClearCart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnClearCart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearCart.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnClearCart.Location = new System.Drawing.Point(888, 305);
+            this.btnClearCart.Name = "btnClearCart";
+            this.btnClearCart.Size = new System.Drawing.Size(100, 100);
+            this.btnClearCart.TabIndex = 20;
+            this.btnClearCart.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnClearCart.UseVisualStyleBackColor = false;
+            this.btnClearCart.Click += new System.EventHandler(this.btnClearCart_Click);
             // 
-            // label2
+            // lblItemCount
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(776, 432);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 25);
-            this.label2.TabIndex = 23;
-            this.label2.Text = "Items: ";
+            this.lblItemCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblItemCount.AutoSize = true;
+            this.lblItemCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblItemCount.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblItemCount.Location = new System.Drawing.Point(776, 501);
+            this.lblItemCount.Name = "lblItemCount";
+            this.lblItemCount.Size = new System.Drawing.Size(70, 25);
+            this.lblItemCount.TabIndex = 23;
+            this.lblItemCount.Text = "Items: ";
             // 
-            // label3
+            // lblDiscounts
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(776, 467);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(109, 25);
-            this.label3.TabIndex = 24;
-            this.label3.Text = "Discounts: ";
+            this.lblDiscounts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDiscounts.AutoSize = true;
+            this.lblDiscounts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDiscounts.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblDiscounts.Location = new System.Drawing.Point(776, 536);
+            this.lblDiscounts.Name = "lblDiscounts";
+            this.lblDiscounts.Size = new System.Drawing.Size(109, 25);
+            this.lblDiscounts.TabIndex = 24;
+            this.lblDiscounts.Text = "Discounts: ";
             // 
-            // label4
+            // lblCartTotal
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label4.Location = new System.Drawing.Point(776, 504);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(112, 25);
-            this.label4.TabIndex = 25;
-            this.label4.Text = "Total Sale: ";
+            this.lblCartTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCartTotal.AutoSize = true;
+            this.lblCartTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCartTotal.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblCartTotal.Location = new System.Drawing.Point(776, 573);
+            this.lblCartTotal.Name = "lblCartTotal";
+            this.lblCartTotal.Size = new System.Drawing.Size(112, 25);
+            this.lblCartTotal.TabIndex = 25;
+            this.lblCartTotal.Text = "Total Sale: ";
             // 
             // POSControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblCartTotal);
+            this.Controls.Add(this.lblDiscounts);
+            this.Controls.Add(this.lblItemCount);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button9);
-            this.Controls.Add(this.button10);
+            this.Controls.Add(this.btnClearCart);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button7);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btnPay);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -311,6 +312,7 @@
             this.Controls.Add(this.label1);
             this.Name = "POSControl";
             this.Size = new System.Drawing.Size(1122, 717);
+            this.Load += new System.EventHandler(this.POSControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -325,15 +327,15 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnPay;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnClearCart;
+        private System.Windows.Forms.Label lblItemCount;
+        private System.Windows.Forms.Label lblDiscounts;
+        private System.Windows.Forms.Label lblCartTotal;
     }
 }
