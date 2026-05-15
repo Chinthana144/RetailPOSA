@@ -18,6 +18,7 @@ namespace RetailPOSA.UserControls
         Database db = new Database();
         public int selectedProductID = 0;
         private int cartHeaderID = 0;
+        private int cartDetailID = 0;
 
         //get user id from session
         private int userID = Session.UserID;
@@ -33,6 +34,9 @@ namespace RetailPOSA.UserControls
             cartHeaderID = CheckCartHeader();
             //load cart
             loadCart();
+
+            //buttons
+            btnEditCart.Enabled = false;
         }
 
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
@@ -65,9 +69,11 @@ namespace RetailPOSA.UserControls
                 else if (dt.Rows.Count > 1)
                 {
                     //getting multiple data
-                    POSProductSearchForm searchForm = new POSProductSearchForm(txtSearch.Text);
+                    POSProductSearchForm searchForm = new POSProductSearchForm(txtSearch.Text, cartHeaderID);
 
                     searchForm.ShowDialog();
+
+                    loadCart();
                 }
                 else
                 {
@@ -112,6 +118,16 @@ namespace RetailPOSA.UserControls
             dgvCart.Columns["minimum_stock"].Visible = false;
             dgvCart.Columns["status"].Visible = false;
 
+            dgvCart.Columns["barcode"].HeaderText = "Barcode";
+            dgvCart.Columns["name"].HeaderText = "Product";
+            dgvCart.Columns["unit_price"].HeaderText = "Unit Price";
+            dgvCart.Columns["qty"].HeaderText = "Qty";
+            dgvCart.Columns["total_price"].HeaderText = "Total";
+
+            dgvCart.Columns["unit_price"].Width = 50;
+            dgvCart.Columns["qty"].Width = 50;
+            dgvCart.Columns["total_price"].Width = 80;
+
             //get totals
             DataTable dtTotal = cartDetailService.GetCartTotals(cartHeaderID);
 
@@ -120,6 +136,21 @@ namespace RetailPOSA.UserControls
 
             btnPay.Text = "Pay " + dtTotal.Rows[0]["cart_total"].ToString();
         }//load cart
+
+        private void dgvCart_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > 0)
+            {
+                DataGridViewRow row = dgvCart.Rows[e.RowIndex];
+
+                cartDetailID = Convert.ToInt32(row.Cells["id"].Value);
+
+                if (cartDetailID > 0)
+                {
+                    btnEditCart.Enabled = true;
+                }//enable buttons
+            }
+        }
 
         //=================================================================================//
         //================================= POS Buttons ===================================//
@@ -131,6 +162,18 @@ namespace RetailPOSA.UserControls
             cartDetailService.ClearCart(cartHeaderID);
 
             loadCart();
+        }
+
+        private void btnEditCart_Click(object sender, EventArgs e)
+        {
+            //edit qty in cart
+            CartDetailService cartDetailService = new CartDetailService();
+
+            DataTable dt = cartDetailService.GetCartByID(cartDetailID);
+
+            decimal unitPrice = Convert.ToDecimal(dt.Rows[0]["unit_price"]);
+
+            MessageBox.Show(unitPrice.ToString());
         }
     }//class
 }

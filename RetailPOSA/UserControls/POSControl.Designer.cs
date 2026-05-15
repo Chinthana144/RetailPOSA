@@ -40,7 +40,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnEditCart = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.btnClearCart = new System.Windows.Forms.Button();
             this.lblItemCount = new System.Windows.Forms.Label();
@@ -87,9 +87,9 @@
             this.dgvCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(2, 2, 0, 0);
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(2);
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Gray;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -104,6 +104,7 @@
             this.dgvCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCart.Size = new System.Drawing.Size(730, 583);
             this.dgvCart.TabIndex = 12;
+            this.dgvCart.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCart_CellClick);
             // 
             // button1
             // 
@@ -207,20 +208,21 @@
             this.button7.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button7.UseVisualStyleBackColor = false;
             // 
-            // button8
+            // btnEditCart
             // 
-            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button8.BackColor = System.Drawing.Color.Navy;
-            this.button8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button8.BackgroundImage")));
-            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button8.Location = new System.Drawing.Point(772, 188);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(100, 100);
-            this.button8.TabIndex = 22;
-            this.button8.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button8.UseVisualStyleBackColor = false;
+            this.btnEditCart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditCart.BackColor = System.Drawing.Color.Navy;
+            this.btnEditCart.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEditCart.BackgroundImage")));
+            this.btnEditCart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnEditCart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditCart.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnEditCart.Location = new System.Drawing.Point(772, 188);
+            this.btnEditCart.Name = "btnEditCart";
+            this.btnEditCart.Size = new System.Drawing.Size(100, 100);
+            this.btnEditCart.TabIndex = 22;
+            this.btnEditCart.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnEditCart.UseVisualStyleBackColor = false;
+            this.btnEditCart.Click += new System.EventHandler(this.btnEditCart_Click);
             // 
             // button9
             // 
@@ -297,7 +299,7 @@
             this.Controls.Add(this.lblCartTotal);
             this.Controls.Add(this.lblDiscounts);
             this.Controls.Add(this.lblItemCount);
-            this.Controls.Add(this.button8);
+            this.Controls.Add(this.btnEditCart);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.btnClearCart);
             this.Controls.Add(this.button5);
@@ -331,7 +333,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btnEditCart;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button btnClearCart;
         private System.Windows.Forms.Label lblItemCount;

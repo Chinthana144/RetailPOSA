@@ -46,7 +46,7 @@ namespace RetailPOSA.Services
                 int id = Convert.ToInt32(dt.Rows[0]["id"]);
 
                 //update row
-                string updateQuery = "UPDATE cart_detail SET qty = qty+1 WHERE id = @id;";
+                string updateQuery = "UPDATE cart_detail SET qty = qty+1, total_price = unit_price * qty WHERE id = @id;";
                 Dictionary<string, object> updatePara = new Dictionary<string, object>();
                 updatePara.Add("@id", id);
 
@@ -82,6 +82,19 @@ namespace RetailPOSA.Services
 
             return db.ExecuteQuery(query, parameters);
         }//get cart by header id
+
+        public DataTable GetCartByID(int cartDetailID)
+        {
+            string query = "SELECT cart_detail.id, cart_header_id, product_id,  barcode, name, unit_price, qty, total_price, second_name, is_weighted, has_expiry, minimum_stock, status " +
+                "FROM cart_detail " +
+                "INNER JOIN products ON products.id = cart_detail.product_id " +
+                "WHERE cart_detail.id = @cartDetailID;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@cartDetailID", cartDetailID);
+
+            return db.ExecuteQuery(query, parameters);
+        }//get cart detail by Id
 
         public DataTable GetCartTotals(int headerID)
         {

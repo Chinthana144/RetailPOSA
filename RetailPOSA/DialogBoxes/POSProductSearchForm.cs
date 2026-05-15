@@ -14,11 +14,13 @@ namespace RetailPOSA.DialogBoxes
     public partial class POSProductSearchForm : Form
     {
         private int selectedProductID = 0;
+        private int cartHeaderID = 0;
         private string searchTerm;
-        public POSProductSearchForm(string searchText)
+        public POSProductSearchForm(string searchText, int cartHeaderID)
         {
             InitializeComponent();
             searchTerm = searchText;
+            this.cartHeaderID = cartHeaderID;
         }
 
         private void POSProductSearchForm_Load(object sender, EventArgs e)
@@ -83,9 +85,19 @@ namespace RetailPOSA.DialogBoxes
         {
             if (e.RowIndex >= 0)
             {
+                CartDetailService cartDetailService = new CartDetailService();
                 DataGridViewRow row = dgvProducts.Rows[e.RowIndex];
 
-                selectedProductID = Convert.ToInt32(row.Cells["id"].Value);
+                selectedProductID = Convert.ToInt32(row.Cells["product_id"].Value);
+                int inventoryID = Convert.ToInt32(row.Cells["id"].Value);
+                decimal unitPrice = Convert.ToInt32(row.Cells["final_price"].Value);
+                decimal qty = 1;
+                decimal price = qty * unitPrice;
+
+                cartDetailService.AddToCart(cartHeaderID, inventoryID, selectedProductID, unitPrice, qty, price);
+
+                this.Close();
+
             }
         }
     }

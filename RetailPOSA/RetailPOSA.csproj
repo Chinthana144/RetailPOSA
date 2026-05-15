@@ -120,6 +120,12 @@
     <Compile Include="DialogBoxes\GrnProductSearchForm.Designer.cs">
       <DependentUpon>GrnProductSearchForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DialogBoxes\POSCartEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogBoxes\POSCartEditForm.Designer.cs">
+      <DependentUpon>POSCartEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DialogBoxes\POSProductSearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DialogBoxes\GrnProductSearchForm.resx">
       <DependentUpon>GrnProductSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogBoxes\POSCartEditForm.resx">
+      <DependentUpon>POSCartEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DialogBoxes\POSProductSearchForm.resx">
       <DependentUpon>POSProductSearchForm.cs</DependentUpon>
