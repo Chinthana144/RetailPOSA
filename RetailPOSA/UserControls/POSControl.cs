@@ -139,16 +139,17 @@ namespace RetailPOSA.UserControls
 
         private void dgvCart_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex > 0)
+            if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvCart.Rows[e.RowIndex];
 
                 cartDetailID = Convert.ToInt32(row.Cells["id"].Value);
 
-                if (cartDetailID > 0)
+                if (cartDetailID >= 0)  
                 {
                     btnEditCart.Enabled = true;
                 }//enable buttons
+
             }
         }
 
@@ -171,9 +172,15 @@ namespace RetailPOSA.UserControls
 
             DataTable dt = cartDetailService.GetCartByID(cartDetailID);
 
+            int inventoryID = Convert.ToInt32(dt.Rows[0]["inventory_id"]);
+            int productID = Convert.ToInt32(dt.Rows[0]["product_id"]);
             decimal unitPrice = Convert.ToDecimal(dt.Rows[0]["unit_price"]);
+            decimal qty = Convert.ToDecimal(dt.Rows[0]["qty"]);
+            decimal totalPrice = Convert.ToDecimal(dt.Rows[0]["total_price"]);
 
-            MessageBox.Show(unitPrice.ToString());
+            POSCartEditForm posCartEditForm = new POSCartEditForm(cartHeaderID, cartDetailID, inventoryID, productID, unitPrice, qty, totalPrice);
+
+            posCartEditForm.ShowDialog();
         }
     }//class
 }
