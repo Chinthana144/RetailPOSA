@@ -57,8 +57,33 @@ namespace RetailPOSA.UserControls
                     decimal unitPrice = Convert.ToDecimal(dt.Rows[0]["final_price"]);
                     decimal qty = 1;
                     decimal price = qty * unitPrice;
+                    bool is_scale = Convert.ToBoolean(dt.Rows[0]["is_weighted"]);
+                    bool is_expiry = Convert.ToBoolean(dt.Rows[0]["has_expiry"]);
 
-                    cartDetailService.AddToCart(cartHeaderID, inventoryID, selectedProductID, unitPrice, qty, price);
+                    //check expire
+                    if (is_expiry)
+                    {
+                        DateTime expireDate = Convert.ToDateTime(dt.Rows[0]["expiry_date"]);
+                        DateTime currentDate = DateTime.Now;
+                        if (expireDate > currentDate)
+                        {
+                            //check scale
+                            if (is_scale)
+                            {
+                                POSCartEditForm posCartEditForm = new POSCartEditForm(cartHeaderID, 0, inventoryID, selectedProductID, unitPrice, qty, price);
+                                posCartEditForm.ShowDialog();
+                            }//scale items add QTY
+                            else
+                            {
+                                cartDetailService.AddToCart(cartHeaderID, inventoryID, selectedProductID, unitPrice, qty, price);
+                            }//not scale item (unit item)
+                        }//not expired
+                        else 
+                        {
+                            MessageBox.Show("This product is expired!", "Expired Item", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }//expired
+                    }
 
                     txtSearch.Text = "";
                     txtSearch.Focus();
@@ -124,8 +149,8 @@ namespace RetailPOSA.UserControls
             dgvCart.Columns["qty"].HeaderText = "Qty";
             dgvCart.Columns["total_price"].HeaderText = "Total";
 
-            dgvCart.Columns["unit_price"].Width = 50;
-            dgvCart.Columns["qty"].Width = 50;
+            dgvCart.Columns["unit_price"].Width = 80;
+            dgvCart.Columns["qty"].Width = 80;
             dgvCart.Columns["total_price"].Width = 80;
 
             //get totals
@@ -135,6 +160,9 @@ namespace RetailPOSA.UserControls
             lblCartTotal.Text = "Total: " + dtTotal.Rows[0]["cart_total"].ToString();
 
             btnPay.Text = "Pay " + dtTotal.Rows[0]["cart_total"].ToString();
+
+            //focus on search
+            txtSearch.Focus();
         }//load cart
 
         private void dgvCart_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -181,6 +209,25 @@ namespace RetailPOSA.UserControls
             POSCartEditForm posCartEditForm = new POSCartEditForm(cartHeaderID, cartDetailID, inventoryID, productID, unitPrice, qty, totalPrice);
 
             posCartEditForm.ShowDialog();
+
+            loadCart();
+        }
+
+        private void btnOpenInventory_Click(object sender, EventArgs e)
+        {
+            POSProductSearchForm posProductSearch = new POSProductSearchForm("", cartHeaderID);
+            posProductSearch.ShowDialog();
+        }
+
+        private void btnDeleteCartItem_Click(object sender, EventArgs e)
+        {
+            CartDetailService cartDetailService = new CartDetailService();
+            if (cartDetailID > 0)
+            {
+                cartDetailService.DeleteCartItem(cartDetailID);
+            }
+            
+            loadCart();
         }
     }//class
 }

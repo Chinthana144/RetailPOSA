@@ -39,9 +39,9 @@
             this.btnPay = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnDeleteCartItem = new System.Windows.Forms.Button();
             this.btnEditCart = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.btnOpenInventory = new System.Windows.Forms.Button();
             this.btnClearCart = new System.Windows.Forms.Button();
             this.lblItemCount = new System.Windows.Forms.Label();
             this.lblDiscounts = new System.Windows.Forms.Label();
@@ -193,20 +193,21 @@
             this.button6.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button6.UseVisualStyleBackColor = false;
             // 
-            // button7
+            // btnDeleteCartItem
             // 
-            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button7.BackColor = System.Drawing.Color.Navy;
-            this.button7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button7.BackgroundImage")));
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button7.Location = new System.Drawing.Point(772, 305);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(100, 100);
-            this.button7.TabIndex = 17;
-            this.button7.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button7.UseVisualStyleBackColor = false;
+            this.btnDeleteCartItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeleteCartItem.BackColor = System.Drawing.Color.Navy;
+            this.btnDeleteCartItem.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDeleteCartItem.BackgroundImage")));
+            this.btnDeleteCartItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDeleteCartItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteCartItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDeleteCartItem.Location = new System.Drawing.Point(772, 305);
+            this.btnDeleteCartItem.Name = "btnDeleteCartItem";
+            this.btnDeleteCartItem.Size = new System.Drawing.Size(100, 100);
+            this.btnDeleteCartItem.TabIndex = 17;
+            this.btnDeleteCartItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnDeleteCartItem.UseVisualStyleBackColor = false;
+            this.btnDeleteCartItem.Click += new System.EventHandler(this.btnDeleteCartItem_Click);
             // 
             // btnEditCart
             // 
@@ -224,20 +225,21 @@
             this.btnEditCart.UseVisualStyleBackColor = false;
             this.btnEditCart.Click += new System.EventHandler(this.btnEditCart_Click);
             // 
-            // button9
+            // btnOpenInventory
             // 
-            this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button9.BackColor = System.Drawing.Color.Navy;
-            this.button9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button9.BackgroundImage")));
-            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button9.Location = new System.Drawing.Point(1004, 305);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(100, 100);
-            this.button9.TabIndex = 21;
-            this.button9.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button9.UseVisualStyleBackColor = false;
+            this.btnOpenInventory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpenInventory.BackColor = System.Drawing.Color.Navy;
+            this.btnOpenInventory.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnOpenInventory.BackgroundImage")));
+            this.btnOpenInventory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnOpenInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOpenInventory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnOpenInventory.Location = new System.Drawing.Point(1004, 305);
+            this.btnOpenInventory.Name = "btnOpenInventory";
+            this.btnOpenInventory.Size = new System.Drawing.Size(100, 100);
+            this.btnOpenInventory.TabIndex = 21;
+            this.btnOpenInventory.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnOpenInventory.UseVisualStyleBackColor = false;
+            this.btnOpenInventory.Click += new System.EventHandler(this.btnOpenInventory_Click);
             // 
             // btnClearCart
             // 
@@ -300,11 +302,11 @@
             this.Controls.Add(this.lblDiscounts);
             this.Controls.Add(this.lblItemCount);
             this.Controls.Add(this.btnEditCart);
-            this.Controls.Add(this.button9);
+            this.Controls.Add(this.btnOpenInventory);
             this.Controls.Add(this.btnClearCart);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.button7);
+            this.Controls.Add(this.btnDeleteCartItem);
             this.Controls.Add(this.btnPay);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -332,9 +334,9 @@
         private System.Windows.Forms.Button btnPay;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnDeleteCartItem;
         private System.Windows.Forms.Button btnEditCart;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button btnOpenInventory;
         private System.Windows.Forms.Button btnClearCart;
         private System.Windows.Forms.Label lblItemCount;
         private System.Windows.Forms.Label lblDiscounts;

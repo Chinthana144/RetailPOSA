@@ -38,6 +38,8 @@ namespace RetailPOSA.DialogBoxes
             txtQty.Text = this.qty.ToString();
             txtQty.Focus();
             txtQty.Select();
+
+            btnAddQty.Text = cartDetailID > 0 ? "Update Qty" : "Add Product";
         }
 
         private void txtQty_TextChanged(object sender, EventArgs e)
@@ -54,17 +56,19 @@ namespace RetailPOSA.DialogBoxes
         private void btnAddQty_Click(object sender, EventArgs e)
         {
             CartDetailService cartDetailService = new CartDetailService();
+            decimal qty = Convert.ToDecimal(txtQty.Text ?? "0");
             if (cartDetailID > 0)
             {
                 //update
-                cartDetailService.UpdateCartDetailQty(this.cartDetailID, this.qty, this.totalPrice);
-
-                this.Close();
+                cartDetailService.UpdateCartDetailQty(this.cartDetailID, qty, this.totalPrice);
             }
             else
-            { 
+            {
                 //add
+                cartDetailService.AddToCart(cartHeaderID, inventoryID, productID, unitPrice, qty, totalPrice);
             }
+
+            this.Close();
         }//add or update
 
         //============================ Number Pad ============================//
