@@ -90,11 +90,52 @@ namespace RetailPOSA.DialogBoxes
 
                 selectedProductID = Convert.ToInt32(row.Cells["product_id"].Value);
                 int inventoryID = Convert.ToInt32(row.Cells["id"].Value);
-                decimal unitPrice = Convert.ToInt32(row.Cells["final_price"].Value);
+                decimal unitPrice = Convert.ToDecimal(row.Cells["selling_price"].Value);
                 decimal qty = 1;
                 decimal price = qty * unitPrice;
+                decimal unitDiscount = Convert.ToDecimal(row.Cells["discount"].Value);
+                decimal discount = Convert.ToDecimal(row.Cells["discount"].Value) * qty;
+                decimal finalPrice = price - discount;
+                bool isScale = Convert.ToBoolean(row.Cells["is_weighted"].Value);
+                bool isExpiry = Convert.ToBoolean(row.Cells["has_expiry"].Value);
 
-                cartDetailService.AddToCart(cartHeaderID, inventoryID, selectedProductID, unitPrice, qty, price);
+                //check expiry
+                if (isExpiry)
+                {
+                    DateTime expireDate = Convert.ToDateTime(row.Cells["expiry_date"].Value);
+                    DateTime currentDate = DateTime.Now;
+                    if (expireDate > currentDate)
+                    {
+                        //check scale
+                        if (isScale)
+                        {
+                            POSCartEditForm posCartEditForm = new POSCartEditForm(cartHeaderID, 0, inventoryID, selectedProductID, unitPrice, qty, price, unitDiscount, finalPrice);
+                            posCartEditForm.ShowDialog();
+                        }//scale items add QTY
+                        else
+                        {
+                            cartDetailService.AddToCart(cartHeaderID, inventoryID, selectedProductID, unitPrice, qty, price, discount, finalPrice);
+                        }//not scale item (unit item)
+                    }//not expired
+                    else
+                    {
+                        MessageBox.Show("This product is expired!", "Expired Item", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }//expiry item
+                else
+                {
+                    //check scale
+                    if (isScale)
+                    {
+                        POSCartEditForm posCartEditForm = new POSCartEditForm(cartHeaderID, 0, inventoryID, selectedProductID, unitPrice, qty, price, unitDiscount, finalPrice);
+                        posCartEditForm.ShowDialog();
+                    }//scale items add QTY
+                    else
+                    {
+                        cartDetailService.AddToCart(cartHeaderID, inventoryID, selectedProductID, unitPrice, qty, price, discount, finalPrice);
+                    }//not scale item (unit item)
+                }//not expiry item
 
                 this.Close();
 

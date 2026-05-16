@@ -20,8 +20,10 @@ namespace RetailPOSA.DialogBoxes
         decimal unitPrice = 0;
         decimal qty = 0;
         decimal totalPrice = 0;
+        decimal discount = 0;
+        decimal finalPrice = 0;
 
-        public POSCartEditForm(int cartHeaderID, int cartDetailID, int inventoryID, int productID, decimal unitPrice, decimal qty, decimal totalPrice)
+        public POSCartEditForm(int cartHeaderID, int cartDetailID, int inventoryID, int productID, decimal unitPrice, decimal qty, decimal totalPrice, decimal discount, decimal finalPrice)
         {
             InitializeComponent();
 
@@ -32,6 +34,8 @@ namespace RetailPOSA.DialogBoxes
             this.unitPrice = unitPrice;
             this.qty = qty;
             this.totalPrice = totalPrice;
+            this.discount = discount;
+            this.finalPrice = finalPrice;
         }
         private void POSCartEditForm_Load(object sender, EventArgs e)
         {
@@ -57,6 +61,8 @@ namespace RetailPOSA.DialogBoxes
         {
             CartDetailService cartDetailService = new CartDetailService();
             decimal qty = Convert.ToDecimal(txtQty.Text ?? "0");
+            this.discount = this.discount * qty;
+            this.finalPrice = totalPrice - this.discount;
             if (cartDetailID > 0)
             {
                 //update
@@ -65,7 +71,7 @@ namespace RetailPOSA.DialogBoxes
             else
             {
                 //add
-                cartDetailService.AddToCart(cartHeaderID, inventoryID, productID, unitPrice, qty, totalPrice);
+                cartDetailService.AddToCart(cartHeaderID, inventoryID, productID, unitPrice, qty, totalPrice, this.discount, this.finalPrice);
             }
 
             this.Close();

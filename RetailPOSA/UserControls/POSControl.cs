@@ -15,7 +15,6 @@ namespace RetailPOSA.UserControls
 {
     public partial class POSControl : UserControl
     { 
-        Database db = new Database();
         public int selectedProductID = 0;
         private int cartHeaderID = 0;
         private int cartDetailID = 0;
@@ -54,9 +53,12 @@ namespace RetailPOSA.UserControls
                     selectedProductID = Convert.ToInt32(dt.Rows[0]["product_id"]);
                     int cartHeaderID = CheckCartHeader();
                     int inventoryID = Convert.ToInt32(dt.Rows[0]["id"]);
-                    decimal unitPrice = Convert.ToDecimal(dt.Rows[0]["final_price"]);
+                    decimal unitPrice = Convert.ToDecimal(dt.Rows[0]["selling_price"]);
                     decimal qty = 1;
                     decimal price = qty * unitPrice;
+                    decimal unitDiscount = Convert.ToDecimal(dt.Rows[0]["discount"]);
+                    decimal discount = unitDiscount * qty;
+                    decimal finalPrice = price - discount;
                     bool is_scale = Convert.ToBoolean(dt.Rows[0]["is_weighted"]);
                     bool is_expiry = Convert.ToBoolean(dt.Rows[0]["has_expiry"]);
 
@@ -70,20 +72,33 @@ namespace RetailPOSA.UserControls
                             //check scale
                             if (is_scale)
                             {
-                                POSCartEditForm posCartEditForm = new POSCartEditForm(cartHeaderID, 0, inventoryID, selectedProductID, unitPrice, qty, price);
+                                POSCartEditForm posCartEditForm = new POSCartEditForm(cartHeaderID, 0, inventoryID, selectedProductID, unitPrice, qty, price, unitDiscount, finalPrice);
                                 posCartEditForm.ShowDialog();
                             }//scale items add QTY
                             else
                             {
-                                cartDetailService.AddToCart(cartHeaderID, inventoryID, selectedProductID, unitPrice, qty, price);
+                                cartDetailService.AddToCart(cartHeaderID, inventoryID, selectedProductID, unitPrice, qty, price, unitDiscount, finalPrice);
                             }//not scale item (unit item)
                         }//not expired
-                        else 
+                        else
                         {
                             MessageBox.Show("This product is expired!", "Expired Item", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }//expired
                     }
+                    else
+                    {
+                        //check scale
+                        if (is_scale)
+                        {
+                            POSCartEditForm posCartEditForm = new POSCartEditForm(cartHeaderID, 0, inventoryID, selectedProductID, unitPrice, qty, price, unitDiscount, finalPrice);
+                            posCartEditForm.ShowDialog();
+                        }//scale items add QTY
+                        else
+                        {
+                            cartDetailService.AddToCart(cartHeaderID, inventoryID, selectedProductID, unitPrice, qty, price, unitDiscount, finalPrice);
+                        }//not scale item (unit item)
+                    }//not expiry item
 
                     txtSearch.Text = "";
                     txtSearch.Focus();
@@ -147,19 +162,31 @@ namespace RetailPOSA.UserControls
             dgvCart.Columns["name"].HeaderText = "Product";
             dgvCart.Columns["unit_price"].HeaderText = "Unit Price";
             dgvCart.Columns["qty"].HeaderText = "Qty";
-            dgvCart.Columns["total_price"].HeaderText = "Total";
+            dgvCart.Columns["total_price"].HeaderText = "Amount";
+            dgvCart.Columns["discount"].HeaderText = "Discount";
+            dgvCart.Columns["final_price"].HeaderText = "Price";
 
-            dgvCart.Columns["unit_price"].Width = 80;
-            dgvCart.Columns["qty"].Width = 80;
-            dgvCart.Columns["total_price"].Width = 80;
+            dgvCart.Columns["unit_price"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvCart.Columns["qty"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvCart.Columns["total_price"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvCart.Columns["discount"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvCart.Columns["final_price"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+
+            dgvCart.Columns["unit_price"].Width = 70;
+            dgvCart.Columns["qty"].Width = 70;
+            dgvCart.Columns["total_price"].Width = 70;
+            dgvCart.Columns["discount"].Width = 70;
+            dgvCart.Columns["final_price"].Width = 80;
 
             //get totals
             DataTable dtTotal = cartDetailService.GetCartTotals(cartHeaderID);
 
             lblItemCount.Text = "Items: " + dtTotal.Rows[0]["row_count"].ToString();
-            lblCartTotal.Text = "Total: " + dtTotal.Rows[0]["cart_total"].ToString();
+            lblTotal.Text = "Total: " + dtTotal.Rows[0]["total_price"].ToString();
+            lblDiscounts.Text = "Discount: " + dtTotal.Rows[0]["total_discount"].ToString();
+            lblCartTotal.Text = "Sub Total: " + dtTotal.Rows[0]["final_total"].ToString();
 
-            btnPay.Text = "Pay " + dtTotal.Rows[0]["cart_total"].ToString();
+            btnPay.Text = "Pay " + dtTotal.Rows[0]["final_total"].ToString();
 
             //focus on search
             txtSearch.Focus();
@@ -205,8 +232,11 @@ namespace RetailPOSA.UserControls
             decimal unitPrice = Convert.ToDecimal(dt.Rows[0]["unit_price"]);
             decimal qty = Convert.ToDecimal(dt.Rows[0]["qty"]);
             decimal totalPrice = Convert.ToDecimal(dt.Rows[0]["total_price"]);
+            decimal unitDiscount = Convert.ToDecimal(dt.Rows[0]["discount"]);
+            decimal discount = unitDiscount * qty;
+            decimal finalPrice = totalPrice - discount;
 
-            POSCartEditForm posCartEditForm = new POSCartEditForm(cartHeaderID, cartDetailID, inventoryID, productID, unitPrice, qty, totalPrice);
+            POSCartEditForm posCartEditForm = new POSCartEditForm(cartHeaderID, cartDetailID, inventoryID, productID, unitPrice, qty, totalPrice, unitDiscount, finalPrice);
 
             posCartEditForm.ShowDialog();
 
@@ -229,5 +259,7 @@ namespace RetailPOSA.UserControls
             
             loadCart();
         }
+
+      
     }//class
 }

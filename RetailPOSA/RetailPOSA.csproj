@@ -126,6 +126,12 @@
     <Compile Include="DialogBoxes\POSCartEditForm.Designer.cs">
       <DependentUpon>POSCartEditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DialogBoxes\POSPaymentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogBoxes\POSPaymentForm.Designer.cs">
+      <DependentUpon>POSPaymentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DialogBoxes\POSProductSearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +183,7 @@
     <Compile Include="Services\GrnDetailService.cs" />
     <Compile Include="Services\GrnHeaderService.cs" />
     <Compile Include="Services\InventoryService.cs" />
+    <Compile Include="Services\InvoiceService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\SupplierService.cs" />
     <Compile Include="Services\UserService.cs" />
@@ -248,6 +255,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DialogBoxes\POSCartEditForm.resx">
       <DependentUpon>POSCartEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogBoxes\POSPaymentForm.resx">
+      <DependentUpon>POSPaymentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DialogBoxes\POSProductSearchForm.resx">
       <DependentUpon>POSProductSearchForm.cs</DependentUpon>
