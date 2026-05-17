@@ -260,6 +260,11 @@ namespace RetailPOSA.UserControls
             loadCart();
         }
 
-      
+        private void btnPay_Click(object sender, EventArgs e)
+        {
+            POSPaymentForm posPaymentForm = new POSPaymentForm(cartHeaderID);
+
+            posPaymentForm.ShowDialog();
+        }
     }//class
 }

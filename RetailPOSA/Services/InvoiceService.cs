@@ -12,7 +12,7 @@ namespace RetailPOSA.Services
         Database db = new Database();
         public DataTable GetPaymethods()
         {
-            string query = "SELECT * FROM paymethods;";
+            string query = "SELECT * FROM paymethods WHERE status = 1;";
 
             return db.ExecuteQuery(query);
         }

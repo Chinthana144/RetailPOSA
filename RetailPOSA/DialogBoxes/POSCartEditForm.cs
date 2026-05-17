@@ -164,6 +164,5 @@ namespace RetailPOSA.DialogBoxes
             }
         }
 
-        
     }//class
 }
