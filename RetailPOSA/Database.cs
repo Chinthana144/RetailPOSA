@@ -47,16 +47,7 @@ namespace RetailPOSA
                 return dt;
             }
         }//execute query
-        //        MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
-
-        //        DataTable dt = new DataTable();
-
-        //        adapter.Fill(dt);
-
-        //        return dt;
-        //    }
-        //}//execute query
-
+       
         // INSERT UPDATE DELETE
         public int ExecuteNonQuery(string query, Dictionary<string, object> parameters)
         {

@@ -187,6 +187,12 @@
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\SupplierService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="UserControls\AdminControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AdminControl.Designer.cs">
+      <DependentUpon>AdminControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\CategoryControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -228,6 +234,12 @@
     </Compile>
     <Compile Include="UserControls\ProductControl.Designer.cs">
       <DependentUpon>ProductControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SettingControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SettingControl.Designer.cs">
+      <DependentUpon>SettingControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SupplierControl.cs">
       <SubType>UserControl</SubType>
@@ -286,6 +298,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\AdminControl.resx">
+      <DependentUpon>AdminControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\CategoryControl.resx">
       <DependentUpon>CategoryControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -306,6 +321,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ProductControl.resx">
       <DependentUpon>ProductControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SettingControl.resx">
+      <DependentUpon>SettingControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SupplierControl.resx">
       <DependentUpon>SupplierControl.cs</DependentUpon>

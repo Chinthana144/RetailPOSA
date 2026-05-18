@@ -23,6 +23,14 @@ namespace RetailPOSA.Forms
         {
             lblUsername.Text = Session.UserName;
             lblRole.Text = Session.RoleName;
+
+            if (Session.RoleName == "Admin")
+            {
+                btnNavAdmin.Visible = true;
+            }
+            else {
+                btnNavAdmin.Visible = false;
+            }
         }
 
         public void loadControl(UserControl uc)
@@ -74,12 +82,23 @@ namespace RetailPOSA.Forms
             loadControl(uc);
         }
 
-        private void btnNavUsers_Click(object sender, EventArgs e)
+        private void btnNavSettings_Click(object sender, EventArgs e)
+        {
+            SettingControl uc = new SettingControl();
+            loadControl(uc);
+        }      
+
+        private void btnNavUsers_Click_1(object sender, EventArgs e)
         {
             UsersControl uc = new UsersControl();
-
             loadControl(uc);
-        }//users
+        }
+
+        private void btnNavAdmin_Click(object sender, EventArgs e)
+        {
+            AdminControl uc = new AdminControl();
+            loadControl(uc);
+        }
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -87,6 +106,5 @@ namespace RetailPOSA.Forms
             Application.Exit();
         }
 
-        
     }//class
 }
