@@ -36,6 +36,19 @@ namespace RetailPOSA.DialogBoxes
             DataTable searchResults = productService.SearchProducts(txtSearch.Text);
 
             dgvProducts.DataSource = searchResults;
+
+            dgvProducts.Columns["is_weighted"].Visible = false;
+            dgvProducts.Columns["has_expiry"].Visible = false;
+            dgvProducts.Columns["minimum_stock"].Visible = false;
+
+            dgvProducts.Columns["id"].HeaderText = "ID";
+            dgvProducts.Columns["category"].HeaderText = "Category";
+            dgvProducts.Columns["barcode"].HeaderText = "Barcode";
+            dgvProducts.Columns["product"].HeaderText = "Product";
+
+            dgvProducts.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+
+            dgvProducts.Columns["id"].Width = 50;
         }
 
         private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)

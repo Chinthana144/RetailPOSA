@@ -192,6 +192,7 @@
             this.btnNavInvoice.TabIndex = 4;
             this.btnNavInvoice.Text = "Invoices";
             this.btnNavInvoice.UseVisualStyleBackColor = false;
+            this.btnNavInvoice.Click += new System.EventHandler(this.btnNavInvoice_Click);
             // 
             // btnNavGRN
             // 

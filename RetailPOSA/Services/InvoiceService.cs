@@ -1,4 +1,5 @@
-﻿using RetailPOSA.Models;
+﻿using Mysqlx.Crud;
+using RetailPOSA.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -108,6 +109,62 @@ namespace RetailPOSA.Services
 
             return "INV_" + nextInvoiceNo.ToString("D7");
         }//test method
+
+        public DataTable GetInvoiceHeader(int limit, int offset)
+        {
+            string query = "SELECT "+
+                "invoice_header.id, "+
+                "issued_date, " +
+                "invoice_no, " +
+                "item_count, " +
+                "total, " +
+                "discounts, " +
+                "sub_total, " +
+                "paid_amount, " +
+                "balance, " +
+                "paymethod," +
+                "username " +
+                "FROM invoice_header " +
+                "INNER JOIN paymethods ON paymethods.id = invoice_header.paymethod_id "+
+                "INNER JOIN users ON users.user_id = invoice_header.user_id "+
+                "ORDER BY id DESC " +
+                "LIMIT @limit OFFSET @offset;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("@limit", limit);
+            parameters.Add("@offset", offset);
+
+            return db.ExecuteQuery(query, parameters);
+
+        }//get invoice header
+
+        public DataTable SearchProducts(string searchTerm)
+        {
+            string query = "SELECT " +
+                "invoice_header.id, " +
+                "issued_date, " +
+                "invoice_no, " +
+                "item_count, " +
+                "total, " +
+                "discounts, " +
+                "sub_total, " +
+                "paid_amount, " +
+                "balance, " +
+                "paymethod," +
+                "username " +
+                "FROM invoice_header " +
+                "INNER JOIN paymethods ON paymethods.id = invoice_header.paymethod_id " +
+                "INNER JOIN users ON users.user_id = invoice_header.user_id " +
+                "WHERE issued_date LIKE @searchTerm OR invoice_no LIKE @searchTerm OR username LIKE @searchTerm " +
+                "ORDER BY id DESC ";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("@searchTerm", $"%{searchTerm}%");
+
+            return db.ExecuteQuery(query, parameters);
+        }
 
         public DataTable GetPaymethods()
         {

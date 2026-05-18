@@ -67,7 +67,7 @@
             this.txtQty.Location = new System.Drawing.Point(39, 104);
             this.txtQty.Name = "txtQty";
             this.txtQty.Size = new System.Drawing.Size(394, 32);
-            this.txtQty.TabIndex = 25;
+            this.txtQty.TabIndex = 0;
             // 
             // label2
             // 
@@ -89,7 +89,7 @@
             this.txtFreeQty.Location = new System.Drawing.Point(39, 177);
             this.txtFreeQty.Name = "txtFreeQty";
             this.txtFreeQty.Size = new System.Drawing.Size(394, 32);
-            this.txtFreeQty.TabIndex = 27;
+            this.txtFreeQty.TabIndex = 1;
             // 
             // lblBarcode
             // 
@@ -133,7 +133,7 @@
             this.txtFinalPrice.Location = new System.Drawing.Point(39, 469);
             this.txtFinalPrice.Name = "txtFinalPrice";
             this.txtFinalPrice.Size = new System.Drawing.Size(392, 32);
-            this.txtFinalPrice.TabIndex = 31;
+            this.txtFinalPrice.TabIndex = 5;
             // 
             // label6
             // 
@@ -155,7 +155,7 @@
             this.txtPurchasePrice.Location = new System.Drawing.Point(39, 250);
             this.txtPurchasePrice.Name = "txtPurchasePrice";
             this.txtPurchasePrice.Size = new System.Drawing.Size(392, 32);
-            this.txtPurchasePrice.TabIndex = 33;
+            this.txtPurchasePrice.TabIndex = 2;
             // 
             // label7
             // 
@@ -177,7 +177,7 @@
             this.txtSellingPrice.Location = new System.Drawing.Point(39, 323);
             this.txtSellingPrice.Name = "txtSellingPrice";
             this.txtSellingPrice.Size = new System.Drawing.Size(392, 32);
-            this.txtSellingPrice.TabIndex = 35;
+            this.txtSellingPrice.TabIndex = 3;
             // 
             // label8
             // 
@@ -199,7 +199,7 @@
             this.txtDiscount.Location = new System.Drawing.Point(39, 396);
             this.txtDiscount.Name = "txtDiscount";
             this.txtDiscount.Size = new System.Drawing.Size(392, 32);
-            this.txtDiscount.TabIndex = 37;
+            this.txtDiscount.TabIndex = 4;
             // 
             // dtpExpiry
             // 
@@ -210,7 +210,7 @@
             this.dtpExpiry.MinDate = new System.DateTime(2026, 5, 11, 0, 0, 0, 0);
             this.dtpExpiry.Name = "dtpExpiry";
             this.dtpExpiry.Size = new System.Drawing.Size(392, 32);
-            this.dtpExpiry.TabIndex = 39;
+            this.dtpExpiry.TabIndex = 6;
             // 
             // label9
             // 
@@ -230,7 +230,7 @@
             this.btnAddProduct.Location = new System.Drawing.Point(252, 607);
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(181, 40);
-            this.btnAddProduct.TabIndex = 41;
+            this.btnAddProduct.TabIndex = 7;
             this.btnAddProduct.Text = "Add Product";
             this.btnAddProduct.UseVisualStyleBackColor = true;
             this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
@@ -263,7 +263,7 @@
             this.MinimizeBox = false;
             this.Name = "GrnDetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Add GRN Products";
+            this.Text = "Add Items";
             this.Load += new System.EventHandler(this.GrnDetailForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
