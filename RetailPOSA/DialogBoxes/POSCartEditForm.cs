@@ -66,7 +66,7 @@ namespace RetailPOSA.DialogBoxes
             if (cartDetailID > 0)
             {
                 //update
-                cartDetailService.UpdateCartDetailQty(this.cartDetailID, qty, this.totalPrice);
+                cartDetailService.UpdateCartDetailQty(this.cartDetailID, qty, this.totalPrice, this.discount, this.finalPrice);
             }
             else
             {
@@ -79,7 +79,11 @@ namespace RetailPOSA.DialogBoxes
 
         //============================ Number Pad ============================//
         private void showNumber(TextBox txtBox, string num)
-        { 
+        {
+            if (txtBox.SelectionLength > 0)
+            {
+                txtBox.Clear();
+            }
             string currentText = txtBox.Text;
             string newText = currentText + num;
 

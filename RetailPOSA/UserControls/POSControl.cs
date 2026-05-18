@@ -151,6 +151,7 @@ namespace RetailPOSA.UserControls
 
             dgvCart.Columns["id"].Visible = false;
             dgvCart.Columns["cart_header_id"].Visible = false;
+            dgvCart.Columns["inventory_id"].Visible = false;
             dgvCart.Columns["product_id"].Visible = false;
             dgvCart.Columns["second_name"].Visible = false;
             dgvCart.Columns["is_weighted"].Visible = false;
@@ -265,6 +266,8 @@ namespace RetailPOSA.UserControls
             POSPaymentForm posPaymentForm = new POSPaymentForm(cartHeaderID);
 
             posPaymentForm.ShowDialog();
+
+            loadCart();
         }
     }//class
 }

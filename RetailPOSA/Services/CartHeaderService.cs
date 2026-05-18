@@ -39,5 +39,15 @@ namespace RetailPOSA.Services
             return db.ExecuteQuery(query, parameters);
         }//get cart header
 
+        public int DeleteCartHeader(int id)
+        {
+            string query = "DELETE FROM cart_header WHERE id = @id";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@id", id);
+
+            return db.ExecuteNonQuery(query, parameters);
+        }
+
     }//class
 }

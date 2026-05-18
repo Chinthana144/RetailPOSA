@@ -1,7 +1,9 @@
-﻿using RetailPOSA.Services;
+﻿using RetailPOSA.Models;
+using RetailPOSA.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -69,7 +71,73 @@ namespace RetailPOSA.DialogBoxes
             }
         }
 
-        
+        private void submitPayment(int cartHeaderID, int paymethodID)
+        {
+            /*
+             * create invoice
+             * get cart details by cart header ID
+             * iterate through cart
+             * add invoice details
+             * upcate invoice header
+             * clear cart details
+             * clear cart header
+             */
+
+            int userID = Session.UserID;
+
+            InvoiceService invoiceService = new InvoiceService();
+            CartHeaderService cartHeaderService = new CartHeaderService();
+            CartDetailService cartDetailService = new CartDetailService();
+
+            string issuedDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            decimal paidAmount = Convert.ToDecimal(txtPayment.Text);
+
+            invoiceService.InsertInvoiceHeader(issuedDate, 0,0,0,0,0,0,0,userID,1);
+
+            int newInvoiceID = invoiceService.GetActiveInvoicebyUserID(userID);
+
+            //get cart detail by header id
+            DataTable cart = cartDetailService.GetCartByHeaderID(cartHeaderID);
+
+            int rowCount = 0;
+            decimal total = 0;
+            decimal totalDiscount = 0;
+            decimal subTotal = 0;
+
+            foreach (DataRow row in cart.Rows)
+            {
+                //iterate here
+                int inventoryID = Convert.ToInt32(row["inventory_id"]);
+                int productID = Convert.ToInt32(row["product_id"]);
+                decimal unitPrice = Convert.ToDecimal(row["unit_price"]);
+                decimal qty = Convert.ToDecimal(row["qty"]);
+                decimal totalPrice = Convert.ToDecimal(row["total_price"]);
+                decimal discount = Convert.ToDecimal(row["discount"]);
+                decimal finalPrice = Convert.ToDecimal(row["final_price"]);
+
+                //create invoice detail
+                invoiceService.InsertInvoiceDetail(newInvoiceID, inventoryID, productID, unitPrice, qty, totalPrice, discount, finalPrice, 1);
+
+                rowCount++;
+                total += Convert.ToDecimal(totalPrice);
+                totalDiscount += Convert.ToDecimal(discount);
+                subTotal += Convert.ToDecimal(finalPrice);
+
+            }
+
+            decimal balance = paidAmount - subTotal;
+            //update invoice header
+            invoiceService.UpdateInvoiceHeader(newInvoiceID, rowCount, total, totalDiscount, subTotal, paymethodID, paidAmount, balance, 2);
+
+            //clear cart detail
+            cartDetailService.ClearCart(cartHeaderID);
+
+            //delete cart header
+            cartHeaderService.DeleteCartHeader(cartHeaderID);
+
+            this.Close();
+
+        }//submit payment
 
         private void PaymentButton_Click(object sender, EventArgs e)
         { 
@@ -79,7 +147,10 @@ namespace RetailPOSA.DialogBoxes
 
             string paymentMethod = btn.Text;
 
-            MessageBox.Show("Selected: " + paymentMethod);
+            //MessageBox.Show("Selected: " + paymentMethod);
+
+            submitPayment(cartHeaderID, paymethodID);
+
         }//payment button click
 
         //========================= Number Pad ==========================//
@@ -179,13 +250,24 @@ namespace RetailPOSA.DialogBoxes
         {
             if (decimal.TryParse(txtPayment.Text, out decimal result))
             {
-                //calculate balance
-            }
+                decimal balance = result - subTotal;
+                if (balance > 0)
+                {
+                    lblBalance.Text = "Balance: " + Math.Round(balance, 2).ToString();
+                }
+                else 
+                {
+                    lblBalance.Text = "Balance: 0";
+                }
+            }//valid number
             else
             {
-                MessageBox.Show("Please enter valid amount.", "Error Entry", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtPayment.Clear();
-            }
+                if (txtPayment.TextLength > 0)
+                {
+                    MessageBox.Show("Please enter valid amount.", "Error Entry", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtPayment.Clear();
+                }//has text
+            }//invelid entry not a number
         }
     }
 }

@@ -86,21 +86,23 @@ namespace RetailPOSA.Services
             }
         }//add to cart
 
-        public int UpdateCartDetailQty(int cartDetailID, decimal qty, decimal totalPrice)
+        public int UpdateCartDetailQty(int cartDetailID, decimal qty, decimal totalPrice, decimal discount, decimal finalPrice)
         {
-            string query = "UPDATE cart_detail SET qty = @qty, total_price = @totalPrice WHERE id = @cartDetailID; ";
+            string query = "UPDATE cart_detail SET qty = @qty, total_price = @totalPrice, discount = @discount, final_price = @finalPrice WHERE id = @cartDetailID; ";
             
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@cartDetailID", cartDetailID);
             parameters.Add("@qty", qty);
             parameters.Add("@totalPrice", totalPrice);
+            parameters.Add("@discount", discount);
+            parameters.Add("@finalPrice", finalPrice);
 
             return db.ExecuteNonQuery(query, parameters);
         }//update qty
 
         public DataTable GetCartByHeaderID(int headerID)
         {
-            string query = "SELECT cart_detail.id, cart_header_id, product_id,  barcode, name, unit_price, qty, total_price, discount, final_price, second_name, is_weighted, has_expiry, minimum_stock, status " +
+            string query = "SELECT cart_detail.id, cart_header_id, inventory_id, product_id,  barcode, name, unit_price, qty, total_price, discount, final_price, second_name, is_weighted, has_expiry, minimum_stock, status " +
                 "FROM cart_detail " +
                 "INNER JOIN products ON products.id = cart_detail.product_id " +
                 "WHERE cart_header_id = @headerID;";
