@@ -82,15 +82,23 @@ namespace RetailPOSA.DialogBoxes
              * clear cart details
              * clear cart header
              */
+            decimal paidAmount = Convert.ToDecimal(txtPayment.Text);
+
+            if (paidAmount < this.subTotal)
+            {
+                MessageBox.Show("Invalid pay amount.", "Invalid Entry", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             int userID = Session.UserID;
 
+            InventoryService inventoryService = new InventoryService();
             InvoiceService invoiceService = new InvoiceService();
             CartHeaderService cartHeaderService = new CartHeaderService();
             CartDetailService cartDetailService = new CartDetailService();
 
             string issuedDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            decimal paidAmount = Convert.ToDecimal(txtPayment.Text);
+            
 
             invoiceService.InsertInvoiceHeader(issuedDate, 0,0,0,0,0,0,0,userID,1);
 
@@ -118,12 +126,15 @@ namespace RetailPOSA.DialogBoxes
                 //create invoice detail
                 invoiceService.InsertInvoiceDetail(newInvoiceID, inventoryID, productID, unitPrice, qty, totalPrice, discount, finalPrice, 1);
 
+                //deduct inventory qty
+                inventoryService.UpdateInventoryQty(inventoryID, qty);
+
                 rowCount++;
                 total += Convert.ToDecimal(totalPrice);
                 totalDiscount += Convert.ToDecimal(discount);
                 subTotal += Convert.ToDecimal(finalPrice);
 
-            }
+            }//foreach
 
             decimal balance = paidAmount - subTotal;
             //update invoice header

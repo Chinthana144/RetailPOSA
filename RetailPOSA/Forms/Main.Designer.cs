@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.pnlSidebar = new System.Windows.Forms.Panel();
+            this.btnNavUsers = new System.Windows.Forms.Button();
+            this.btnNavDashboard = new System.Windows.Forms.Button();
             this.lblRole = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,14 +46,12 @@
             this.btnNavPOS = new System.Windows.Forms.Button();
             this.btnNavProducts = new System.Windows.Forms.Button();
             this.pnlContent = new System.Windows.Forms.Panel();
-            this.btnNavDashboard = new System.Windows.Forms.Button();
-            this.btnNavUsers = new System.Windows.Forms.Button();
             this.pnlSidebar.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlSidebar
             // 
-            this.pnlSidebar.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.pnlSidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
             this.pnlSidebar.Controls.Add(this.btnNavUsers);
             this.pnlSidebar.Controls.Add(this.btnNavDashboard);
             this.pnlSidebar.Controls.Add(this.lblRole);
@@ -74,10 +74,38 @@
             this.pnlSidebar.Size = new System.Drawing.Size(256, 796);
             this.pnlSidebar.TabIndex = 0;
             // 
+            // btnNavUsers
+            // 
+            this.btnNavUsers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(93)))), ((int)(((byte)(93)))));
+            this.btnNavUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNavUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNavUsers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnNavUsers.Location = new System.Drawing.Point(1, 633);
+            this.btnNavUsers.Name = "btnNavUsers";
+            this.btnNavUsers.Size = new System.Drawing.Size(253, 41);
+            this.btnNavUsers.TabIndex = 16;
+            this.btnNavUsers.Text = "Users";
+            this.btnNavUsers.UseVisualStyleBackColor = false;
+            this.btnNavUsers.Click += new System.EventHandler(this.btnNavUsers_Click_1);
+            // 
+            // btnNavDashboard
+            // 
+            this.btnNavDashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(93)))), ((int)(((byte)(93)))));
+            this.btnNavDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNavDashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNavDashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnNavDashboard.Location = new System.Drawing.Point(1, 116);
+            this.btnNavDashboard.Name = "btnNavDashboard";
+            this.btnNavDashboard.Size = new System.Drawing.Size(253, 41);
+            this.btnNavDashboard.TabIndex = 15;
+            this.btnNavDashboard.Text = "Dashboard";
+            this.btnNavDashboard.UseVisualStyleBackColor = false;
+            // 
             // lblRole
             // 
             this.lblRole.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblRole.AutoSize = true;
+            this.lblRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.lblRole.Location = new System.Drawing.Point(12, 772);
             this.lblRole.Name = "lblRole";
             this.lblRole.Size = new System.Drawing.Size(36, 16);
@@ -88,6 +116,7 @@
             // 
             this.lblUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblUsername.AutoSize = true;
+            this.lblUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.lblUsername.Location = new System.Drawing.Point(11, 751);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(70, 16);
@@ -98,6 +127,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label1.Location = new System.Drawing.Point(32, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(191, 36);
@@ -106,8 +136,10 @@
             // 
             // btnNavSuppliers
             // 
-            this.btnNavSuppliers.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnNavSuppliers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(93)))), ((int)(((byte)(93)))));
+            this.btnNavSuppliers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNavSuppliers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNavSuppliers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnNavSuppliers.Location = new System.Drawing.Point(1, 257);
             this.btnNavSuppliers.Name = "btnNavSuppliers";
             this.btnNavSuppliers.Size = new System.Drawing.Size(253, 41);
@@ -118,8 +150,10 @@
             // 
             // btnNavCategories
             // 
-            this.btnNavCategories.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnNavCategories.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(93)))), ((int)(((byte)(93)))));
+            this.btnNavCategories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNavCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNavCategories.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnNavCategories.Location = new System.Drawing.Point(1, 163);
             this.btnNavCategories.Name = "btnNavCategories";
             this.btnNavCategories.Size = new System.Drawing.Size(253, 41);
@@ -130,8 +164,10 @@
             // 
             // btnNavAdmin
             // 
-            this.btnNavAdmin.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnNavAdmin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(93)))), ((int)(((byte)(93)))));
+            this.btnNavAdmin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNavAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNavAdmin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnNavAdmin.Location = new System.Drawing.Point(1, 680);
             this.btnNavAdmin.Name = "btnNavAdmin";
             this.btnNavAdmin.Size = new System.Drawing.Size(253, 41);
@@ -142,8 +178,10 @@
             // 
             // btnNavProfile
             // 
-            this.btnNavProfile.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnNavProfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(93)))), ((int)(((byte)(93)))));
+            this.btnNavProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNavProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNavProfile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnNavProfile.Location = new System.Drawing.Point(1, 586);
             this.btnNavProfile.Name = "btnNavProfile";
             this.btnNavProfile.Size = new System.Drawing.Size(253, 41);
@@ -153,8 +191,10 @@
             // 
             // btnNavSettings
             // 
-            this.btnNavSettings.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnNavSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(93)))), ((int)(((byte)(93)))));
+            this.btnNavSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNavSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNavSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnNavSettings.Location = new System.Drawing.Point(1, 539);
             this.btnNavSettings.Name = "btnNavSettings";
             this.btnNavSettings.Size = new System.Drawing.Size(253, 41);
@@ -165,8 +205,10 @@
             // 
             // btnNavReports
             // 
-            this.btnNavReports.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnNavReports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(93)))), ((int)(((byte)(93)))));
+            this.btnNavReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNavReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNavReports.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnNavReports.Location = new System.Drawing.Point(1, 492);
             this.btnNavReports.Name = "btnNavReports";
             this.btnNavReports.Size = new System.Drawing.Size(253, 41);
@@ -176,8 +218,10 @@
             // 
             // btnNavInvoice
             // 
-            this.btnNavInvoice.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnNavInvoice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(93)))), ((int)(((byte)(93)))));
+            this.btnNavInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNavInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNavInvoice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnNavInvoice.Location = new System.Drawing.Point(1, 445);
             this.btnNavInvoice.Name = "btnNavInvoice";
             this.btnNavInvoice.Size = new System.Drawing.Size(253, 41);
@@ -188,8 +232,10 @@
             // 
             // btnNavGRN
             // 
-            this.btnNavGRN.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnNavGRN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(93)))), ((int)(((byte)(93)))));
+            this.btnNavGRN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNavGRN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNavGRN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnNavGRN.Location = new System.Drawing.Point(1, 304);
             this.btnNavGRN.Name = "btnNavGRN";
             this.btnNavGRN.Size = new System.Drawing.Size(253, 41);
@@ -200,8 +246,10 @@
             // 
             // btnNavInventory
             // 
-            this.btnNavInventory.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnNavInventory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(93)))), ((int)(((byte)(93)))));
+            this.btnNavInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNavInventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNavInventory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnNavInventory.Location = new System.Drawing.Point(1, 398);
             this.btnNavInventory.Name = "btnNavInventory";
             this.btnNavInventory.Size = new System.Drawing.Size(253, 41);
@@ -212,8 +260,10 @@
             // 
             // btnNavPOS
             // 
-            this.btnNavPOS.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnNavPOS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(93)))), ((int)(((byte)(93)))));
+            this.btnNavPOS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNavPOS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNavPOS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnNavPOS.Location = new System.Drawing.Point(1, 351);
             this.btnNavPOS.Name = "btnNavPOS";
             this.btnNavPOS.Size = new System.Drawing.Size(253, 41);
@@ -224,8 +274,10 @@
             // 
             // btnNavProducts
             // 
-            this.btnNavProducts.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnNavProducts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(93)))), ((int)(((byte)(93)))));
+            this.btnNavProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNavProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNavProducts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnNavProducts.Location = new System.Drawing.Point(1, 210);
             this.btnNavProducts.Name = "btnNavProducts";
             this.btnNavProducts.Size = new System.Drawing.Size(253, 41);
@@ -236,35 +288,13 @@
             // 
             // pnlContent
             // 
+            this.pnlContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(78)))), ((int)(((byte)(78)))));
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContent.Location = new System.Drawing.Point(256, 0);
             this.pnlContent.MinimumSize = new System.Drawing.Size(1200, 800);
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Size = new System.Drawing.Size(1231, 800);
             this.pnlContent.TabIndex = 1;
-            // 
-            // btnNavDashboard
-            // 
-            this.btnNavDashboard.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnNavDashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNavDashboard.Location = new System.Drawing.Point(1, 116);
-            this.btnNavDashboard.Name = "btnNavDashboard";
-            this.btnNavDashboard.Size = new System.Drawing.Size(253, 41);
-            this.btnNavDashboard.TabIndex = 15;
-            this.btnNavDashboard.Text = "Dashboard";
-            this.btnNavDashboard.UseVisualStyleBackColor = false;
-            // 
-            // btnNavUsers
-            // 
-            this.btnNavUsers.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnNavUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNavUsers.Location = new System.Drawing.Point(1, 633);
-            this.btnNavUsers.Name = "btnNavUsers";
-            this.btnNavUsers.Size = new System.Drawing.Size(253, 41);
-            this.btnNavUsers.TabIndex = 16;
-            this.btnNavUsers.Text = "Profile";
-            this.btnNavUsers.UseVisualStyleBackColor = false;
-            this.btnNavUsers.Click += new System.EventHandler(this.btnNavUsers_Click_1);
             // 
             // Main
             // 
@@ -275,7 +305,7 @@
             this.Controls.Add(this.pnlSidebar);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = " Main";
+            this.Text = "Nexora POS";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.Load += new System.EventHandler(this.Main_Load);
             this.pnlSidebar.ResumeLayout(false);

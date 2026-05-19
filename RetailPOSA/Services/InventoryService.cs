@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RetailPOSA.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -31,6 +32,20 @@ namespace RetailPOSA.Services
 
             return db.ExecuteNonQuery(query, parameters);
         }//insert inventory
+
+        public int UpdateInventoryQty(int id, decimal deductQty)
+        {
+            //deduct qty
+            string query = "UPDATE inventory SET current_qty = current_qty - @deductQty WHERE id = @id;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("@id", id);
+            parameters.Add("@deductQty", deductQty);
+
+            return db.ExecuteNonQuery(query, parameters);
+
+        }//update qty
 
         public DataTable GetInventory(int limit, int offset)
         {

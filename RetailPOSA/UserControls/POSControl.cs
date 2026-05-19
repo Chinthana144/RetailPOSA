@@ -190,6 +190,7 @@ namespace RetailPOSA.UserControls
             btnPay.Text = "Pay " + dtTotal.Rows[0]["final_total"].ToString();
 
             //focus on search
+            txtSearch.Text = "";
             txtSearch.Focus();
         }//load cart
 
