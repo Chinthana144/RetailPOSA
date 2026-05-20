@@ -113,6 +113,8 @@ namespace RetailPOSA.UserControls
                 }
 
                 MessageBox.Show("Shop updated successfully", "Shop Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                loadShop();
             }//update and copy
         }
 
@@ -129,7 +131,7 @@ namespace RetailPOSA.UserControls
                 string invoicePrefix = "INV";
                 string currency = "LKR";
                 shopService.InsertShop(shopName, address, phone, "", "", invoicePrefix, currency, 1);
-            }
+            }//create shop
             else
             {
                 txtShopName.Text = shopData.Rows[0]["name"].ToString();
@@ -138,14 +140,21 @@ namespace RetailPOSA.UserControls
                 txtInvoicePrefix.Text = shopData.Rows[0]["invoice_prefix"].ToString();
                 txtCurrency.Text = shopData.Rows[0]["currency"].ToString();
 
-                string shopPath = shopData.Rows[0]["shop_logo"].ToString();
+                //string shopPath = shopData.Rows[0]["shop_logo"].ToString();
                 this.shopLogoPath = shopData.Rows[0]["shop_logo"].ToString();
                 this.receiptLogoPath = shopData.Rows[0]["receipt_logo"].ToString();
 
-                picShopLogo.Image = Image.FromFile(this.shopLogoPath);
-                picReceiptLogo.Image = Image.FromFile(this.receiptLogoPath);
+                picShopLogo.Image = LoadImage(this.shopLogoPath);
+                picReceiptLogo.Image = LoadImage(this.receiptLogoPath);
+            }//update shop
+        }
 
+        public Image LoadImage(string path)
+        {
+            using (var bmpTemp = new Bitmap(path))
+            {
+                return new Bitmap(bmpTemp);
             }
         }
-    }
+    }//class
 }

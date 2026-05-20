@@ -188,6 +188,12 @@
     <Compile Include="Services\ShopService.cs" />
     <Compile Include="Services\SupplierService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="UserControls\AdjustmentControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AdjustmentControl.Designer.cs">
+      <DependentUpon>AdjustmentControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\AdminControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -299,6 +305,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\AdjustmentControl.resx">
+      <DependentUpon>AdjustmentControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\AdminControl.resx">
       <DependentUpon>AdminControl.cs</DependentUpon>
     </EmbeddedResource>
