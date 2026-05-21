@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.btnAddGrn = new System.Windows.Forms.Button();
+            this.btnAddAdjustment = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -54,16 +54,17 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Inventory Adjustment";
             // 
-            // btnAddGrn
+            // btnAddAdjustment
             // 
-            this.btnAddGrn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddGrn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddGrn.Location = new System.Drawing.Point(911, 11);
-            this.btnAddGrn.Name = "btnAddGrn";
-            this.btnAddGrn.Size = new System.Drawing.Size(205, 40);
-            this.btnAddGrn.TabIndex = 15;
-            this.btnAddGrn.Text = "Add Adjustment";
-            this.btnAddGrn.UseVisualStyleBackColor = true;
+            this.btnAddAdjustment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddAdjustment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddAdjustment.Location = new System.Drawing.Point(911, 11);
+            this.btnAddAdjustment.Name = "btnAddAdjustment";
+            this.btnAddAdjustment.Size = new System.Drawing.Size(205, 40);
+            this.btnAddAdjustment.TabIndex = 15;
+            this.btnAddAdjustment.Text = "Add Adjustment";
+            this.btnAddAdjustment.UseVisualStyleBackColor = true;
+            this.btnAddAdjustment.Click += new System.EventHandler(this.btnAddAdjustment_Click);
             // 
             // label3
             // 
@@ -210,10 +211,11 @@
             this.Controls.Add(this.cmbStatus);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnAddGrn);
+            this.Controls.Add(this.btnAddAdjustment);
             this.Controls.Add(this.label1);
             this.Name = "AdjustmentControl";
             this.Size = new System.Drawing.Size(1128, 728);
+            this.Load += new System.EventHandler(this.AdjustmentControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrnHeaders)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -223,7 +225,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnAddGrn;
+        private System.Windows.Forms.Button btnAddAdjustment;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbStatus;
         private System.Windows.Forms.TextBox txtSearch;

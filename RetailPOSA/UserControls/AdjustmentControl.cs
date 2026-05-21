@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RetailPOSA.DialogBoxes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,5 +17,22 @@ namespace RetailPOSA.UserControls
         {
             InitializeComponent();
         }
-    }
+
+        private void AdjustmentControl_Load(object sender, EventArgs e)
+        {
+            cmbStatus.SelectedIndex = 0;
+        }
+
+        private void btnAddAdjustment_Click(object sender, EventArgs e)
+        {
+            AdjustmentHeaderForm adjustmentHeaderForm = new AdjustmentHeaderForm();
+            adjustmentHeaderForm.ShowDialog();
+        }
+
+        private void loadAdjustments()
+        { 
+            
+        }//load adjustment
+        
+    }//class
 }

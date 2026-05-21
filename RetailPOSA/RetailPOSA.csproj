@@ -96,6 +96,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database.cs" />
+    <Compile Include="DialogBoxes\AdjustmentHeaderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogBoxes\AdjustmentHeaderForm.Designer.cs">
+      <DependentUpon>AdjustmentHeaderForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DialogBoxes\CategoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +182,7 @@
     <Compile Include="Models\Users.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AdjustmentHeaderService.cs" />
     <Compile Include="Services\AuthService.cs" />
     <Compile Include="Services\CartDetailService.cs" />
     <Compile Include="Services\CartHeaderService.cs" />
@@ -260,6 +267,9 @@
     <Compile Include="UserControls\UsersControl.Designer.cs">
       <DependentUpon>UsersControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DialogBoxes\AdjustmentHeaderForm.resx">
+      <DependentUpon>AdjustmentHeaderForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DialogBoxes\CategoryForm.resx">
       <DependentUpon>CategoryForm.cs</DependentUpon>
     </EmbeddedResource>
