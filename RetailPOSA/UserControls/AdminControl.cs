@@ -44,8 +44,8 @@ namespace RetailPOSA.UserControls
 
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    picShopLogo.Image = Image.FromFile(dialog.FileName);
-
+                    //picShopLogo.Image = Image.FromFile(dialog.FileName);
+                    picShopLogo.Image = LoadImage(dialog.FileName);
                     this.shopLogoPath = dialog.FileName;
                 }
             }
@@ -103,7 +103,7 @@ namespace RetailPOSA.UserControls
                 {
                     picShopLogo.Image.Dispose();
                     picShopLogo.Image = null;
-                    File.Copy(this.shopLogoPath, shopLogoPath, true);
+                    File.Copy(this.shopLogoPath, shopLogoPath);
                 }
                 if (this.receiptLogoPath != receiptLogoPath)
                 {
@@ -147,7 +147,7 @@ namespace RetailPOSA.UserControls
                 picShopLogo.Image = LoadImage(this.shopLogoPath);
                 picReceiptLogo.Image = LoadImage(this.receiptLogoPath);
             }//update shop
-        }
+        }//load shop
 
         public Image LoadImage(string path)
         {

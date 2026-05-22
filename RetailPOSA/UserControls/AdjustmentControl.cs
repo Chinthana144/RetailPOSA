@@ -1,4 +1,6 @@
 ﻿using RetailPOSA.DialogBoxes;
+using RetailPOSA.Forms;
+using RetailPOSA.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +15,7 @@ namespace RetailPOSA.UserControls
 {
     public partial class AdjustmentControl : UserControl
     {
+        private int selectedID = 0;
         public AdjustmentControl()
         {
             InitializeComponent();
@@ -20,19 +23,78 @@ namespace RetailPOSA.UserControls
 
         private void AdjustmentControl_Load(object sender, EventArgs e)
         {
+            btnAddItems.Enabled = false;
+            btnEditAdjustment.Enabled = false;
+
             cmbStatus.SelectedIndex = 0;
+
+            //load adjustment header
+            loadAdjustments();
         }
 
         private void btnAddAdjustment_Click(object sender, EventArgs e)
         {
-            AdjustmentHeaderForm adjustmentHeaderForm = new AdjustmentHeaderForm();
+            AdjustmentHeaderForm adjustmentHeaderForm = new AdjustmentHeaderForm(0);
             adjustmentHeaderForm.ShowDialog();
         }
 
         private void loadAdjustments()
         { 
-            
+            AdjustmentHeaderService adjustHeaderService = new AdjustmentHeaderService();
+
+            DataTable headerData = adjustHeaderService.GetAdjustmentByStatus(cmbStatus.SelectedIndex);
+
+            dgvAdjustHeader.DataSource = headerData;
+
+            dgvAdjustHeader.Columns["id"].Visible = false;
+            dgvAdjustHeader.Columns["user_id"].Visible = false;
+            dgvAdjustHeader.Columns["status"].Visible = false;
+
+            dgvAdjustHeader.Columns["type"].HeaderText = "Type";
+            dgvAdjustHeader.Columns["submitted_datetime"].HeaderText = "Date";
+            dgvAdjustHeader.Columns["item_count"].HeaderText = "Items";
+            dgvAdjustHeader.Columns["purchase_price"].HeaderText = "Pur. Price";
+            dgvAdjustHeader.Columns["note"].HeaderText = "Note";
+            dgvAdjustHeader.Columns["username"].HeaderText = "User";
+
+
         }//load adjustment
-        
+
+        private void dgvAdjustHeader_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgvAdjustHeader.Rows[e.RowIndex];
+
+                selectedID = Convert.ToInt32(row.Cells["id"].Value);
+
+                if (selectedID > 0) 
+                { 
+                    btnAddItems.Enabled = true;
+                    btnEditAdjustment.Enabled = true;
+                }
+            }
+        }
+
+        private void btnEditAdjustment_Click(object sender, EventArgs e)
+        {
+            if (selectedID > 0)
+            {
+                AdjustmentHeaderForm adjustmentHeaderForm = new AdjustmentHeaderForm(selectedID);
+                adjustmentHeaderForm.ShowDialog();
+            }
+            loadAdjustments();
+        }
+
+        private void btnAddItems_Click(object sender, EventArgs e)
+        {
+            if (selectedID > 0)
+            {
+                AdjustmentDetailControl adjustmentDetailControl = new AdjustmentDetailControl(selectedID);
+
+                Main mainForm = (Main)Application.OpenForms["Main"];
+                mainForm.loadControl(adjustmentDetailControl);
+            }
+        }
     }//class
 }

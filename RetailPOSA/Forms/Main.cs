@@ -1,4 +1,5 @@
 ﻿using RetailPOSA.Models;
+using RetailPOSA.Services;
 using RetailPOSA.UserControls;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,8 @@ namespace RetailPOSA.Forms
             pnlSidebar.Dock = DockStyle.Left;
 
             initializeNavbar();
+
+            loadShop();
         }
 
         public void loadControl(UserControl uc)
@@ -90,12 +93,33 @@ namespace RetailPOSA.Forms
             InventoryControl uc = new InventoryControl();
             loadControl(uc);
         }
+        private void navAdjustment_Click(object sender, EventArgs e)
+        {
+            AdjustmentControl uc = new AdjustmentControl();
+            loadControl(uc);
+        }
+        private void navSettings_Click(object sender, EventArgs e)
+        {
+            SettingControl uc = new SettingControl();
+            loadControl(uc);
+        }
+        private void navUsers_Click(object sender, EventArgs e)
+        {
+            UsersControl uc = new UsersControl();
+            loadControl(uc);
+        }
+        private void navAdminPanel_Click(object sender, EventArgs e)
+        {
+            AdminControl uc = new AdminControl();
+            loadControl(uc);
+        }
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
             //close the application when the main form is closed
             Application.Exit();
         }
+        
 
         //=========================== Navigation Main Buttons ==========================//
 
@@ -144,7 +168,6 @@ namespace RetailPOSA.Forms
             panel = 5;
             MenuTimer.Start();
         }
-
         private void MenuTimer_Tick(object sender, EventArgs e)
         {
             if (menuOpen == false)
@@ -253,6 +276,18 @@ namespace RetailPOSA.Forms
             pnlSale.Location = new Point(initx, btnNavSales.Location.Y + 70);
             pnlSystem.Location = new Point(initx, btnNavSystem.Location.Y + 70);
         }//initialize navbar
+
+        private void loadShop()
+        {
+            ShopService shopService = new ShopService();
+
+            DataTable shopData = shopService.GetShop();
+
+            string shopLogo = shopData.Rows[0]["shop_logo"].ToString();
+
+            //MessageBox.Show(shopLogo);
+            picShopLogo.Image = Image.FromFile(shopLogo);
+        }
 
         
     }//class

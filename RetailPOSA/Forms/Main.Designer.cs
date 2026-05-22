@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.pnlSidebar = new System.Windows.Forms.Panel();
+            this.picShopLogo = new System.Windows.Forms.PictureBox();
             this.pnlSystem = new System.Windows.Forms.Panel();
             this.navAdminPanel = new System.Windows.Forms.Button();
             this.navUsers = new System.Windows.Forms.Button();
@@ -60,14 +61,13 @@
             this.lblUsername = new System.Windows.Forms.Label();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.MenuTimer = new System.Windows.Forms.Timer(this.components);
-            this.picShopLogo = new System.Windows.Forms.PictureBox();
             this.pnlSidebar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picShopLogo)).BeginInit();
             this.pnlSystem.SuspendLayout();
             this.pnlSale.SuspendLayout();
             this.pnlInventory.SuspendLayout();
             this.pnlCatalog.SuspendLayout();
             this.pnlHome.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picShopLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlSidebar
@@ -92,6 +92,15 @@
             this.pnlSidebar.Size = new System.Drawing.Size(515, 871);
             this.pnlSidebar.TabIndex = 0;
             // 
+            // picShopLogo
+            // 
+            this.picShopLogo.Location = new System.Drawing.Point(71, 21);
+            this.picShopLogo.Name = "picShopLogo";
+            this.picShopLogo.Size = new System.Drawing.Size(120, 120);
+            this.picShopLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picShopLogo.TabIndex = 26;
+            this.picShopLogo.TabStop = false;
+            // 
             // pnlSystem
             // 
             this.pnlSystem.Controls.Add(this.navAdminPanel);
@@ -115,6 +124,7 @@
             this.navAdminPanel.TabIndex = 24;
             this.navAdminPanel.Text = "Admin Panel";
             this.navAdminPanel.UseVisualStyleBackColor = false;
+            this.navAdminPanel.Click += new System.EventHandler(this.navAdminPanel_Click);
             // 
             // navUsers
             // 
@@ -128,6 +138,7 @@
             this.navUsers.TabIndex = 23;
             this.navUsers.Text = "Users";
             this.navUsers.UseVisualStyleBackColor = false;
+            this.navUsers.Click += new System.EventHandler(this.navUsers_Click);
             // 
             // navReports
             // 
@@ -154,6 +165,7 @@
             this.navSettings.TabIndex = 22;
             this.navSettings.Text = "Settings";
             this.navSettings.UseVisualStyleBackColor = false;
+            this.navSettings.Click += new System.EventHandler(this.navSettings_Click);
             // 
             // pnlSale
             // 
@@ -228,6 +240,7 @@
             this.navAdjustment.TabIndex = 23;
             this.navAdjustment.Text = "Adjustments";
             this.navAdjustment.UseVisualStyleBackColor = false;
+            this.navAdjustment.Click += new System.EventHandler(this.navAdjustment_Click);
             // 
             // navGRN
             // 
@@ -466,14 +479,6 @@
             this.MenuTimer.Interval = 10;
             this.MenuTimer.Tick += new System.EventHandler(this.MenuTimer_Tick);
             // 
-            // picShopLogo
-            // 
-            this.picShopLogo.Location = new System.Drawing.Point(71, 21);
-            this.picShopLogo.Name = "picShopLogo";
-            this.picShopLogo.Size = new System.Drawing.Size(120, 120);
-            this.picShopLogo.TabIndex = 26;
-            this.picShopLogo.TabStop = false;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -489,12 +494,12 @@
             this.Load += new System.EventHandler(this.Main_Load);
             this.pnlSidebar.ResumeLayout(false);
             this.pnlSidebar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picShopLogo)).EndInit();
             this.pnlSystem.ResumeLayout(false);
             this.pnlSale.ResumeLayout(false);
             this.pnlInventory.ResumeLayout(false);
             this.pnlCatalog.ResumeLayout(false);
             this.pnlHome.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picShopLogo)).EndInit();
             this.ResumeLayout(false);
 
         }

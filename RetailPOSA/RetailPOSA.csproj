@@ -201,6 +201,12 @@
     <Compile Include="UserControls\AdjustmentControl.Designer.cs">
       <DependentUpon>AdjustmentControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\AdjustmentDetailControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AdjustmentDetailControl.Designer.cs">
+      <DependentUpon>AdjustmentDetailControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\AdminControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -317,6 +323,9 @@
     </Compile>
     <EmbeddedResource Include="UserControls\AdjustmentControl.resx">
       <DependentUpon>AdjustmentControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\AdjustmentDetailControl.resx">
+      <DependentUpon>AdjustmentDetailControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\AdminControl.resx">
       <DependentUpon>AdminControl.cs</DependentUpon>

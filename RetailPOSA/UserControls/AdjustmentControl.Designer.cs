@@ -34,13 +34,13 @@
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.dgvGrnHeaders = new System.Windows.Forms.DataGridView();
+            this.dgvAdjustHeader = new System.Windows.Forms.DataGridView();
             this.btnAddItems = new System.Windows.Forms.Button();
             this.lblPageNo = new System.Windows.Forms.Label();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
-            this.btnEditGrn = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvGrnHeaders)).BeginInit();
+            this.btnEditAdjustment = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAdjustHeader)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -119,26 +119,27 @@
             this.label2.TabIndex = 24;
             this.label2.Text = "Search";
             // 
-            // dgvGrnHeaders
+            // dgvAdjustHeader
             // 
-            this.dgvGrnHeaders.AllowUserToAddRows = false;
-            this.dgvGrnHeaders.AllowUserToDeleteRows = false;
-            this.dgvGrnHeaders.AllowUserToResizeRows = false;
-            this.dgvGrnHeaders.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvAdjustHeader.AllowUserToAddRows = false;
+            this.dgvAdjustHeader.AllowUserToDeleteRows = false;
+            this.dgvAdjustHeader.AllowUserToResizeRows = false;
+            this.dgvAdjustHeader.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvGrnHeaders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvGrnHeaders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvGrnHeaders.Location = new System.Drawing.Point(13, 62);
-            this.dgvGrnHeaders.MultiSelect = false;
-            this.dgvGrnHeaders.Name = "dgvGrnHeaders";
-            this.dgvGrnHeaders.ReadOnly = true;
-            this.dgvGrnHeaders.RowHeadersVisible = false;
-            this.dgvGrnHeaders.RowHeadersWidth = 51;
-            this.dgvGrnHeaders.RowTemplate.Height = 24;
-            this.dgvGrnHeaders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvGrnHeaders.Size = new System.Drawing.Size(1103, 603);
-            this.dgvGrnHeaders.TabIndex = 27;
+            this.dgvAdjustHeader.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvAdjustHeader.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAdjustHeader.Location = new System.Drawing.Point(13, 62);
+            this.dgvAdjustHeader.MultiSelect = false;
+            this.dgvAdjustHeader.Name = "dgvAdjustHeader";
+            this.dgvAdjustHeader.ReadOnly = true;
+            this.dgvAdjustHeader.RowHeadersVisible = false;
+            this.dgvAdjustHeader.RowHeadersWidth = 51;
+            this.dgvAdjustHeader.RowTemplate.Height = 24;
+            this.dgvAdjustHeader.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAdjustHeader.Size = new System.Drawing.Size(1103, 603);
+            this.dgvAdjustHeader.TabIndex = 27;
+            this.dgvAdjustHeader.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdjustHeader_CellClick);
             // 
             // btnAddItems
             // 
@@ -150,6 +151,7 @@
             this.btnAddItems.TabIndex = 32;
             this.btnAddItems.Text = "Add Items";
             this.btnAddItems.UseVisualStyleBackColor = true;
+            this.btnAddItems.Click += new System.EventHandler(this.btnAddItems_Click);
             // 
             // lblPageNo
             // 
@@ -185,16 +187,17 @@
             this.btnPrevious.Text = "Previous";
             this.btnPrevious.UseVisualStyleBackColor = true;
             // 
-            // btnEditGrn
+            // btnEditAdjustment
             // 
-            this.btnEditGrn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditGrn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditGrn.Location = new System.Drawing.Point(888, 671);
-            this.btnEditGrn.Name = "btnEditGrn";
-            this.btnEditGrn.Size = new System.Drawing.Size(228, 40);
-            this.btnEditGrn.TabIndex = 28;
-            this.btnEditGrn.Text = "Edit Adjustment";
-            this.btnEditGrn.UseVisualStyleBackColor = true;
+            this.btnEditAdjustment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditAdjustment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditAdjustment.Location = new System.Drawing.Point(888, 671);
+            this.btnEditAdjustment.Name = "btnEditAdjustment";
+            this.btnEditAdjustment.Size = new System.Drawing.Size(228, 40);
+            this.btnEditAdjustment.TabIndex = 28;
+            this.btnEditAdjustment.Text = "Edit Adjustment";
+            this.btnEditAdjustment.UseVisualStyleBackColor = true;
+            this.btnEditAdjustment.Click += new System.EventHandler(this.btnEditAdjustment_Click);
             // 
             // AdjustmentControl
             // 
@@ -205,8 +208,8 @@
             this.Controls.Add(this.lblPageNo);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnPrevious);
-            this.Controls.Add(this.btnEditGrn);
-            this.Controls.Add(this.dgvGrnHeaders);
+            this.Controls.Add(this.btnEditAdjustment);
+            this.Controls.Add(this.dgvAdjustHeader);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbStatus);
             this.Controls.Add(this.txtSearch);
@@ -216,7 +219,7 @@
             this.Name = "AdjustmentControl";
             this.Size = new System.Drawing.Size(1128, 728);
             this.Load += new System.EventHandler(this.AdjustmentControl_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvGrnHeaders)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAdjustHeader)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -230,11 +233,11 @@
         private System.Windows.Forms.ComboBox cmbStatus;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dgvGrnHeaders;
+        private System.Windows.Forms.DataGridView dgvAdjustHeader;
         private System.Windows.Forms.Button btnAddItems;
         private System.Windows.Forms.Label lblPageNo;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnPrevious;
-        private System.Windows.Forms.Button btnEditGrn;
+        private System.Windows.Forms.Button btnEditAdjustment;
     }
 }
