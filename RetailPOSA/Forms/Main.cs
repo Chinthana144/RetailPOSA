@@ -17,7 +17,6 @@ namespace RetailPOSA.Forms
         private bool menuOpen = false;
 
         private Panel selectedPanel;
-        private Panel openedPanel;
 
         private int catalogButtonY = 0;
         private int inventoryButtonY = 0;
@@ -38,101 +37,57 @@ namespace RetailPOSA.Forms
             lblUsername.Text = Session.UserName;
             lblRole.Text = Session.RoleName;
 
-            //panel height
-            pnlHome.Height = 0;
-            pnlCatalog.Height = 0;
-            pnlInventory.Height = 0;
-            pnlSale.Height = 0;
-            pnlSystem.Height = 0;
+            pnlSidebar.Dock = DockStyle.Left;
 
-            int initx = 200;
-            int inity = 120;
-            int buttonHeight = 70;
-
-            //position buttons
-            btnNavHome.Location = new Point(initx, inity);
-            btnNavCatalog.Location = new Point(initx, inity+ buttonHeight);
-            btnNavInventory.Location = new Point(initx, inity+ buttonHeight * 2);
-            btnNavSales.Location = new Point(initx, inity + buttonHeight * 3);
-            btnNavSystem.Location = new Point(initx, inity + buttonHeight * 4);
-
-            catalogButtonY = inity + buttonHeight;
-            inventoryButtonY = inity + buttonHeight * 2;
-            saleButtonY = inity + buttonHeight * 3;
-            systemButtonY = inity + buttonHeight * 4;
-
-            //panel position
-            pnlHome.Location = new Point(initx, btnNavHome.Location.Y + 70);
-            pnlCatalog.Location = new Point(initx, btnNavCatalog.Location.Y + 70);
-            pnlInventory.Location = new Point(initx, btnNavInventory.Location.Y + 70);
-            pnlSale.Location = new Point(initx, btnNavSales.Location.Y + 70);
-            pnlSystem.Location = new Point(initx, btnNavSystem.Location.Y + 70);
+            initializeNavbar();
         }
 
         public void loadControl(UserControl uc)
-        { 
+        {
             pnlContent.Controls.Clear();
             uc.Dock = DockStyle.Fill;
             pnlContent.Controls.Add(uc);
         }//load control
 
-        private void btnNavCategories_Click(object sender, EventArgs e)
+        //========================= Navigation =========================//
+        private void navCategories_Click(object sender, EventArgs e)
         {
             CategoryControl uc = new CategoryControl();
             loadControl(uc);
         }
 
-        private void btnNavProducts_Click(object sender, EventArgs e)
+        private void navProducts_Click(object sender, EventArgs e)
         {
-            ProductControl pc = new ProductControl();
-            loadControl(pc);
-        }//products
-
-        private void btnNavSuppliers_Click(object sender, EventArgs e)
-        {
-            SupplierControl uc = new SupplierControl();
-            loadControl(uc);
-        }//suppliers
-
-        private void btnNavGRN_Click(object sender, EventArgs e)
-        {
-            GrnHeaderControl uc = new GrnHeaderControl();
-            loadControl(uc);
-        }//grn
-
-        private void btnNavAdjustment_Click(object sender, EventArgs e)
-        {
-            AdjustmentControl uc = new AdjustmentControl();
+            ProductControl uc = new ProductControl();
             loadControl(uc);
         }
 
-        private void btnNavPOS_Click(object sender, EventArgs e)
+        private void navSuppliers_Click(object sender, EventArgs e)
+        {
+            SupplierControl uc = new SupplierControl();
+            loadControl(uc);
+        }
+        private void navPOS_Click(object sender, EventArgs e)
         {
             POSControl uc = new POSControl();
             loadControl(uc);
         }
 
-        private void btnNavInvoice_Click(object sender, EventArgs e)
+        private void navInvoices_Click(object sender, EventArgs e)
         {
             InvoiceControl uc = new InvoiceControl();
             loadControl(uc);
         }
 
-        private void btnNavSettings_Click(object sender, EventArgs e)
+        private void navGRN_Click(object sender, EventArgs e)
         {
-            SettingControl uc = new SettingControl();
-            loadControl(uc);
-        }      
-
-        private void btnNavUsers_Click_1(object sender, EventArgs e)
-        {
-            UsersControl uc = new UsersControl();
+            GrnHeaderControl uc = new GrnHeaderControl();
             loadControl(uc);
         }
 
-        private void btnNavAdmin_Click(object sender, EventArgs e)
+        private void navInventory_Click(object sender, EventArgs e)
         {
-            AdminControl uc = new AdminControl();
+            InventoryControl uc = new InventoryControl();
             loadControl(uc);
         }
 
@@ -146,6 +101,8 @@ namespace RetailPOSA.Forms
 
         private void btnNavHome_Click(object sender, EventArgs e)
         {
+            initializeNavbar();
+            menuOpen = false;
             this.selectedPanel = pnlHome;
             this.panelHeight = 100;
             panel = 1;
@@ -153,39 +110,43 @@ namespace RetailPOSA.Forms
         }
         private void btnNavCatalog_Click(object sender, EventArgs e)
         {
+            initializeNavbar();
+            menuOpen = false;
             this.selectedPanel = pnlCatalog;
-            this.panelHeight = 180;
+            this.panelHeight = 150;
             panel = 2;
             MenuTimer.Start();
         }
         private void btnNavInventory_Click(object sender, EventArgs e)
         {
+            initializeNavbar();
+            menuOpen = false;
             this.selectedPanel = pnlInventory;
-            this.panelHeight = 240;
+            this.panelHeight = 200;
             panel = 3;
             MenuTimer.Start();
         }
         private void btnNavSales_Click(object sender, EventArgs e)
         {
+            initializeNavbar();
+            menuOpen = false;
             this.selectedPanel = pnlSale;
-            this.panelHeight = 120;
+            this.panelHeight = 100;
             panel = 4;
             MenuTimer.Start();
         }
         private void btnNavSystem_Click(object sender, EventArgs e)
         {
+            initializeNavbar();
+            menuOpen = false;
             this.selectedPanel = pnlSystem;
-            this.panelHeight = 240;
+            this.panelHeight = 200;
             panel = 5;
             MenuTimer.Start();
         }
 
         private void MenuTimer_Tick(object sender, EventArgs e)
         {
-            if (openedPanel != null && openedPanel.Height >= 0)
-            {
-                openedPanel.Height = 0;
-            }
             if (menuOpen == false)
             {
                 selectedPanel.Height += 10;
@@ -193,7 +154,6 @@ namespace RetailPOSA.Forms
                 {
                     MenuTimer.Stop();
                     menuOpen = true;
-                    openedPanel = selectedPanel;
                 }
             }
             else
@@ -236,19 +196,63 @@ namespace RetailPOSA.Forms
                     break;
 
                 default:
-                    break;
-            }
-            
-
-            
-
-            
+                break;
+            } 
         }
 
         private void changeLocation(Button button, int height)
         { 
             button.Location = new Point(button.Location.X, height);
         }
+
+        private void initializeNavbar()
+        {
+            pnlSidebar.Width = 204;
+            pnlContent.Width = pnlContent.Width - 200;
+            //panel height
+            pnlHome.Height = 0;
+            pnlCatalog.Height = 0;
+            pnlInventory.Height = 0;
+            pnlSale.Height = 0;
+            pnlSystem.Height = 0;
+
+            //panel widths
+            pnlHome.Width = 200;
+            pnlCatalog.Width = 200;
+            pnlInventory.Width = 200;
+            pnlSale.Width = 200;
+            pnlSystem.Width = 200;
+
+            int initx = 2;
+            int inity = 120;
+            int buttonHeight = 70;
+
+            //position buttons
+            btnNavHome.Location = new Point(initx, inity);
+            btnNavCatalog.Location = new Point(initx, inity + buttonHeight);
+            btnNavInventory.Location = new Point(initx, inity + buttonHeight * 2);
+            btnNavSales.Location = new Point(initx, inity + buttonHeight * 3);
+            btnNavSystem.Location = new Point(initx, inity + buttonHeight * 4);
+
+            //button width
+            btnNavHome.Width = 200;
+            btnNavCatalog.Width = 200;
+            btnNavInventory.Width = 200;
+            btnNavSales.Width = 200;
+            btnNavSystem.Width = 200;
+
+            catalogButtonY = inity + buttonHeight;
+            inventoryButtonY = inity + buttonHeight * 2;
+            saleButtonY = inity + buttonHeight * 3;
+            systemButtonY = inity + buttonHeight * 4;
+
+            //panel position
+            pnlHome.Location = new Point(initx, btnNavHome.Location.Y + 70);
+            pnlCatalog.Location = new Point(initx, btnNavCatalog.Location.Y + 70);
+            pnlInventory.Location = new Point(initx, btnNavInventory.Location.Y + 70);
+            pnlSale.Location = new Point(initx, btnNavSales.Location.Y + 70);
+            pnlSystem.Location = new Point(initx, btnNavSystem.Location.Y + 70);
+        }//initialize navbar
 
         
     }//class
