@@ -96,6 +96,78 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database.cs" />
+    <Compile Include="DialogBoxes\AdjustmentDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogBoxes\AdjustmentDetailForm.Designer.cs">
+      <DependentUpon>AdjustmentDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogBoxes\AdjustmentHeaderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogBoxes\AdjustmentHeaderForm.Designer.cs">
+      <DependentUpon>AdjustmentHeaderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogBoxes\CategoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogBoxes\CategoryForm.Designer.cs">
+      <DependentUpon>CategoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogBoxes\GrnDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogBoxes\GrnDetailForm.Designer.cs">
+      <DependentUpon>GrnDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogBoxes\GrnHeaderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogBoxes\GrnHeaderForm.Designer.cs">
+      <DependentUpon>GrnHeaderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogBoxes\GrnProductSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogBoxes\GrnProductSearchForm.Designer.cs">
+      <DependentUpon>GrnProductSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogBoxes\POSCartEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogBoxes\POSCartEditForm.Designer.cs">
+      <DependentUpon>POSCartEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogBoxes\POSPaymentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogBoxes\POSPaymentForm.Designer.cs">
+      <DependentUpon>POSPaymentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogBoxes\POSProductSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogBoxes\POSProductSearchForm.Designer.cs">
+      <DependentUpon>POSProductSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogBoxes\ProductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogBoxes\ProductForm.Designer.cs">
+      <DependentUpon>ProductForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogBoxes\SupplierForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogBoxes\SupplierForm.Designer.cs">
+      <DependentUpon>SupplierForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogBoxes\UsersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogBoxes\UsersForm.Designer.cs">
+      <DependentUpon>UsersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,14 +180,142 @@
     <Compile Include="Forms\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\GrnHeader.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Session.cs" />
+    <Compile Include="Models\Supplier.cs" />
+    <Compile Include="Models\Users.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AdjustmentDetailService.cs" />
+    <Compile Include="Services\AdjustmentHeaderService.cs" />
+    <Compile Include="Services\AuthService.cs" />
+    <Compile Include="Services\CartDetailService.cs" />
+    <Compile Include="Services\CartHeaderService.cs" />
+    <Compile Include="Services\CategoryService.cs" />
+    <Compile Include="Services\GrnDetailService.cs" />
+    <Compile Include="Services\GrnHeaderService.cs" />
+    <Compile Include="Services\InventoryService.cs" />
+    <Compile Include="Services\InvoiceService.cs" />
+    <Compile Include="Services\ProductService.cs" />
+    <Compile Include="Services\ShopService.cs" />
+    <Compile Include="Services\SupplierService.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="UserControls\AdjustmentControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AdjustmentControl.Designer.cs">
+      <DependentUpon>AdjustmentControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AdjustmentDetailControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AdjustmentDetailControl.Designer.cs">
+      <DependentUpon>AdjustmentDetailControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AdminControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AdminControl.Designer.cs">
+      <DependentUpon>AdminControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CategoryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\CategoryControl.Designer.cs">
+      <DependentUpon>CategoryControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\GrnDetailControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\GrnDetailControl.Designer.cs">
+      <DependentUpon>GrnDetailControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\GrnHeaderControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\GrnHeaderControl.Designer.cs">
+      <DependentUpon>GrnHeaderControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\InventoryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\InventoryControl.Designer.cs">
+      <DependentUpon>InventoryControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\InvoiceControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\InvoiceControl.Designer.cs">
+      <DependentUpon>InvoiceControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\POSControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\POSControl.Designer.cs">
+      <DependentUpon>POSControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ProductControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\ProductControl.Designer.cs">
       <DependentUpon>ProductControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\SettingControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SettingControl.Designer.cs">
+      <DependentUpon>SettingControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SupplierControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SupplierControl.Designer.cs">
+      <DependentUpon>SupplierControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UsersControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UsersControl.Designer.cs">
+      <DependentUpon>UsersControl.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="DialogBoxes\AdjustmentDetailForm.resx">
+      <DependentUpon>AdjustmentDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogBoxes\AdjustmentHeaderForm.resx">
+      <DependentUpon>AdjustmentHeaderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogBoxes\CategoryForm.resx">
+      <DependentUpon>CategoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogBoxes\GrnDetailForm.resx">
+      <DependentUpon>GrnDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogBoxes\GrnHeaderForm.resx">
+      <DependentUpon>GrnHeaderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogBoxes\GrnProductSearchForm.resx">
+      <DependentUpon>GrnProductSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogBoxes\POSCartEditForm.resx">
+      <DependentUpon>POSCartEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogBoxes\POSPaymentForm.resx">
+      <DependentUpon>POSPaymentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogBoxes\POSProductSearchForm.resx">
+      <DependentUpon>POSProductSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogBoxes\ProductForm.resx">
+      <DependentUpon>ProductForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogBoxes\SupplierForm.resx">
+      <DependentUpon>SupplierForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogBoxes\UsersForm.resx">
+      <DependentUpon>UsersForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -131,8 +331,44 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\AdjustmentControl.resx">
+      <DependentUpon>AdjustmentControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\AdjustmentDetailControl.resx">
+      <DependentUpon>AdjustmentDetailControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\AdminControl.resx">
+      <DependentUpon>AdminControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\CategoryControl.resx">
+      <DependentUpon>CategoryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\GrnDetailControl.resx">
+      <DependentUpon>GrnDetailControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\GrnHeaderControl.resx">
+      <DependentUpon>GrnHeaderControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\InventoryControl.resx">
+      <DependentUpon>InventoryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\InvoiceControl.resx">
+      <DependentUpon>InvoiceControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\POSControl.resx">
+      <DependentUpon>POSControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ProductControl.resx">
       <DependentUpon>ProductControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SettingControl.resx">
+      <DependentUpon>SettingControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SupplierControl.resx">
+      <DependentUpon>SupplierControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UsersControl.resx">
+      <DependentUpon>UsersControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -148,6 +384,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
