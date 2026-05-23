@@ -108,5 +108,33 @@ namespace RetailPOSA.Services
             return db.ExecuteQuery(query, parameters);
         }//search active inventory
 
+        public DataTable GetInventoryByID(int inventoryID)
+        {
+            string query = "SELECT " +
+                "inventory.id, " +
+                "grn_header_id, " +
+                "product_id, " +
+                "barcode, " +
+                "products.name, " +
+                "second_name, " +
+                "is_weighted, " +
+                "has_expiry, " +
+                "initial_qty, " +
+                "current_qty, " +
+                "purchase_price, " +
+                "selling_price, " +
+                "discount, " +
+                "final_price, " +
+                "expiry_date " +
+                "FROM inventory " +
+                "INNER JOIN products ON products.id = inventory.product_id " +
+                "WHERE inventory.id = @inventoryID;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@inventoryID", inventoryID);
+
+            return db.ExecuteQuery(query, parameters);
+        }
+
     }//class
 }
