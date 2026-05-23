@@ -11,23 +11,21 @@ namespace RetailPOSA.Services
     internal class AdjustmentDetailService
     {
         Database db = new Database();
-        public int InsertAdjustmentDetail(int headerID, int inventoryID, int productID, decimal qty, decimal purchasePrice, decimal sellingPrice, decimal discount, decimal finalPrice, decimal purchaseTotal, string expireDate, int status)
+        public int InsertAdjustmentDetail(int headerID, int inventoryID, int productID, decimal systemQty, decimal physicalQty, decimal adjustQty, decimal averageCost, decimal totalValue, int status)
         {
-            string query = "INSERT INTO adjustment_detail(adjustment_header_id, inventory_id, product_id, qty, purchase_price, selling_price, discount, final_price, purchase_total, expire_date, status) "+
-                "VALUES(" +
-                "@headerID,@inventoryID,@productID,@qty,@purchasePrice,@sellingPrice,@discount,@finalPrice,@purchaseTotal,@expireDate,@status);";
+            string query = "INSERT INTO adjustment_detail(adjustment_header_id, inventory_id, product_id, system_qty, physical_qty, adjust_qty, average_cost, total_value, status) " +
+                "VALUES(@headerID,@inventoryID,@productID,@systemQty,@physicalQty,@adjustQty,@averageCost,@totalValue,@status);";
 
             Dictionary<string, object> parameters = new Dictionary<string, object>();
 
             parameters.Add("@headerID", headerID);
             parameters.Add("@inventoryID", inventoryID);
             parameters.Add("@productID", productID);
-            parameters.Add("@qty", qty);
-            parameters.Add("@purchasePrice", purchasePrice);
-            parameters.Add("@sellingPrice", sellingPrice);
-            parameters.Add("@finalPrice", finalPrice);
-            parameters.Add("@purchaseTotal", purchaseTotal);
-            parameters.Add("@expireDate", expireDate);
+            parameters.Add("@systemQty", systemQty);
+            parameters.Add("@physicalQty", physicalQty);
+            parameters.Add("@adjustQty", adjustQty);
+            parameters.Add("@averageCost", averageCost);
+            parameters.Add("@totalValue", totalValue);
             parameters.Add("@status", status);
 
             return db.ExecuteNonQuery(query, parameters);
@@ -36,9 +34,9 @@ namespace RetailPOSA.Services
         public DataTable GetAdjustmentDetailByHeaderID(int headerID)
         { 
             string query = "SELECT "+
-                "adjustment_detail.id, adjustment_header_id, inventory_id, product_id, "+
-                "qty, purchase_price, selling_price, discount, final_price, purchase_total, expire_date, " +
-                "products.barcode, products.name " +
+                "barcode, name, " +
+                "adjustment_detail.id, adjustment_header_id, inventory_id, product_id, " +
+                "system_qty, physical_qty, adjust_qty, average_cost, total_value " +
                 "FROM adjustment_detail " +
                 "INNER JOIN products ON products.id =  adjustment_detail.product_id "+
                 "WHERE adjustment_header_id = @headerID;";

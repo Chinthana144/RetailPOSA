@@ -14,11 +14,13 @@ namespace RetailPOSA.Services
         Database db = new Database();
         public int InsertAdjustmentHeader(string adjustmentType, string submittedDate, int itemCount, decimal purchasePrice, string note, int userID, int status)
         {
-            string query = "INSERT INTO adjustment_header(type, submitted_datetime, item_count, purchase_price, note, user_id, status) " +
-                "VALUES(@adjustmentType,@submittedDate,@itemCount,@purchasePrice,@note,@userID,@status);";
+            string adjustmentNo = GetAdjustmentNo();
+            string query = "INSERT INTO adjustment_header(adjustment_no, type, submitted_datetime, item_count, purchase_price, note, user_id, status) " +
+                "VALUES(@adjustmentNo, @adjustmentType,@submittedDate,@itemCount,@purchasePrice,@note,@userID,@status);";
 
             Dictionary<string, object> parameters = new Dictionary<string, object>();
 
+            parameters.Add("@adjustmentNo", adjustmentNo);
             parameters.Add("@adjustmentType", adjustmentType);
             parameters.Add("@submittedDate", submittedDate);
             parameters.Add("@itemCount", itemCount);
@@ -77,6 +79,18 @@ namespace RetailPOSA.Services
             parameters.Add("@userID", userID);
 
             return db.ExecuteQuery(query, parameters);
+        }
+
+        //get Adjustment no
+        public string GetAdjustmentNo()
+        {
+            string query = "SELECT IFNULL(MAX(ID), 0) AS adjustment_count FROM  adjustment_header;";
+
+            DataTable countData = db.ExecuteQuery(query);
+
+            int nextAdjustmentNo = Convert.ToInt32(countData.Rows[0]["adjustment_count"]) + 1;
+
+            return "ADJ_" + nextAdjustmentNo.ToString("D7");
         }
     }//class
 }

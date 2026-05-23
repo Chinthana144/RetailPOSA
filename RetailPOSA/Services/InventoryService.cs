@@ -125,6 +125,7 @@ namespace RetailPOSA.Services
                 "selling_price, " +
                 "discount, " +
                 "final_price, " +
+                "purchase_total, " +
                 "expiry_date " +
                 "FROM inventory " +
                 "INNER JOIN products ON products.id = inventory.product_id " +

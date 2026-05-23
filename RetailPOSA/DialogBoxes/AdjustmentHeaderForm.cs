@@ -16,7 +16,7 @@ namespace RetailPOSA.DialogBoxes
 {
     public partial class AdjustmentHeaderForm : Form
     {
-        private int adjustmentID;
+        private int adjustmentID = 0;
         public AdjustmentHeaderForm(int adjustmentID)
         {
             InitializeComponent();
