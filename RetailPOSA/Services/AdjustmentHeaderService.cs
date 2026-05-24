@@ -45,6 +45,21 @@ namespace RetailPOSA.Services
             return db.ExecuteNonQuery(query, parameters);
         }
 
+        public int UpdateAdjustmentHeaderTotals(int id, int rowCount, decimal total, int userID, int status)
+        {
+            string query = "UPDATE adjustment_header SET item_count = @rowCount, purchase_price = @total, user_id = @userID, status = @status WHERE id  = @id;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("@id", id);
+            parameters.Add("@rowCount", rowCount);
+            parameters.Add("@total", total);
+            parameters.Add("@userID", userID);
+            parameters.Add("@status", status);
+
+            return db.ExecuteNonQuery(query, parameters);
+        }
+
         public DataTable GetAdjustmentHeaderByID(int id)
         {
             string query = "SELECT * FROM adjustment_header WHERE id = @id;";

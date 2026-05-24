@@ -108,6 +108,12 @@
     <Compile Include="DialogBoxes\AdjustmentHeaderForm.Designer.cs">
       <DependentUpon>AdjustmentHeaderForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DialogBoxes\AdjustmentProductSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogBoxes\AdjustmentProductSearchForm.Designer.cs">
+      <DependentUpon>AdjustmentProductSearchForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DialogBoxes\CategoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -285,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DialogBoxes\AdjustmentHeaderForm.resx">
       <DependentUpon>AdjustmentHeaderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogBoxes\AdjustmentProductSearchForm.resx">
+      <DependentUpon>AdjustmentProductSearchForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DialogBoxes\CategoryForm.resx">
       <DependentUpon>CategoryForm.cs</DependentUpon>

@@ -1,4 +1,6 @@
 ﻿using RetailPOSA.DialogBoxes;
+using RetailPOSA.Forms;
+using RetailPOSA.Models;
 using RetailPOSA.Services;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,7 @@ namespace RetailPOSA.UserControls
     public partial class AdjustmentDetailControl : UserControl
     {   
         private int adjustmentID = 0;
+        private int adjustDetailID = 0;
         public AdjustmentDetailControl(int adjustmentID)
         {
             InitializeComponent();
@@ -27,6 +30,8 @@ namespace RetailPOSA.UserControls
             loadHeaderDetails();
 
             loadAdjustmentDetails();
+
+            btnRemove.Enabled = false;
         }
 
         private void loadHeaderDetails()
@@ -51,7 +56,7 @@ namespace RetailPOSA.UserControls
             {
                 DataTable result = inventoryService.SearchActiveInventory(txtSearch.Text);
 
-                if (result != null)
+                if (result.Rows.Count > 0)
                 {
                     if (result.Rows.Count == 1)
                     {
@@ -59,15 +64,22 @@ namespace RetailPOSA.UserControls
                         //open add form
                         AdjustmentDetailForm adjustmentDetailForm = new AdjustmentDetailForm(adjustmentID, inventoryID);
                         adjustmentDetailForm.ShowDialog();
+
+                        loadAdjustmentDetails();
                     }
                     else
-                    { 
+                    {
                         //open search form
+                        AdjustmentProductSearchForm searchForm = new AdjustmentProductSearchForm(txtSearch.Text, adjustmentID);
+                        searchForm.ShowDialog();
+
+                        loadAdjustmentDetails();
                     }
                 }//has result
                 else
                 {
-                    MessageBox.Show("No result found.", "No Result", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("No results found.", "No Result", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtSearch.Text = "";
                 }
             }
         }
@@ -93,9 +105,85 @@ namespace RetailPOSA.UserControls
             dgvAdjustDetail.Columns["average_cost"].HeaderText = "Average Cost";
             dgvAdjustDetail.Columns["total_value"].HeaderText = "Total";
 
+            //get totals
+            DataTable totals = detailService.GetAdjustmentDetailTotals(adjustmentID);
 
+            string rowCount = totals.Rows[0]["row_count"].ToString();
+            string total = totals.Rows[0]["total"].ToString();
+
+            lblRowCount.Text = "Rows: " + rowCount;
+            lblTotal.Text = "Total: " + total;
 
         }//fetch adjustments by header id
 
+        private void dgvAdjustDetail_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            { 
+                DataGridViewRow row = dgvAdjustDetail.Rows[e.RowIndex];
+                this.adjustDetailID = Convert.ToInt32(row.Cells["id"].Value);
+
+                if (this.adjustDetailID > 0)
+                {
+                    //enable buttons
+                    btnRemove.Enabled = true;
+                }
+            }
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (this.adjustDetailID > 0)
+            {
+                //delete item from detail tables
+                AdjustmentDetailService detailService = new AdjustmentDetailService();
+
+                detailService.RemoveAdjustmentDetail(this.adjustDetailID);
+
+                loadAdjustmentDetails();
+            }
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            InventoryService inventoryService = new InventoryService();
+            AdjustmentHeaderService adjustHeaderService = new AdjustmentHeaderService();
+            AdjustmentDetailService adjustDetailService = new AdjustmentDetailService();
+            DialogResult result = MessageBox.Show("Do you want to Submit this Adjustment?", "Adjustment Varification", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            { 
+                DataTable detailData = adjustDetailService.GetAdjustmentDetailByHeaderID(this.adjustDetailID);
+
+                int rowCount = 0;
+                decimal total = 0;
+
+                foreach (DataRow row in detailData.Rows)
+                {
+                    int inventoryID = Convert.ToInt32(row["inventory_id"]);
+                    decimal adjustQty = Convert.ToDecimal(row["adjust_qty"]) * -1; //make it positive
+
+                    //change inventory qty
+                    inventoryService.UpdateInventoryQty(inventoryID, adjustQty);
+
+                    //get totals
+                    rowCount++;
+                    total += Convert.ToDecimal(row["total_value"]);
+
+                }//foreach
+
+                //MessageBox.Show(rowCount.ToString());
+
+                int userID = Session.UserID;
+                //update adjustment header
+                adjustHeaderService.UpdateAdjustmentHeaderTotals(this.adjustmentID, rowCount, total, userID, 1);
+
+                //load adjustment header control
+                AdjustmentControl adjustmentHeaderControl = new AdjustmentControl();
+                Main mainForm = (Main)Application.OpenForms["Main"];
+                mainForm.loadControl(adjustmentHeaderControl);
+
+            }//said yes
+        }
     }//class
 }

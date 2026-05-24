@@ -44,7 +44,7 @@ namespace RetailPOSA.DialogBoxes
             decimal purchaseTotal = Convert.ToDecimal(inventoryData.Rows[0]["purchase_total"]);
             decimal initialQty = Convert.ToDecimal(inventoryData.Rows[0]["initial_qty"]);
 
-            decimal averageCost = purchaseTotal / initialQty;
+            decimal averageCost = Math.Round(purchaseTotal / initialQty, 2) ;
             this.averageCost = averageCost;
 
             lblBarcode.Text = "Barcode: " + barcode;
@@ -59,12 +59,12 @@ namespace RetailPOSA.DialogBoxes
 
         private void txtPhysicalQty_TextChanged(object sender, EventArgs e)
         {
-            if (decimal.TryParse(txtPhysicalQty.Text ?? "0", out decimal result))
+            if (decimal.TryParse(txtPhysicalQty.Text, out decimal result) && txtPhysicalQty.Text != "")
             {
                 //calculate adjust qty
-                decimal adjustQty = result - systemQty;
+                decimal adjustQty = Math.Round(result - systemQty, 2);
 
-                decimal totalValue = adjustQty * this.averageCost;
+                decimal totalValue = Math.Round(adjustQty * this.averageCost, 2);
 
                 lblAdjustQty.Text = "Adjust Qty: " + adjustQty.ToString();
                 lblTotalValue.Text = "Total Value: " + totalValue.ToString();
@@ -80,20 +80,34 @@ namespace RetailPOSA.DialogBoxes
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
             AdjustmentDetailService service = new AdjustmentDetailService();
-            if (decimal.TryParse(txtPhysicalQty.Text, out decimal result))
-            { 
-                decimal adjustQty = result - systemQty;
-                decimal totalValue = adjustQty * this.averageCost;
-                service.InsertAdjustmentDetail(this.adjustmentHeaderID, this.inventoryID, this.productID, this.systemQty, result, adjustQty, this.averageCost, totalValue, 1);
 
-                this.Close();
+            bool hasItem = service.CheckDuplicateInventory(this.adjustmentHeaderID, this.inventoryID);
+
+            if (!hasItem)
+            {
+                if (decimal.TryParse(txtPhysicalQty.Text, out decimal result))
+                {
+                    decimal adjustQty = result - systemQty;
+                    decimal totalValue = adjustQty * this.averageCost;
+                    service.InsertAdjustmentDetail(this.adjustmentHeaderID, this.inventoryID, this.productID, this.systemQty, result, adjustQty, this.averageCost, totalValue, 1);
+
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid number input.", "Error Entry", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtPhysicalQty.Text = "";
+                    return;
+                }
             }
             else
             {
-                MessageBox.Show("Invalid number input.", "Error Entry", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("This product already exist in list.", "Duplicate Entry", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPhysicalQty.Text = "";
                 return;
-            }
+            }//duplicate inventrory id
+
+            
         }
     }//class
 }
