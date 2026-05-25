@@ -153,7 +153,7 @@ namespace RetailPOSA.UserControls
 
             if (result == DialogResult.Yes)
             { 
-                DataTable detailData = adjustDetailService.GetAdjustmentDetailByHeaderID(this.adjustDetailID);
+                DataTable detailData = adjustDetailService.GetAdjustmentDetailByHeaderID(adjustmentID);
 
                 int rowCount = 0;
                 decimal total = 0;
@@ -161,7 +161,7 @@ namespace RetailPOSA.UserControls
                 foreach (DataRow row in detailData.Rows)
                 {
                     int inventoryID = Convert.ToInt32(row["inventory_id"]);
-                    decimal adjustQty = Convert.ToDecimal(row["adjust_qty"]) * -1; //make it positive
+                    decimal adjustQty = Convert.ToDecimal(row["adjust_qty"]) * (-1); //make it positive
 
                     //change inventory qty
                     inventoryService.UpdateInventoryQty(inventoryID, adjustQty);
@@ -171,8 +171,6 @@ namespace RetailPOSA.UserControls
                     total += Convert.ToDecimal(row["total_value"]);
 
                 }//foreach
-
-                //MessageBox.Show(rowCount.ToString());
 
                 int userID = Session.UserID;
                 //update adjustment header

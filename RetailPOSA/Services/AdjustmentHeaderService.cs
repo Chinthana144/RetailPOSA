@@ -85,6 +85,24 @@ namespace RetailPOSA.Services
 
         }//get adjuestment
 
+        public DataTable SearchAdjustmentHeader(string searchTerm, int status, int limit, int offset)
+        {
+            string query = "SELECT id, type, submitted_datetime, item_count, purchase_price, note, adjustment_header.user_id, status, username "+
+                "FROM adjustment_header " +
+                "INNER JOIN users ON users.user_id = adjustment_header.user_id "+
+                "WHERE adjustment_header.status = @status AND (submitted_datetime LIKE @searchTerm OR adjustment_no LIKE @searchTerm OR note LIKE @searchTerm OR type LIKE @searchTerm) " +
+                "LIMIT @limit OFFSET @offset;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("@searchTerm", $"%{searchTerm}%");
+            parameters.Add("@status", status);
+            parameters.Add("@limit", limit);
+            parameters.Add("@offset", offset);
+
+            return db.ExecuteQuery(query, parameters);
+        }//get all data
+
         public DataTable GetLastAdjustmentByUser(int userID)
         {
             string query = "SELECT * FROM adjustment_header WHERE user_id = @userID AND status = 0 ORDER BY id DESC LIMIT 1;";
