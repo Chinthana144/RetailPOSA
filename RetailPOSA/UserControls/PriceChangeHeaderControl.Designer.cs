@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnAddItems = new System.Windows.Forms.Button();
             this.lblPageNo = new System.Windows.Forms.Label();
             this.btnNext = new System.Windows.Forms.Button();
@@ -40,6 +41,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnAddPriceChange = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.searchTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvChangeHeader)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,6 +78,7 @@
             this.btnNext.TabIndex = 42;
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnPrevious
             // 
@@ -87,6 +90,7 @@
             this.btnPrevious.TabIndex = 41;
             this.btnPrevious.Text = "Previous";
             this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
             // btnEditPriceChange
             // 
@@ -150,6 +154,7 @@
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(222, 32);
             this.cmbStatus.TabIndex = 37;
+            this.cmbStatus.SelectedIndexChanged += new System.EventHandler(this.cmbStatus_SelectedIndexChanged);
             // 
             // txtSearch
             // 
@@ -162,6 +167,7 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(274, 32);
             this.txtSearch.TabIndex = 35;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // label2
             // 
@@ -197,6 +203,11 @@
             this.label1.Size = new System.Drawing.Size(131, 25);
             this.label1.TabIndex = 33;
             this.label1.Text = "Price Change";
+            // 
+            // searchTimer
+            // 
+            this.searchTimer.Interval = 300;
+            this.searchTimer.Tick += new System.EventHandler(this.searchTimer_Tick);
             // 
             // PriceChangeHeaderControl
             // 
@@ -238,5 +249,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAddPriceChange;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Timer searchTimer;
     }
 }

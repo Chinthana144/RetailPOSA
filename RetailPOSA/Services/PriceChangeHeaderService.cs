@@ -32,6 +32,18 @@ namespace RetailPOSA.Services
 
         }//insert price change header
 
+        public int UpdatePriceChangeNote(int id, string note)
+        {
+            string query = "UPDATE price_change_header SET note = @note WHERE id = @id;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("@id", id);
+            parameters.Add("@note", note);
+
+            return db.ExecuteNonQuery(query, parameters);
+        }//update note
+
         public DataTable SearchPriceChangeHeader(string searchTerm, int status, int limit, int offset)
         {
             string query = "SELECT " +

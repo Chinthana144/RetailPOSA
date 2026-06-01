@@ -30,7 +30,7 @@
         {
             this.txtNote = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnCreatePriceChange = new System.Windows.Forms.Button();
+            this.btnPriceChange = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtNote
@@ -58,17 +58,17 @@
             this.label2.TabIndex = 38;
             this.label2.Text = "Note";
             // 
-            // btnCreatePriceChange
+            // btnPriceChange
             // 
-            this.btnCreatePriceChange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCreatePriceChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreatePriceChange.Location = new System.Drawing.Point(180, 128);
-            this.btnCreatePriceChange.Name = "btnCreatePriceChange";
-            this.btnCreatePriceChange.Size = new System.Drawing.Size(240, 40);
-            this.btnCreatePriceChange.TabIndex = 41;
-            this.btnCreatePriceChange.Text = "Create Price Change";
-            this.btnCreatePriceChange.UseVisualStyleBackColor = true;
-            this.btnCreatePriceChange.Click += new System.EventHandler(this.btnCreatePriceChange_Click);
+            this.btnPriceChange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPriceChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPriceChange.Location = new System.Drawing.Point(180, 128);
+            this.btnPriceChange.Name = "btnPriceChange";
+            this.btnPriceChange.Size = new System.Drawing.Size(240, 40);
+            this.btnPriceChange.TabIndex = 41;
+            this.btnPriceChange.Text = "Create Price Change";
+            this.btnPriceChange.UseVisualStyleBackColor = true;
+            this.btnPriceChange.Click += new System.EventHandler(this.btnPriceChange_Click);
             // 
             // PriceChangeHeaderForm
             // 
@@ -76,7 +76,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(430, 180);
-            this.Controls.Add(this.btnCreatePriceChange);
+            this.Controls.Add(this.btnPriceChange);
             this.Controls.Add(this.txtNote);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -95,6 +95,6 @@
 
         private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnCreatePriceChange;
+        private System.Windows.Forms.Button btnPriceChange;
     }
 }

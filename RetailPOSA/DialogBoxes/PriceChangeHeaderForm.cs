@@ -25,7 +25,7 @@ namespace RetailPOSA.DialogBoxes
 
         private void PriceChangeHeaderForm_Load(object sender, EventArgs e)
         {
-            btnCreatePriceChange.Text = headerID > 0 ? "Update Price Change" : "Create Price Change";
+            btnPriceChange.Text = headerID > 0 ? "Update Price Change" : "Create Price Change";
 
             if (headerID > 0)
             {
@@ -33,16 +33,22 @@ namespace RetailPOSA.DialogBoxes
             }
         }//load
 
-        private void btnCreatePriceChange_Click(object sender, EventArgs e)
+        private void btnPriceChange_Click(object sender, EventArgs e)
         {
             PriceChangeHeaderService priceChangeService = new PriceChangeHeaderService();
             string submitDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             int userID = Session.UserID;
 
-            priceChangeService.InsertPriceChangeHeader(txtNote.Text, submitDate, 0, 0, userID, 0);
-
+            if (headerID > 0)
+            {
+                priceChangeService.UpdatePriceChangeNote(headerID, txtNote.Text);
+            }//update
+            else
+            {
+                priceChangeService.InsertPriceChangeHeader(txtNote.Text, submitDate, 0, 0, userID, 0);
+            }
             this.Close();
-        }//create price change
+        }
 
         private void loadPriceChange()
         {
@@ -57,5 +63,7 @@ namespace RetailPOSA.DialogBoxes
                 txtNote.Text = note;
             }            
         }//load note
+
+        
     }//class
 }

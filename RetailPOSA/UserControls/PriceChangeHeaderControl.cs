@@ -31,12 +31,16 @@ namespace RetailPOSA.UserControls
             btnEditPriceChange.Enabled = false;
 
             loadPriceChanges();
+
+            lblPageNo.Text = "Page: " + currentPage.ToString();
         }
 
         private void btnAddPriceChange_Click(object sender, EventArgs e)
         {
             PriceChangeHeaderForm headerForm = new PriceChangeHeaderForm(0);
             headerForm.ShowDialog();
+
+            loadPriceChanges();
         }
 
         private void dgvChangeHeader_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -61,8 +65,33 @@ namespace RetailPOSA.UserControls
             {
                 PriceChangeHeaderForm headerForm = new PriceChangeHeaderForm(selectedID);
                 headerForm.ShowDialog();
+
+                loadPriceChanges();
             }
         }//show edit form
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            searchTimer.Stop();
+            searchTimer.Start();
+        }
+
+        private void searchTimer_Tick(object sender, EventArgs e)
+        {
+            searchTimer.Stop();
+            if (txtSearch.Text.Length > 0)
+            {
+                searchPriceChanges();
+            }
+            else {
+                loadPriceChanges();
+            }
+        }
+
+        private void cmbStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            searchPriceChanges();
+        }
 
         private void loadPriceChanges()
         {
@@ -83,6 +112,41 @@ namespace RetailPOSA.UserControls
             dgvChangeHeader.Columns["username"].HeaderText = "User";
         }
 
-        
+        private void searchPriceChanges()
+        {
+            PriceChangeHeaderService headerService = new PriceChangeHeaderService();
+
+            DataTable headerData = headerService.SearchPriceChangeHeader(txtSearch.Text, cmbStatus.SelectedIndex, currentPage, (currentPage - 1) * pageSize);
+
+            dgvChangeHeader.DataSource = headerData;
+
+            dgvChangeHeader.Columns["user_id"].Visible = false;
+            dgvChangeHeader.Columns["status"].Visible = false;
+
+            dgvChangeHeader.Columns["id"].HeaderText = "ID";
+            dgvChangeHeader.Columns["price_change_no"].HeaderText = "Price Change No";
+            dgvChangeHeader.Columns["submitted_datetime"].HeaderText = "Date";
+            dgvChangeHeader.Columns["item_count"].HeaderText = "Count";
+            dgvChangeHeader.Columns["total_price"].HeaderText = "Total";
+            dgvChangeHeader.Columns["username"].HeaderText = "User";
+
+            lblPageNo.Text = "Page: " + currentPage.ToString();
+            this.selectedID = 0;
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            currentPage++;
+            searchPriceChanges();
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 0)
+            {
+                currentPage--;
+                searchPriceChanges();
+            }
+        }
     }//class
 }
