@@ -67,7 +67,6 @@ namespace RetailPOSA.DialogBoxes
 
         private void loadHeaderData()
         {
-            
             if (this.adjustmentID > 0)
             {
                 AdjustmentHeaderService adjustmentService = new AdjustmentHeaderService();

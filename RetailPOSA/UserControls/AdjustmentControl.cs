@@ -70,13 +70,13 @@ namespace RetailPOSA.UserControls
 
         private void btnAddItems_Click(object sender, EventArgs e)
         {
-            if (selectedID > 0)
+            if (selectedID > 0 && cmbStatus.SelectedIndex == 0)
             {
                 AdjustmentDetailControl adjustmentDetailControl = new AdjustmentDetailControl(selectedID);
 
                 Main mainForm = (Main)Application.OpenForms["Main"];
                 mainForm.loadControl(adjustmentDetailControl);
-            }
+            }//load detail form
         }
 
         private void cmbStatus_SelectedIndexChanged(object sender, EventArgs e)
@@ -145,6 +145,7 @@ namespace RetailPOSA.UserControls
             dgvAdjustHeader.Columns["username"].HeaderText = "User";
 
             lblPageNo.Text = "Page: " + currentPage.ToString();
+            this.selectedID = 0;
         }
 
         private void btnNext_Click(object sender, EventArgs e)

@@ -98,6 +98,11 @@ namespace RetailPOSA.Forms
             AdjustmentControl uc = new AdjustmentControl();
             loadControl(uc);
         }
+        private void navPriceChange_Click(object sender, EventArgs e)
+        {
+            PriceChangeHeaderControl uc = new PriceChangeHeaderControl();
+            loadControl(uc);
+        }
         private void navSettings_Click(object sender, EventArgs e)
         {
             SettingControl uc = new SettingControl();
@@ -155,7 +160,7 @@ namespace RetailPOSA.Forms
             initializeNavbar();
             menuOpen = false;
             this.selectedPanel = pnlSale;
-            this.panelHeight = 100;
+            this.panelHeight = 150;
             panel = 4;
             MenuTimer.Start();
         }

@@ -41,7 +41,7 @@
             this.navPOS = new System.Windows.Forms.Button();
             this.navInvoices = new System.Windows.Forms.Button();
             this.pnlInventory = new System.Windows.Forms.Panel();
-            this.navReturn = new System.Windows.Forms.Button();
+            this.navPriceChange = new System.Windows.Forms.Button();
             this.navAdjustment = new System.Windows.Forms.Button();
             this.navGRN = new System.Windows.Forms.Button();
             this.navInventory = new System.Windows.Forms.Button();
@@ -61,6 +61,7 @@
             this.lblUsername = new System.Windows.Forms.Label();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.MenuTimer = new System.Windows.Forms.Timer(this.components);
+            this.navReturn = new System.Windows.Forms.Button();
             this.pnlSidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picShopLogo)).BeginInit();
             this.pnlSystem.SuspendLayout();
@@ -169,11 +170,12 @@
             // 
             // pnlSale
             // 
+            this.pnlSale.Controls.Add(this.navReturn);
             this.pnlSale.Controls.Add(this.navPOS);
             this.pnlSale.Controls.Add(this.navInvoices);
             this.pnlSale.Location = new System.Drawing.Point(258, 480);
             this.pnlSale.Name = "pnlSale";
-            this.pnlSale.Size = new System.Drawing.Size(250, 120);
+            this.pnlSale.Size = new System.Drawing.Size(250, 180);
             this.pnlSale.TabIndex = 23;
             // 
             // navPOS
@@ -196,7 +198,7 @@
             this.navInvoices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.navInvoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.navInvoices.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.navInvoices.Location = new System.Drawing.Point(0, 62);
+            this.navInvoices.Location = new System.Drawing.Point(0, 61);
             this.navInvoices.Name = "navInvoices";
             this.navInvoices.Size = new System.Drawing.Size(250, 50);
             this.navInvoices.TabIndex = 22;
@@ -206,7 +208,7 @@
             // 
             // pnlInventory
             // 
-            this.pnlInventory.Controls.Add(this.navReturn);
+            this.pnlInventory.Controls.Add(this.navPriceChange);
             this.pnlInventory.Controls.Add(this.navAdjustment);
             this.pnlInventory.Controls.Add(this.navGRN);
             this.pnlInventory.Controls.Add(this.navInventory);
@@ -215,18 +217,19 @@
             this.pnlInventory.Size = new System.Drawing.Size(250, 240);
             this.pnlInventory.TabIndex = 24;
             // 
-            // navReturn
+            // navPriceChange
             // 
-            this.navReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(93)))), ((int)(((byte)(93)))));
-            this.navReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.navReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.navReturn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.navReturn.Location = new System.Drawing.Point(0, 180);
-            this.navReturn.Name = "navReturn";
-            this.navReturn.Size = new System.Drawing.Size(250, 50);
-            this.navReturn.TabIndex = 24;
-            this.navReturn.Text = "Returns";
-            this.navReturn.UseVisualStyleBackColor = false;
+            this.navPriceChange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(93)))), ((int)(((byte)(93)))));
+            this.navPriceChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.navPriceChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.navPriceChange.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.navPriceChange.Location = new System.Drawing.Point(0, 180);
+            this.navPriceChange.Name = "navPriceChange";
+            this.navPriceChange.Size = new System.Drawing.Size(250, 50);
+            this.navPriceChange.TabIndex = 24;
+            this.navPriceChange.Text = "Price Change";
+            this.navPriceChange.UseVisualStyleBackColor = false;
+            this.navPriceChange.Click += new System.EventHandler(this.navPriceChange_Click);
             // 
             // navAdjustment
             // 
@@ -479,6 +482,19 @@
             this.MenuTimer.Interval = 10;
             this.MenuTimer.Tick += new System.EventHandler(this.MenuTimer_Tick);
             // 
+            // navReturn
+            // 
+            this.navReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(93)))), ((int)(((byte)(93)))));
+            this.navReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.navReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.navReturn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.navReturn.Location = new System.Drawing.Point(-1, 120);
+            this.navReturn.Name = "navReturn";
+            this.navReturn.Size = new System.Drawing.Size(250, 50);
+            this.navReturn.TabIndex = 23;
+            this.navReturn.Text = "Return";
+            this.navReturn.UseVisualStyleBackColor = false;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -524,7 +540,7 @@
         private System.Windows.Forms.Button navCategories;
         private System.Windows.Forms.Button navProducts;
         private System.Windows.Forms.Panel pnlInventory;
-        private System.Windows.Forms.Button navReturn;
+        private System.Windows.Forms.Button navPriceChange;
         private System.Windows.Forms.Button navAdjustment;
         private System.Windows.Forms.Button navGRN;
         private System.Windows.Forms.Button navInventory;
@@ -537,5 +553,6 @@
         private System.Windows.Forms.Button navReports;
         private System.Windows.Forms.Button navSettings;
         private System.Windows.Forms.PictureBox picShopLogo;
+        private System.Windows.Forms.Button navReturn;
     }
 }

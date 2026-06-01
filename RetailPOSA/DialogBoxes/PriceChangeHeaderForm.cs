@@ -1,0 +1,61 @@
+﻿using Org.BouncyCastle.Tls;
+using RetailPOSA.Models;
+using RetailPOSA.Services;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace RetailPOSA.DialogBoxes
+{
+    public partial class PriceChangeHeaderForm : Form
+    {
+        private int headerID = 0;
+        public PriceChangeHeaderForm(int headerID)
+        {
+            InitializeComponent();
+
+            this.headerID = headerID;
+        }
+
+        private void PriceChangeHeaderForm_Load(object sender, EventArgs e)
+        {
+            btnCreatePriceChange.Text = headerID > 0 ? "Update Price Change" : "Create Price Change";
+
+            if (headerID > 0)
+            {
+                loadPriceChange();
+            }
+        }//load
+
+        private void btnCreatePriceChange_Click(object sender, EventArgs e)
+        {
+            PriceChangeHeaderService priceChangeService = new PriceChangeHeaderService();
+            string submitDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            int userID = Session.UserID;
+
+            priceChangeService.InsertPriceChangeHeader(txtNote.Text, submitDate, 0, 0, userID, 0);
+
+            this.Close();
+        }//create price change
+
+        private void loadPriceChange()
+        {
+            if (headerID > 0)
+            {
+                PriceChangeHeaderService service = new PriceChangeHeaderService();
+
+                DataTable dt = service.GetPriceChangeByID(headerID);
+
+                string note = dt.Rows[0]["note"].ToString();
+
+                txtNote.Text = note;
+            }            
+        }//load note
+    }//class
+}
