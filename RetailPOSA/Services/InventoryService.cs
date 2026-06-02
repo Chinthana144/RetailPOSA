@@ -1,4 +1,5 @@
-﻿using RetailPOSA.Models;
+﻿using Mysqlx.Crud;
+using RetailPOSA.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,7 +12,7 @@ namespace RetailPOSA.Services
     internal class InventoryService
     {
         Database db = new Database();
-        public int InsertInventory(int grnHeaderID, int productID, int initialQty, int currentQty, decimal purchasePrice, decimal sellingPrice, decimal discount, decimal finalPrice, decimal purchaseTotal, DateTime expiryDate, bool status)
+        public int InsertInventory(int grnHeaderID, int productID, decimal initialQty, decimal currentQty, decimal purchasePrice, decimal sellingPrice, decimal discount, decimal finalPrice, decimal purchaseTotal, DateTime expiryDate, int status)
         {
             string query = "INSERT INTO inventory(grn_header_id, product_id, initial_qty, current_qty, purchase_price, selling_price, discount, final_price, purchase_total, expiry_date, status) " +
                 "VALUES(@grn_header_id, @product_id, @initial_qty, @current_qty, @purchase_price, @selling_price, @discount, @final_price, @purchase_total, @expiry_date, @status);";
@@ -62,7 +63,7 @@ namespace RetailPOSA.Services
 
             return db.ExecuteQuery(query, parameters);
         }//get inventory
-
+     
         public DataTable SearchInventory(string searchTerm, int limit, int offset)
         {
             string query = "SELECT inventory.id, grn_header_id, product_id, " +

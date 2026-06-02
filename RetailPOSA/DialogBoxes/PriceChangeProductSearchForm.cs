@@ -1,0 +1,71 @@
+﻿using RetailPOSA.Services;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace RetailPOSA.DialogBoxes
+{
+    public partial class PriceChangeProductSearchForm : Form
+    {
+        private string searchTerm = "";
+        private int priceChangeHeaderID = 0;
+        public PriceChangeProductSearchForm(string searchTerm, int priceChangeHeaderID  )
+        {
+            InitializeComponent();
+            this.searchTerm = searchTerm;
+            this.priceChangeHeaderID = priceChangeHeaderID;
+        }
+
+        private void PriceChangeProductSearchForm_Load(object sender, EventArgs e)
+        {
+            loadproducts();
+        }
+
+        private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            { 
+                DataGridViewRow row = dgvProducts.Rows[e.RowIndex];
+                
+                int inventoryID = Convert.ToInt32(row.Cells["id"].Value);
+
+                PriceChangeDetailForm detailForm = new PriceChangeDetailForm(priceChangeHeaderID, inventoryID);
+                detailForm.ShowDialog();
+
+                this.Close();
+            }
+        }//cell click
+
+        private void loadproducts()
+        {
+            InventoryService inventoryService = new InventoryService();
+
+            DataTable SearchData = inventoryService.SearchActiveInventory(searchTerm);
+
+            dgvProducts.DataSource = SearchData;
+
+            dgvProducts.Columns["id"].Visible = false;
+            dgvProducts.Columns["grn_header_id"].Visible = false;
+            dgvProducts.Columns["product_id"].Visible = false;
+            dgvProducts.Columns["second_name"].Visible = false;
+            dgvProducts.Columns["is_weighted"].Visible = false;
+            dgvProducts.Columns["has_expiry"].Visible = false;
+            dgvProducts.Columns["initial_qty"].Visible = false;
+
+            dgvProducts.Columns["barcode"].HeaderText = "Barcode";
+            dgvProducts.Columns["name"].HeaderText = "Product";
+            dgvProducts.Columns["current_qty"].HeaderText = "Qty";
+            dgvProducts.Columns["purchase_price"].HeaderText = "Pur. Price";
+            dgvProducts.Columns["selling_price"].HeaderText = "Sell Price";
+            dgvProducts.Columns["discount"].HeaderText = "Discount";
+            dgvProducts.Columns["final_price"].HeaderText = "Final Price";
+            dgvProducts.Columns["expiry_date"].HeaderText = "Expire";
+        }//load products
+    }//class
+}

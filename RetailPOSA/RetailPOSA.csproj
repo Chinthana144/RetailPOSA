@@ -168,6 +168,12 @@
     <Compile Include="DialogBoxes\PriceChangeHeaderForm.Designer.cs">
       <DependentUpon>PriceChangeHeaderForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DialogBoxes\PriceChangeProductSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogBoxes\PriceChangeProductSearchForm.Designer.cs">
+      <DependentUpon>PriceChangeProductSearchForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DialogBoxes\ProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,6 +222,7 @@
     <Compile Include="Services\GrnHeaderService.cs" />
     <Compile Include="Services\InventoryService.cs" />
     <Compile Include="Services\InvoiceService.cs" />
+    <Compile Include="Services\PriceChangeDetailService.cs" />
     <Compile Include="Services\PriceChangeHeaderService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\ShopService.cs" />
@@ -346,6 +353,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DialogBoxes\PriceChangeHeaderForm.resx">
       <DependentUpon>PriceChangeHeaderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogBoxes\PriceChangeProductSearchForm.resx">
+      <DependentUpon>PriceChangeProductSearchForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DialogBoxes\ProductForm.resx">
       <DependentUpon>ProductForm.cs</DependentUpon>

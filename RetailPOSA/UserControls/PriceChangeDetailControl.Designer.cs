@@ -76,6 +76,7 @@
             this.btnRemove.TabIndex = 45;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnSubmit
             // 
@@ -87,6 +88,7 @@
             this.btnSubmit.TabIndex = 44;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // dgvChangeDetail
             // 
@@ -108,6 +110,7 @@
             this.dgvChangeDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvChangeDetail.Size = new System.Drawing.Size(1103, 512);
             this.dgvChangeDetail.TabIndex = 43;
+            this.dgvChangeDetail.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvChangeDetail_CellClick);
             // 
             // txtSearch
             // 

@@ -44,6 +44,22 @@ namespace RetailPOSA.Services
             return db.ExecuteNonQuery(query, parameters);
         }//update note
 
+        public int UpdatePriceChangeTotals(int id, string submitDate, int itemCount, decimal totalPrice, int userID, int status)
+        {
+            string query = "UPDATE price_change_header SET submitted_datetime = @submitDate,  item_count = @itemCount, total_price = @totalPrice, user_id = @userID, status = @status WHERE id = @id;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("@id", id);
+            parameters.Add("@submitDate", submitDate);
+            parameters.Add("@itemCount", itemCount);
+            parameters.Add("@totalPrice", totalPrice);
+            parameters.Add("@userID", userID);
+            parameters.Add("@status", status);
+
+            return db.ExecuteNonQuery(query, parameters);
+        }//update totals after submit
+
         public DataTable SearchPriceChangeHeader(string searchTerm, int status, int limit, int offset)
         {
             string query = "SELECT " +
