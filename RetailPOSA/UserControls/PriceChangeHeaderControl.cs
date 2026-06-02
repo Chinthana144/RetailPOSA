@@ -1,4 +1,5 @@
 ﻿using RetailPOSA.DialogBoxes;
+using RetailPOSA.Forms;
 using RetailPOSA.Services;
 using System;
 using System.Collections.Generic;
@@ -58,6 +59,14 @@ namespace RetailPOSA.UserControls
                 }
             }//has index
         }//dgv cell clicked
+
+        private void btnAddItems_Click(object sender, EventArgs e)
+        {
+            PriceChangeDetailControl detailControl = new PriceChangeDetailControl(selectedID);
+            //load detail control with headerID
+            Main mainForm = (Main)Application.OpenForms["Main"];
+            mainForm.loadControl(detailControl);
+        }//load price change detail control
 
         private void btnEditPriceChange_Click(object sender, EventArgs e)
         {
@@ -132,7 +141,7 @@ namespace RetailPOSA.UserControls
 
             lblPageNo.Text = "Page: " + currentPage.ToString();
             this.selectedID = 0;
-        }
+        }//search price change
 
         private void btnNext_Click(object sender, EventArgs e)
         {
@@ -148,5 +157,7 @@ namespace RetailPOSA.UserControls
                 searchPriceChanges();
             }
         }
+
+        
     }//class
 }

@@ -74,6 +74,16 @@ namespace RetailPOSA.Services
             return db.ExecuteQuery(query, parameters);
         }
 
+        public DataTable GetLastPriceChangeByUserID(int userID)
+        {
+            string query = "SELECT * FROM price_change_header WHERE user_id = @userID ORDER BY id DESC LIMIT 1;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@userID", userID);
+
+            return db.ExecuteQuery(query, parameters);
+        }
+
         private string GetPriceChangeNo()
         {
             string query = "SELECT IFNULL(MAX(ID), 0) AS price_change_count FROM  price_change_header;";

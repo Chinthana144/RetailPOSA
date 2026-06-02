@@ -1,6 +1,8 @@
 ﻿using Org.BouncyCastle.Tls;
+using RetailPOSA.Forms;
 using RetailPOSA.Models;
 using RetailPOSA.Services;
+using RetailPOSA.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -46,6 +48,15 @@ namespace RetailPOSA.DialogBoxes
             else
             {
                 priceChangeService.InsertPriceChangeHeader(txtNote.Text, submitDate, 0, 0, userID, 0);
+
+                //get last Id
+                DataTable dt = priceChangeService.GetLastPriceChangeByUserID(userID);
+                headerID = Convert.ToInt32(dt.Rows[0]["id"]);
+
+                PriceChangeDetailControl detailControl = new PriceChangeDetailControl(headerID);
+                //load detail control with headerID
+                Main mainForm = (Main)Application.OpenForms["Main"];
+                mainForm.loadControl(detailControl);
             }
             this.Close();
         }

@@ -55,6 +55,7 @@
             this.btnAddItems.TabIndex = 44;
             this.btnAddItems.Text = "Add Items";
             this.btnAddItems.UseVisualStyleBackColor = true;
+            this.btnAddItems.Click += new System.EventHandler(this.btnAddItems_Click);
             // 
             // lblPageNo
             // 
