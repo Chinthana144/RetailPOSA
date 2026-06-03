@@ -36,6 +36,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dgvAdjustDetail = new System.Windows.Forms.DataGridView();
             this.btnSubmit = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.lblRowCount = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdjustDetail)).BeginInit();
             this.SuspendLayout();
             // 
@@ -126,6 +129,7 @@
             this.dgvAdjustDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAdjustDetail.Size = new System.Drawing.Size(1103, 480);
             this.dgvAdjustDetail.TabIndex = 30;
+            this.dgvAdjustDetail.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdjustDetail_CellClick);
             // 
             // btnSubmit
             // 
@@ -137,12 +141,53 @@
             this.btnSubmit.TabIndex = 33;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemove.Location = new System.Drawing.Point(10, 663);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(181, 40);
+            this.btnRemove.TabIndex = 34;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
+            // lblRowCount
+            // 
+            this.lblRowCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblRowCount.AutoSize = true;
+            this.lblRowCount.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRowCount.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblRowCount.Location = new System.Drawing.Point(208, 675);
+            this.lblRowCount.Name = "lblRowCount";
+            this.lblRowCount.Size = new System.Drawing.Size(50, 21);
+            this.lblRowCount.TabIndex = 35;
+            this.lblRowCount.Text = "count";
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblTotal.Location = new System.Drawing.Point(441, 675);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(43, 21);
+            this.lblTotal.TabIndex = 36;
+            this.lblTotal.Text = "Total";
             // 
             // AdjustmentDetailControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.Controls.Add(this.lblTotal);
+            this.Controls.Add(this.lblRowCount);
+            this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.dgvAdjustDetail);
             this.Controls.Add(this.txtSearch);
@@ -170,5 +215,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgvAdjustDetail;
         private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Label lblRowCount;
+        private System.Windows.Forms.Label lblTotal;
     }
 }

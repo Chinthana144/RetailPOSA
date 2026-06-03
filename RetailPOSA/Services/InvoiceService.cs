@@ -99,6 +99,21 @@ namespace RetailPOSA.Services
             return Convert.ToInt32(dt.Rows[0]["id"]); 
         }
 
+        public DataTable GetInvoiceDetailByHeaderID(int headerID)
+        {
+            string query = "SELECT invoice_details.id, invoice_id, inventory_id, product_id, " +
+                "category_id, barcode, name, second_name, " +
+                "unit_price, qty, selling_price, discount, final_price, invoice_details.status " +
+                "FROM invoice_details " +
+                "INNER JOIN products ON products.id = invoice_details.product_id "+
+                "WHERE invoice_id = @headerID;";
+            
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@headerID", headerID);
+
+            return db.ExecuteQuery(query, parameters);
+        }//get invoice detail by header id
+
         public string GetInvoiceNo()
         {
             string query = "SELECT IFNULL(MAX(ID), 0) as invoice_count FROM invoice_header;";
@@ -165,6 +180,31 @@ namespace RetailPOSA.Services
 
             return db.ExecuteQuery(query, parameters);
         }
+
+        public DataTable GetInvoiceByInvoiceNo(string invoiceNo)
+        {
+            string query = "SELECT " +
+                "invoice_header.id, " +
+                "issued_date, " +
+                "invoice_no, " +
+                "item_count, " +
+                "total, " +
+                "discounts, " +
+                "sub_total, " +
+                "paid_amount, " +
+                "balance, " +
+                "paymethod," +
+                "username " +
+                "FROM invoice_header " +
+                "INNER JOIN paymethods ON paymethods.id = invoice_header.paymethod_id " +
+                "INNER JOIN users ON users.user_id = invoice_header.user_id " +
+                "WHERE invoice_header.invoice_no = @invoiceNo";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@invoiceNo", invoiceNo);
+
+            return db.ExecuteQuery(query, parameters);
+        }//get invoice by invoice no
 
         public DataTable GetPaymethods()
         {

@@ -48,5 +48,44 @@ namespace RetailPOSA.Services
             return db.ExecuteQuery(query, parameters);
         }//get details by header id
 
+        public bool CheckDuplicateInventory(int headerID, int inventoryID)
+        {
+            string query = "SELECT * FROM adjustment_detail WHERE adjustment_header_id = @headerID AND inventory_id = @inventoryID;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("@headerID", headerID);
+            parameters.Add("@inventoryID", inventoryID);
+
+            DataTable dt = db.ExecuteQuery(query, parameters);
+
+            return dt.Rows.Count > 0 ? true : false;
+        }
+
+        public DataTable GetAdjustmentDetailTotals(int adjustmentHeaderID)
+        {
+            string query = "SELECT "+
+                "COUNT(*) AS row_count, SUM(total_value) as total "+
+                "FROM adjustment_detail "+
+                "WHERE adjustment_header_id = @adjustmentHeaderID;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("@adjustmentHeaderID", adjustmentHeaderID);
+
+            return db.ExecuteQuery(query, parameters);
+        }
+
+        public int RemoveAdjustmentDetail(int adjustmentDetailID)
+        {
+            string query = "DELETE FROM adjustment_detail WHERE id = @adjustmentDetailID;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("@adjustmentDetailID", adjustmentDetailID);
+
+            return db.ExecuteNonQuery(query, parameters);
+        }
+
     }//class
 }

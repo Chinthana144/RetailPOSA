@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddAdjustment = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,6 +41,7 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.btnEditAdjustment = new System.Windows.Forms.Button();
+            this.searchTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdjustHeader)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,6 +96,7 @@
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(222, 32);
             this.cmbStatus.TabIndex = 25;
+            this.cmbStatus.SelectedIndexChanged += new System.EventHandler(this.cmbStatus_SelectedIndexChanged);
             // 
             // txtSearch
             // 
@@ -106,6 +109,7 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(274, 32);
             this.txtSearch.TabIndex = 23;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // label2
             // 
@@ -175,6 +179,7 @@
             this.btnNext.TabIndex = 30;
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnPrevious
             // 
@@ -186,6 +191,7 @@
             this.btnPrevious.TabIndex = 29;
             this.btnPrevious.Text = "Previous";
             this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
             // btnEditAdjustment
             // 
@@ -198,6 +204,11 @@
             this.btnEditAdjustment.Text = "Edit Adjustment";
             this.btnEditAdjustment.UseVisualStyleBackColor = true;
             this.btnEditAdjustment.Click += new System.EventHandler(this.btnEditAdjustment_Click);
+            // 
+            // searchTimer
+            // 
+            this.searchTimer.Interval = 300;
+            this.searchTimer.Tick += new System.EventHandler(this.searchTimer_Tick);
             // 
             // AdjustmentControl
             // 
@@ -239,5 +250,6 @@
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnPrevious;
         private System.Windows.Forms.Button btnEditAdjustment;
+        private System.Windows.Forms.Timer searchTimer;
     }
 }

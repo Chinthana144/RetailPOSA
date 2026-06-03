@@ -113,9 +113,9 @@ namespace RetailPOSA.UserControls
                 decimal finalPrice = Convert.ToDecimal(row["final_price"]);
                 decimal purchaseTotal = Convert.ToDecimal(row["purchase_total"]);
                 DateTime expiryDate = DateTime.Parse(row["expiry_date"].ToString());
-                bool status = true;
+                int status = 1;
 
-                inventoryService.InsertInventory(grnHeaderID, productID, Convert.ToInt32(qty), Convert.ToInt32(qty), purchasePrice, sellingPrice, discount, finalPrice, purchaseTotal, expiryDate, status);
+                inventoryService.InsertInventory(grnHeaderID, productID, qty, qty, purchasePrice, sellingPrice, discount, finalPrice, purchaseTotal, expiryDate, status);
 
             }//foreach
 

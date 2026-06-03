@@ -45,6 +45,21 @@ namespace RetailPOSA.Services
             return db.ExecuteNonQuery(query, parameters);
         }
 
+        public int UpdateAdjustmentHeaderTotals(int id, int rowCount, decimal total, int userID, int status)
+        {
+            string query = "UPDATE adjustment_header SET item_count = @rowCount, purchase_price = @total, user_id = @userID, status = @status WHERE id  = @id;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("@id", id);
+            parameters.Add("@rowCount", rowCount);
+            parameters.Add("@total", total);
+            parameters.Add("@userID", userID);
+            parameters.Add("@status", status);
+
+            return db.ExecuteNonQuery(query, parameters);
+        }
+
         public DataTable GetAdjustmentHeaderByID(int id)
         {
             string query = "SELECT * FROM adjustment_header WHERE id = @id;";
@@ -69,6 +84,24 @@ namespace RetailPOSA.Services
             return db.ExecuteQuery(query, parameters);
 
         }//get adjuestment
+
+        public DataTable SearchAdjustmentHeader(string searchTerm, int status, int limit, int offset)
+        {
+            string query = "SELECT id, type, submitted_datetime, item_count, purchase_price, note, adjustment_header.user_id, status, username "+
+                "FROM adjustment_header " +
+                "INNER JOIN users ON users.user_id = adjustment_header.user_id "+
+                "WHERE adjustment_header.status = @status AND (submitted_datetime LIKE @searchTerm OR adjustment_no LIKE @searchTerm OR note LIKE @searchTerm OR type LIKE @searchTerm) " +
+                "LIMIT @limit OFFSET @offset;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("@searchTerm", $"%{searchTerm}%");
+            parameters.Add("@status", status);
+            parameters.Add("@limit", limit);
+            parameters.Add("@offset", offset);
+
+            return db.ExecuteQuery(query, parameters);
+        }//get all data
 
         public DataTable GetLastAdjustmentByUser(int userID)
         {
