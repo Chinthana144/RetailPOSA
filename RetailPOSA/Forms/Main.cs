@@ -52,7 +52,7 @@ namespace RetailPOSA.Forms
             pnlContent.Controls.Add(uc);
         }//load control
 
-        //========================= Navigation =========================//
+        //========================= Catalog =========================//
         private void navCategories_Click(object sender, EventArgs e)
         {
             CategoryControl uc = new CategoryControl();
@@ -70,6 +70,8 @@ namespace RetailPOSA.Forms
             SupplierControl uc = new SupplierControl();
             loadControl(uc);
         }
+
+        //========================= Sales =========================//
         private void navPOS_Click(object sender, EventArgs e)
         {
             POSControl uc = new POSControl();
@@ -81,7 +83,13 @@ namespace RetailPOSA.Forms
             InvoiceControl uc = new InvoiceControl();
             loadControl(uc);
         }
+        private void navReturn_Click(object sender, EventArgs e)
+        {
+            SaleReturnHeaderControl uc = new SaleReturnHeaderControl();
+            loadControl(uc);
+        }
 
+        //========================= Inventory =========================//
         private void navGRN_Click(object sender, EventArgs e)
         {
             GrnHeaderControl uc = new GrnHeaderControl();
@@ -103,6 +111,8 @@ namespace RetailPOSA.Forms
             PriceChangeHeaderControl uc = new PriceChangeHeaderControl();
             loadControl(uc);
         }
+
+        //========================= System =========================//
         private void navSettings_Click(object sender, EventArgs e)
         {
             SettingControl uc = new SettingControl();

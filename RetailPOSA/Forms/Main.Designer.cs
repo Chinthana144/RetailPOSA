@@ -38,6 +38,7 @@
             this.navReports = new System.Windows.Forms.Button();
             this.navSettings = new System.Windows.Forms.Button();
             this.pnlSale = new System.Windows.Forms.Panel();
+            this.navReturn = new System.Windows.Forms.Button();
             this.navPOS = new System.Windows.Forms.Button();
             this.navInvoices = new System.Windows.Forms.Button();
             this.pnlInventory = new System.Windows.Forms.Panel();
@@ -61,7 +62,6 @@
             this.lblUsername = new System.Windows.Forms.Label();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.MenuTimer = new System.Windows.Forms.Timer(this.components);
-            this.navReturn = new System.Windows.Forms.Button();
             this.pnlSidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picShopLogo)).BeginInit();
             this.pnlSystem.SuspendLayout();
@@ -177,6 +177,20 @@
             this.pnlSale.Name = "pnlSale";
             this.pnlSale.Size = new System.Drawing.Size(250, 180);
             this.pnlSale.TabIndex = 23;
+            // 
+            // navReturn
+            // 
+            this.navReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(93)))), ((int)(((byte)(93)))));
+            this.navReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.navReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.navReturn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.navReturn.Location = new System.Drawing.Point(-1, 120);
+            this.navReturn.Name = "navReturn";
+            this.navReturn.Size = new System.Drawing.Size(250, 50);
+            this.navReturn.TabIndex = 23;
+            this.navReturn.Text = "Return";
+            this.navReturn.UseVisualStyleBackColor = false;
+            this.navReturn.Click += new System.EventHandler(this.navReturn_Click);
             // 
             // navPOS
             // 
@@ -481,19 +495,6 @@
             // 
             this.MenuTimer.Interval = 10;
             this.MenuTimer.Tick += new System.EventHandler(this.MenuTimer_Tick);
-            // 
-            // navReturn
-            // 
-            this.navReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(93)))), ((int)(((byte)(93)))));
-            this.navReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.navReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.navReturn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.navReturn.Location = new System.Drawing.Point(-1, 120);
-            this.navReturn.Name = "navReturn";
-            this.navReturn.Size = new System.Drawing.Size(250, 50);
-            this.navReturn.TabIndex = 23;
-            this.navReturn.Text = "Return";
-            this.navReturn.UseVisualStyleBackColor = false;
             // 
             // Main
             // 
