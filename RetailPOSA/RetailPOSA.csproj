@@ -227,10 +227,13 @@
     <Compile Include="Services\GrnDetailService.cs" />
     <Compile Include="Services\GrnHeaderService.cs" />
     <Compile Include="Services\InventoryService.cs" />
+    <Compile Include="Services\InvoiceDetailService.cs" />
     <Compile Include="Services\InvoiceService.cs" />
     <Compile Include="Services\PriceChangeDetailService.cs" />
     <Compile Include="Services\PriceChangeHeaderService.cs" />
     <Compile Include="Services\ProductService.cs" />
+    <Compile Include="Services\SaleReturnDetailService.cs" />
+    <Compile Include="Services\SaleReturnHeaderService.cs" />
     <Compile Include="Services\ShopService.cs" />
     <Compile Include="Services\SupplierService.cs" />
     <Compile Include="Services\UserService.cs" />
@@ -305,6 +308,12 @@
     </Compile>
     <Compile Include="UserControls\ProductControl.Designer.cs">
       <DependentUpon>ProductControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SaleReturnDetailControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SaleReturnDetailControl.Designer.cs">
+      <DependentUpon>SaleReturnDetailControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SaleReturnHeaderControl.cs">
       <SubType>UserControl</SubType>
@@ -431,6 +440,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ProductControl.resx">
       <DependentUpon>ProductControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SaleReturnDetailControl.resx">
+      <DependentUpon>SaleReturnDetailControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SaleReturnHeaderControl.resx">
       <DependentUpon>SaleReturnHeaderControl.cs</DependentUpon>

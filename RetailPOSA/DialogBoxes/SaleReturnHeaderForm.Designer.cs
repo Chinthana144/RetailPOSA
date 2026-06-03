@@ -28,21 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.txtInvoiceNo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnAddAdjustment = new System.Windows.Forms.Button();
+            this.btnAddSalesReturn = new System.Windows.Forms.Button();
+            this.txtReason = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbReturnType = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // txtSearch
+            // txtInvoiceNo
             // 
-            this.txtSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(78)))), ((int)(((byte)(78)))));
-            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSearch.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.ForeColor = System.Drawing.Color.White;
-            this.txtSearch.Location = new System.Drawing.Point(15, 39);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(395, 32);
-            this.txtSearch.TabIndex = 36;
+            this.txtInvoiceNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(78)))), ((int)(((byte)(78)))));
+            this.txtInvoiceNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtInvoiceNo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInvoiceNo.ForeColor = System.Drawing.Color.White;
+            this.txtInvoiceNo.Location = new System.Drawing.Point(15, 39);
+            this.txtInvoiceNo.Name = "txtInvoiceNo";
+            this.txtInvoiceNo.Size = new System.Drawing.Size(395, 32);
+            this.txtInvoiceNo.TabIndex = 36;
             // 
             // label2
             // 
@@ -55,32 +59,89 @@
             this.label2.TabIndex = 37;
             this.label2.Text = "Invoice No";
             // 
-            // btnAddAdjustment
+            // btnAddSalesReturn
             // 
-            this.btnAddAdjustment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddAdjustment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddAdjustment.Location = new System.Drawing.Point(205, 106);
-            this.btnAddAdjustment.Name = "btnAddAdjustment";
-            this.btnAddAdjustment.Size = new System.Drawing.Size(205, 40);
-            this.btnAddAdjustment.TabIndex = 38;
-            this.btnAddAdjustment.Text = "Add Sale Return";
-            this.btnAddAdjustment.UseVisualStyleBackColor = true;
+            this.btnAddSalesReturn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddSalesReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddSalesReturn.Location = new System.Drawing.Point(205, 279);
+            this.btnAddSalesReturn.Name = "btnAddSalesReturn";
+            this.btnAddSalesReturn.Size = new System.Drawing.Size(205, 40);
+            this.btnAddSalesReturn.TabIndex = 38;
+            this.btnAddSalesReturn.Text = "Add Sale Return";
+            this.btnAddSalesReturn.UseVisualStyleBackColor = true;
+            this.btnAddSalesReturn.Click += new System.EventHandler(this.btnAddSalesReturn_Click);
+            // 
+            // txtReason
+            // 
+            this.txtReason.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(78)))), ((int)(((byte)(78)))));
+            this.txtReason.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtReason.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReason.ForeColor = System.Drawing.Color.White;
+            this.txtReason.Location = new System.Drawing.Point(15, 176);
+            this.txtReason.Multiline = true;
+            this.txtReason.Name = "txtReason";
+            this.txtReason.Size = new System.Drawing.Size(395, 82);
+            this.txtReason.TabIndex = 39;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Location = new System.Drawing.Point(15, 152);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 21);
+            this.label1.TabIndex = 40;
+            this.label1.Text = "Reason";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label3.Location = new System.Drawing.Point(15, 83);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(93, 21);
+            this.label3.TabIndex = 42;
+            this.label3.Text = "Return Type";
+            // 
+            // cmbReturnType
+            // 
+            this.cmbReturnType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbReturnType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
+            this.cmbReturnType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbReturnType.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbReturnType.ForeColor = System.Drawing.Color.White;
+            this.cmbReturnType.FormattingEnabled = true;
+            this.cmbReturnType.Items.AddRange(new object[] {
+            "Return to Stock",
+            "Damaged Return"});
+            this.cmbReturnType.Location = new System.Drawing.Point(15, 107);
+            this.cmbReturnType.Name = "cmbReturnType";
+            this.cmbReturnType.Size = new System.Drawing.Size(395, 32);
+            this.cmbReturnType.TabIndex = 41;
             // 
             // SaleReturnHeaderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(422, 161);
-            this.Controls.Add(this.btnAddAdjustment);
+            this.ClientSize = new System.Drawing.Size(422, 334);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cmbReturnType);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtReason);
+            this.Controls.Add(this.btnAddSalesReturn);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtSearch);
+            this.Controls.Add(this.txtInvoiceNo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SaleReturnHeaderForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sales Return";
+            this.Load += new System.EventHandler(this.SaleReturnHeaderForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -88,8 +149,12 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.TextBox txtInvoiceNo;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnAddAdjustment;
+        private System.Windows.Forms.Button btnAddSalesReturn;
+        private System.Windows.Forms.TextBox txtReason;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cmbReturnType;
     }
 }

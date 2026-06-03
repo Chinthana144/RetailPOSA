@@ -29,32 +29,33 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btnAddItems = new System.Windows.Forms.Button();
+            this.btnReturnItems = new System.Windows.Forms.Button();
             this.lblPageNo = new System.Windows.Forms.Label();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.btnEditAdjustment = new System.Windows.Forms.Button();
-            this.dgvAdjustHeader = new System.Windows.Forms.DataGridView();
+            this.dgvSaleReturnHeader = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnAddAdjustment = new System.Windows.Forms.Button();
+            this.btnAddSaleReturn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.searchTimer = new System.Windows.Forms.Timer(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAdjustHeader)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSaleReturnHeader)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnAddItems
+            // btnReturnItems
             // 
-            this.btnAddItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddItems.Location = new System.Drawing.Point(704, 603);
-            this.btnAddItems.Name = "btnAddItems";
-            this.btnAddItems.Size = new System.Drawing.Size(181, 40);
-            this.btnAddItems.TabIndex = 44;
-            this.btnAddItems.Text = "Add Items";
-            this.btnAddItems.UseVisualStyleBackColor = true;
+            this.btnReturnItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReturnItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReturnItems.Location = new System.Drawing.Point(704, 603);
+            this.btnReturnItems.Name = "btnReturnItems";
+            this.btnReturnItems.Size = new System.Drawing.Size(181, 40);
+            this.btnReturnItems.TabIndex = 44;
+            this.btnReturnItems.Text = "Return Items";
+            this.btnReturnItems.UseVisualStyleBackColor = true;
+            this.btnReturnItems.Click += new System.EventHandler(this.btnReturnItems_Click);
             // 
             // lblPageNo
             // 
@@ -101,26 +102,27 @@
             this.btnEditAdjustment.Text = "Edit Sales Return";
             this.btnEditAdjustment.UseVisualStyleBackColor = true;
             // 
-            // dgvAdjustHeader
+            // dgvSaleReturnHeader
             // 
-            this.dgvAdjustHeader.AllowUserToAddRows = false;
-            this.dgvAdjustHeader.AllowUserToDeleteRows = false;
-            this.dgvAdjustHeader.AllowUserToResizeRows = false;
-            this.dgvAdjustHeader.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvSaleReturnHeader.AllowUserToAddRows = false;
+            this.dgvSaleReturnHeader.AllowUserToDeleteRows = false;
+            this.dgvSaleReturnHeader.AllowUserToResizeRows = false;
+            this.dgvSaleReturnHeader.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvAdjustHeader.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvAdjustHeader.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAdjustHeader.Location = new System.Drawing.Point(16, 63);
-            this.dgvAdjustHeader.MultiSelect = false;
-            this.dgvAdjustHeader.Name = "dgvAdjustHeader";
-            this.dgvAdjustHeader.ReadOnly = true;
-            this.dgvAdjustHeader.RowHeadersVisible = false;
-            this.dgvAdjustHeader.RowHeadersWidth = 51;
-            this.dgvAdjustHeader.RowTemplate.Height = 24;
-            this.dgvAdjustHeader.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAdjustHeader.Size = new System.Drawing.Size(1103, 534);
-            this.dgvAdjustHeader.TabIndex = 39;
+            this.dgvSaleReturnHeader.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvSaleReturnHeader.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSaleReturnHeader.Location = new System.Drawing.Point(16, 63);
+            this.dgvSaleReturnHeader.MultiSelect = false;
+            this.dgvSaleReturnHeader.Name = "dgvSaleReturnHeader";
+            this.dgvSaleReturnHeader.ReadOnly = true;
+            this.dgvSaleReturnHeader.RowHeadersVisible = false;
+            this.dgvSaleReturnHeader.RowHeadersWidth = 51;
+            this.dgvSaleReturnHeader.RowTemplate.Height = 24;
+            this.dgvSaleReturnHeader.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSaleReturnHeader.Size = new System.Drawing.Size(1103, 534);
+            this.dgvSaleReturnHeader.TabIndex = 39;
+            this.dgvSaleReturnHeader.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSaleReturnHeader_CellClick);
             // 
             // label3
             // 
@@ -175,16 +177,17 @@
             this.label2.TabIndex = 36;
             this.label2.Text = "Search";
             // 
-            // btnAddAdjustment
+            // btnAddSaleReturn
             // 
-            this.btnAddAdjustment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddAdjustment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddAdjustment.Location = new System.Drawing.Point(914, 12);
-            this.btnAddAdjustment.Name = "btnAddAdjustment";
-            this.btnAddAdjustment.Size = new System.Drawing.Size(205, 40);
-            this.btnAddAdjustment.TabIndex = 34;
-            this.btnAddAdjustment.Text = "Add Sale Return";
-            this.btnAddAdjustment.UseVisualStyleBackColor = true;
+            this.btnAddSaleReturn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddSaleReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddSaleReturn.Location = new System.Drawing.Point(914, 12);
+            this.btnAddSaleReturn.Name = "btnAddSaleReturn";
+            this.btnAddSaleReturn.Size = new System.Drawing.Size(205, 40);
+            this.btnAddSaleReturn.TabIndex = 34;
+            this.btnAddSaleReturn.Text = "Add Sale Return";
+            this.btnAddSaleReturn.UseVisualStyleBackColor = true;
+            this.btnAddSaleReturn.Click += new System.EventHandler(this.btnAddSaleReturn_Click);
             // 
             // label1
             // 
@@ -206,21 +209,22 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.Controls.Add(this.btnAddItems);
+            this.Controls.Add(this.btnReturnItems);
             this.Controls.Add(this.lblPageNo);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnPrevious);
             this.Controls.Add(this.btnEditAdjustment);
-            this.Controls.Add(this.dgvAdjustHeader);
+            this.Controls.Add(this.dgvSaleReturnHeader);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbStatus);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnAddAdjustment);
+            this.Controls.Add(this.btnAddSaleReturn);
             this.Controls.Add(this.label1);
             this.Name = "SaleReturnHeaderControl";
             this.Size = new System.Drawing.Size(1133, 655);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAdjustHeader)).EndInit();
+            this.Load += new System.EventHandler(this.SaleReturnHeaderControl_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSaleReturnHeader)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,17 +232,17 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnAddItems;
+        private System.Windows.Forms.Button btnReturnItems;
         private System.Windows.Forms.Label lblPageNo;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnPrevious;
         private System.Windows.Forms.Button btnEditAdjustment;
-        private System.Windows.Forms.DataGridView dgvAdjustHeader;
+        private System.Windows.Forms.DataGridView dgvSaleReturnHeader;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbStatus;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnAddAdjustment;
+        private System.Windows.Forms.Button btnAddSaleReturn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer searchTimer;
     }
