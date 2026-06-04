@@ -11,14 +11,15 @@ namespace RetailPOSA.Services
     {
         Database db = new Database();
 
-        public int InsertSaleReturnDetail(int salesReturnHeaderID, int invoiceDetailID, int productID, decimal unitPrice, decimal qty, decimal sellingPrice, decimal discount, decimal finalPrice, int status)
+        public int InsertSaleReturnDetail(int salesReturnHeaderID, int inventoryID, int invoiceDetailID, int productID, decimal unitPrice, decimal qty, decimal sellingPrice, decimal discount, decimal finalPrice, int status)
         {
-            string query = "INSERT INTO sale_return_detail(sale_return_header_id, invoice_detail_id, product_id, unit_price, qty, selling_price, discount, final_price, status) " +
-                "VALUES(@salesReturnHeaderID,@invoiceDetailID,@productID,@unitPrice,@qty,@sellingPrice,@discount,@finalPrice,@status);";
+            string query = "INSERT INTO sale_return_detail(sale_return_header_id, inventory_id, invoice_detail_id, product_id, unit_price, qty, selling_price, discount, final_price, status) " +
+                "VALUES(@salesReturnHeaderID, @inventoryID, @invoiceDetailID,@productID,@unitPrice,@qty,@sellingPrice,@discount,@finalPrice,@status);";
 
             Dictionary<string, object> parameters = new Dictionary<string, object>();
 
             parameters.Add("@salesReturnHeaderID", salesReturnHeaderID);
+            parameters.Add("@inventoryID", inventoryID);
             parameters.Add("@invoiceDetailID", invoiceDetailID);
             parameters.Add("@productID", productID);
             parameters.Add("@unitPrice", unitPrice);
@@ -31,9 +32,19 @@ namespace RetailPOSA.Services
             return db.ExecuteNonQuery(query, parameters);
         }//insert sale return detail
 
+        public int RemoveReturnDetail(int returnDetailID)
+        {
+            string query = "DELETE FROM sale_return_detail WHERE id = @returnDetailID;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@returnDetailID", returnDetailID);
+
+            return db.ExecuteNonQuery(query, parameters);
+        }//remove item from cart
+
         public DataTable GetReturnDetailByHeaderID(int headerID)
         {
-            string query = "SELECT sale_return_detail.id, sale_return_header_id, invoice_detail_id, product_id, " +
+            string query = "SELECT sale_return_detail.id, sale_return_header_id, inventory_id, invoice_detail_id, product_id, " +
                 "barcode, name, " +
                 "unit_price, qty, selling_price, discount, final_price, sale_return_detail.status " +
                 "FROM sale_return_detail " +
@@ -45,6 +56,17 @@ namespace RetailPOSA.Services
 
             return db.ExecuteQuery(query, parameters);
         }//get return detail by header id
+
+        public DataTable GetTotalByHeaderID(int returnHeaderID)
+        {
+            string query = "SELECT COUNT(*) AS row_count, sum(qty) AS item_count, sum(final_price) AS total FROM sale_return_detail "+
+                "WHERE sale_return_header_id = @returnHeaderID;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@returnHeaderID", returnHeaderID);
+
+            return db.ExecuteQuery(query, parameters);
+        }//get total by header id
 
         public bool CheckDublicateID(int returnHeaderID, int invoiceDetailID)
         {

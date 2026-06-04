@@ -74,7 +74,7 @@ namespace RetailPOSA.Forms
         //========================= Sales =========================//
         private void navPOS_Click(object sender, EventArgs e)
         {
-            POSControl uc = new POSControl();
+            POSControl uc = new POSControl(0);
             loadControl(uc);
         }
 

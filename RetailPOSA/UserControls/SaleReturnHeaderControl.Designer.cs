@@ -33,7 +33,7 @@
             this.lblPageNo = new System.Windows.Forms.Label();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
-            this.btnEditAdjustment = new System.Windows.Forms.Button();
+            this.btnEditSalesReturn = new System.Windows.Forms.Button();
             this.dgvSaleReturnHeader = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
@@ -42,6 +42,7 @@
             this.btnAddSaleReturn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.searchTimer = new System.Windows.Forms.Timer(this.components);
+            this.btnOpenPOS = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSaleReturnHeader)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,7 +50,7 @@
             // 
             this.btnReturnItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnReturnItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReturnItems.Location = new System.Drawing.Point(704, 603);
+            this.btnReturnItems.Location = new System.Drawing.Point(727, 641);
             this.btnReturnItems.Name = "btnReturnItems";
             this.btnReturnItems.Size = new System.Drawing.Size(181, 40);
             this.btnReturnItems.TabIndex = 44;
@@ -63,7 +64,7 @@
             this.lblPageNo.AutoSize = true;
             this.lblPageNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPageNo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblPageNo.Location = new System.Drawing.Point(164, 611);
+            this.lblPageNo.Location = new System.Drawing.Point(164, 649);
             this.lblPageNo.Name = "lblPageNo";
             this.lblPageNo.Size = new System.Drawing.Size(94, 25);
             this.lblPageNo.TabIndex = 43;
@@ -73,34 +74,37 @@
             // 
             this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.Location = new System.Drawing.Point(276, 603);
+            this.btnNext.Location = new System.Drawing.Point(276, 641);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(132, 40);
             this.btnNext.TabIndex = 42;
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnPrevious
             // 
             this.btnPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnPrevious.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrevious.Location = new System.Drawing.Point(16, 603);
+            this.btnPrevious.Location = new System.Drawing.Point(16, 641);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(132, 40);
             this.btnPrevious.TabIndex = 41;
             this.btnPrevious.Text = "Previous";
             this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
-            // btnEditAdjustment
+            // btnEditSalesReturn
             // 
-            this.btnEditAdjustment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditAdjustment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditAdjustment.Location = new System.Drawing.Point(891, 603);
-            this.btnEditAdjustment.Name = "btnEditAdjustment";
-            this.btnEditAdjustment.Size = new System.Drawing.Size(228, 40);
-            this.btnEditAdjustment.TabIndex = 40;
-            this.btnEditAdjustment.Text = "Edit Sales Return";
-            this.btnEditAdjustment.UseVisualStyleBackColor = true;
+            this.btnEditSalesReturn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditSalesReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditSalesReturn.Location = new System.Drawing.Point(914, 641);
+            this.btnEditSalesReturn.Name = "btnEditSalesReturn";
+            this.btnEditSalesReturn.Size = new System.Drawing.Size(205, 40);
+            this.btnEditSalesReturn.TabIndex = 40;
+            this.btnEditSalesReturn.Text = "Edit Sales Return";
+            this.btnEditSalesReturn.UseVisualStyleBackColor = true;
+            this.btnEditSalesReturn.Click += new System.EventHandler(this.btnEditSalesReturn_Click);
             // 
             // dgvSaleReturnHeader
             // 
@@ -120,7 +124,7 @@
             this.dgvSaleReturnHeader.RowHeadersWidth = 51;
             this.dgvSaleReturnHeader.RowTemplate.Height = 24;
             this.dgvSaleReturnHeader.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSaleReturnHeader.Size = new System.Drawing.Size(1103, 534);
+            this.dgvSaleReturnHeader.Size = new System.Drawing.Size(1103, 572);
             this.dgvSaleReturnHeader.TabIndex = 39;
             this.dgvSaleReturnHeader.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSaleReturnHeader_CellClick);
             // 
@@ -147,11 +151,13 @@
             this.cmbStatus.Items.AddRange(new object[] {
             "Pending",
             "Submitted",
+            "Exchanged",
             "Canceled"});
             this.cmbStatus.Location = new System.Drawing.Point(344, 18);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(222, 32);
             this.cmbStatus.TabIndex = 37;
+            this.cmbStatus.SelectedIndexChanged += new System.EventHandler(this.cmbStatus_SelectedIndexChanged);
             // 
             // txtSearch
             // 
@@ -164,6 +170,7 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(274, 32);
             this.txtSearch.TabIndex = 35;
+            this.txtSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyUp);
             // 
             // label2
             // 
@@ -203,17 +210,31 @@
             // searchTimer
             // 
             this.searchTimer.Interval = 300;
+            this.searchTimer.Tick += new System.EventHandler(this.searchTimer_Tick);
+            // 
+            // btnOpenPOS
+            // 
+            this.btnOpenPOS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpenPOS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOpenPOS.Location = new System.Drawing.Point(540, 641);
+            this.btnOpenPOS.Name = "btnOpenPOS";
+            this.btnOpenPOS.Size = new System.Drawing.Size(181, 40);
+            this.btnOpenPOS.TabIndex = 45;
+            this.btnOpenPOS.Text = "Open POS";
+            this.btnOpenPOS.UseVisualStyleBackColor = true;
+            this.btnOpenPOS.Click += new System.EventHandler(this.btnOpenPOS_Click);
             // 
             // SaleReturnHeaderControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.Controls.Add(this.btnOpenPOS);
             this.Controls.Add(this.btnReturnItems);
             this.Controls.Add(this.lblPageNo);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnPrevious);
-            this.Controls.Add(this.btnEditAdjustment);
+            this.Controls.Add(this.btnEditSalesReturn);
             this.Controls.Add(this.dgvSaleReturnHeader);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbStatus);
@@ -222,7 +243,7 @@
             this.Controls.Add(this.btnAddSaleReturn);
             this.Controls.Add(this.label1);
             this.Name = "SaleReturnHeaderControl";
-            this.Size = new System.Drawing.Size(1133, 655);
+            this.Size = new System.Drawing.Size(1133, 693);
             this.Load += new System.EventHandler(this.SaleReturnHeaderControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSaleReturnHeader)).EndInit();
             this.ResumeLayout(false);
@@ -236,7 +257,7 @@
         private System.Windows.Forms.Label lblPageNo;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnPrevious;
-        private System.Windows.Forms.Button btnEditAdjustment;
+        private System.Windows.Forms.Button btnEditSalesReturn;
         private System.Windows.Forms.DataGridView dgvSaleReturnHeader;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbStatus;
@@ -245,5 +266,6 @@
         private System.Windows.Forms.Button btnAddSaleReturn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer searchTimer;
+        private System.Windows.Forms.Button btnOpenPOS;
     }
 }

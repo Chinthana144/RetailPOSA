@@ -71,13 +71,12 @@ namespace RetailPOSA.DialogBoxes
 
             //check duplicates
             bool has_row = returnDetailService.CheckDublicateID(returnHeaderID, invoiceID);
-            MessageBox.Show(has_row.ToString());
             if (has_row)
             {
                 MessageBox.Show("This item has been already added.", "Duplicate Entry", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            returnDetailService.InsertSaleReturnDetail(returnHeaderID, invoiceID, productID, returnUnitPrice, Convert.ToDecimal(txtReturnQty.Text), totalReturnPrice, 0, totalReturnPrice, 1);
+            returnDetailService.InsertSaleReturnDetail(returnHeaderID, inventoryID, invoiceID, productID, returnUnitPrice, Convert.ToDecimal(txtReturnQty.Text), totalReturnPrice, 0, totalReturnPrice, 1);
 
             this.Close();
         }
