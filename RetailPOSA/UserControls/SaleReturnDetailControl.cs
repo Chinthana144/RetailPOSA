@@ -1,4 +1,5 @@
-﻿using RetailPOSA.Services;
+﻿using RetailPOSA.DialogBoxes;
+using RetailPOSA.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,8 +36,13 @@ namespace RetailPOSA.UserControls
             if (e.RowIndex >= 0)
             { 
                 DataGridViewRow row = dgvInvoiceDetail.Rows[e.RowIndex];
-                selectedInvoiceID = Convert.ToInt32(row.Cells["invoice_id"].Value);
+                selectedInvoiceID = Convert.ToInt32(row.Cells["id"].Value);
                 btnAddReturn.Enabled = true;
+
+                ReturnQtyForm returnQtyForm = new ReturnQtyForm(headerID, selectedInvoiceID);
+                returnQtyForm.ShowDialog();
+
+                loadReturnDetail();
             }
         }//cell click
         private void btnAddReturn_Click(object sender, EventArgs e)
@@ -47,13 +53,8 @@ namespace RetailPOSA.UserControls
             {
                 DataTable detailData = detailService.GetInvoiceDetailByID(selectedInvoiceID);
 
-                int inventoryID = Convert.ToInt32(detailData.Rows[0]["inventory_id"]);
-                int productID = Convert.ToInt32(detailData.Rows[0]["product_id"]);
-                decimal unitPrice = Convert.ToDecimal(detailData.Rows[0]["unit_price"]);
-                decimal qty = Convert.ToDecimal(detailData.Rows[0]["qty"]);
-                decimal sellingPrice = Convert.ToDecimal(detailData.Rows[0]["selling_price"]);
-                decimal discount = Convert.ToDecimal(detailData.Rows[0]["discount"]);
-                decimal finalPrice = Convert.ToDecimal(detailData.Rows[0]["final_price"]);
+                ReturnQtyForm returnQtyForm = new ReturnQtyForm(headerID, selectedInvoiceID);
+                returnQtyForm.ShowDialog();
 
                 //returnDetailService.InsertSaleReturnDetail(this.headerID, inventoryID, productID, unitPrice, (int)qty, sellingPrice, discount, finalPrice, 1);
 

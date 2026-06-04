@@ -180,6 +180,12 @@
     <Compile Include="DialogBoxes\ProductForm.Designer.cs">
       <DependentUpon>ProductForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DialogBoxes\ReturnQtyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogBoxes\ReturnQtyForm.Designer.cs">
+      <DependentUpon>ReturnQtyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DialogBoxes\SaleReturnHeaderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -380,6 +386,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DialogBoxes\ProductForm.resx">
       <DependentUpon>ProductForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogBoxes\ReturnQtyForm.resx">
+      <DependentUpon>ReturnQtyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DialogBoxes\SaleReturnHeaderForm.resx">
       <DependentUpon>SaleReturnHeaderForm.cs</DependentUpon>
