@@ -55,5 +55,12 @@ namespace RetailPOSA.Services
             return db.ExecuteQuery(query, parameters);
         }//get user by id
 
+        public DataTable GetRoles()
+        {
+            string query = "SELECT * FROM roles ORDER BY id;";
+
+            return db.ExecuteQuery(query);
+        }//get roles
+
     }//class
 }

@@ -235,6 +235,7 @@
     <Compile Include="Services\InventoryService.cs" />
     <Compile Include="Services\InvoiceDetailService.cs" />
     <Compile Include="Services\InvoiceService.cs" />
+    <Compile Include="Services\PermissionService.cs" />
     <Compile Include="Services\PriceChangeDetailService.cs" />
     <Compile Include="Services\PriceChangeHeaderService.cs" />
     <Compile Include="Services\ProductService.cs" />
@@ -338,6 +339,12 @@
     </Compile>
     <Compile Include="UserControls\SupplierControl.Designer.cs">
       <DependentUpon>SupplierControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserAccessControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserAccessControl.Designer.cs">
+      <DependentUpon>UserAccessControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UsersControl.cs">
       <SubType>UserControl</SubType>
@@ -461,6 +468,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SupplierControl.resx">
       <DependentUpon>SupplierControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserAccessControl.resx">
+      <DependentUpon>UserAccessControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UsersControl.resx">
       <DependentUpon>UsersControl.cs</DependentUpon>

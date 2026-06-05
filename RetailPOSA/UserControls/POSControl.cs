@@ -251,6 +251,8 @@ namespace RetailPOSA.UserControls
         {
             POSProductSearchForm posProductSearch = new POSProductSearchForm("", cartHeaderID);
             posProductSearch.ShowDialog();
+
+            loadCart();
         }
 
         private void btnDeleteCartItem_Click(object sender, EventArgs e)

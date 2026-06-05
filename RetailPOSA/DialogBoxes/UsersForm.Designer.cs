@@ -43,7 +43,7 @@
             this.lblDialogTitle.AutoSize = true;
             this.lblDialogTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDialogTitle.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblDialogTitle.Location = new System.Drawing.Point(29, 21);
+            this.lblDialogTitle.Location = new System.Drawing.Point(12, 19);
             this.lblDialogTitle.Name = "lblDialogTitle";
             this.lblDialogTitle.Size = new System.Drawing.Size(63, 25);
             this.lblDialogTitle.TabIndex = 1;
@@ -55,7 +55,7 @@
             this.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUsername.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsername.ForeColor = System.Drawing.Color.White;
-            this.txtUsername.Location = new System.Drawing.Point(32, 167);
+            this.txtUsername.Location = new System.Drawing.Point(15, 165);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(367, 32);
             this.txtUsername.TabIndex = 2;
@@ -64,7 +64,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(32, 148);
+            this.label1.Location = new System.Drawing.Point(15, 146);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 16);
             this.label1.TabIndex = 3;
@@ -74,7 +74,7 @@
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblPassword.Location = new System.Drawing.Point(32, 220);
+            this.lblPassword.Location = new System.Drawing.Point(15, 218);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(67, 16);
             this.lblPassword.TabIndex = 5;
@@ -86,7 +86,7 @@
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPassword.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.ForeColor = System.Drawing.Color.White;
-            this.txtPassword.Location = new System.Drawing.Point(32, 239);
+            this.txtPassword.Location = new System.Drawing.Point(15, 237);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(367, 32);
@@ -98,7 +98,7 @@
             this.cmbRoles.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbRoles.ForeColor = System.Drawing.Color.White;
             this.cmbRoles.FormattingEnabled = true;
-            this.cmbRoles.Location = new System.Drawing.Point(32, 95);
+            this.cmbRoles.Location = new System.Drawing.Point(15, 93);
             this.cmbRoles.Name = "cmbRoles";
             this.cmbRoles.Size = new System.Drawing.Size(367, 32);
             this.cmbRoles.TabIndex = 6;
@@ -107,7 +107,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(32, 76);
+            this.label3.Location = new System.Drawing.Point(15, 74);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(36, 16);
             this.label3.TabIndex = 7;
@@ -116,9 +116,10 @@
             // btnAddUser
             // 
             this.btnAddUser.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnAddUser.Location = new System.Drawing.Point(245, 298);
+            this.btnAddUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddUser.Location = new System.Drawing.Point(238, 292);
             this.btnAddUser.Name = "btnAddUser";
-            this.btnAddUser.Size = new System.Drawing.Size(154, 33);
+            this.btnAddUser.Size = new System.Drawing.Size(144, 42);
             this.btnAddUser.TabIndex = 8;
             this.btnAddUser.Text = "Add User";
             this.btnAddUser.UseVisualStyleBackColor = true;
@@ -129,7 +130,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
-            this.ClientSize = new System.Drawing.Size(434, 356);
+            this.ClientSize = new System.Drawing.Size(399, 346);
             this.Controls.Add(this.btnAddUser);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbRoles);
@@ -138,6 +139,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.lblDialogTitle);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "UsersForm";
