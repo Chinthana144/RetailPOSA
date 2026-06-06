@@ -192,6 +192,12 @@
     <Compile Include="DialogBoxes\SaleReturnHeaderForm.Designer.cs">
       <DependentUpon>SaleReturnHeaderForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DialogBoxes\ShopForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogBoxes\ShopForm.Designer.cs">
+      <DependentUpon>ShopForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DialogBoxes\SupplierForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -334,6 +340,12 @@
     <Compile Include="UserControls\SettingControl.Designer.cs">
       <DependentUpon>SettingControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ShopControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ShopControl.Designer.cs">
+      <DependentUpon>ShopControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SupplierControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -400,6 +412,9 @@
     <EmbeddedResource Include="DialogBoxes\SaleReturnHeaderForm.resx">
       <DependentUpon>SaleReturnHeaderForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DialogBoxes\ShopForm.resx">
+      <DependentUpon>ShopForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DialogBoxes\SupplierForm.resx">
       <DependentUpon>SupplierForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -465,6 +480,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SettingControl.resx">
       <DependentUpon>SettingControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ShopControl.resx">
+      <DependentUpon>ShopControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SupplierControl.resx">
       <DependentUpon>SupplierControl.cs</DependentUpon>

@@ -50,11 +50,14 @@
             this.picShopLogo = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label8 = new System.Windows.Forms.Label();
+            this.btnLoadShop = new System.Windows.Forms.Button();
+            this.pnlMain = new System.Windows.Forms.Panel();
             this.adminTabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picReceiptLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picShopLogo)).BeginInit();
             this.tabPage2.SuspendLayout();
+            this.pnlMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblGreetings
@@ -62,7 +65,7 @@
             this.lblGreetings.AutoSize = true;
             this.lblGreetings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGreetings.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblGreetings.Location = new System.Drawing.Point(11, 11);
+            this.lblGreetings.Location = new System.Drawing.Point(10, 9);
             this.lblGreetings.Name = "lblGreetings";
             this.lblGreetings.Size = new System.Drawing.Size(123, 25);
             this.lblGreetings.TabIndex = 3;
@@ -76,10 +79,10 @@
             this.adminTabControl.Controls.Add(this.tabPage1);
             this.adminTabControl.Controls.Add(this.tabPage2);
             this.adminTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.adminTabControl.Location = new System.Drawing.Point(12, 46);
+            this.adminTabControl.Location = new System.Drawing.Point(6, 17);
             this.adminTabControl.Name = "adminTabControl";
             this.adminTabControl.SelectedIndex = 0;
-            this.adminTabControl.Size = new System.Drawing.Size(1103, 690);
+            this.adminTabControl.Size = new System.Drawing.Size(1109, 654);
             this.adminTabControl.TabIndex = 4;
             // 
             // tabPage1
@@ -105,7 +108,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1095, 652);
+            this.tabPage1.Size = new System.Drawing.Size(1101, 616);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Shop";
             // 
@@ -114,7 +117,7 @@
             this.btnUpdateShop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUpdateShop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnUpdateShop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdateShop.Location = new System.Drawing.Point(32, 593);
+            this.btnUpdateShop.Location = new System.Drawing.Point(35, 450);
             this.btnUpdateShop.Name = "btnUpdateShop";
             this.btnUpdateShop.Size = new System.Drawing.Size(242, 40);
             this.btnUpdateShop.TabIndex = 22;
@@ -237,7 +240,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label2.Location = new System.Drawing.Point(842, 326);
+            this.label2.Location = new System.Drawing.Point(848, 11);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(126, 25);
             this.label2.TabIndex = 10;
@@ -248,7 +251,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label1.Location = new System.Drawing.Point(842, 4);
+            this.label1.Location = new System.Drawing.Point(580, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(108, 25);
             this.label1.TabIndex = 9;
@@ -258,7 +261,7 @@
             // 
             this.btnUploadReceiptLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUploadReceiptLogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUploadReceiptLogo.Location = new System.Drawing.Point(839, 593);
+            this.btnUploadReceiptLogo.Location = new System.Drawing.Point(845, 278);
             this.btnUploadReceiptLogo.Name = "btnUploadReceiptLogo";
             this.btnUploadReceiptLogo.Size = new System.Drawing.Size(242, 40);
             this.btnUploadReceiptLogo.TabIndex = 8;
@@ -270,7 +273,7 @@
             // 
             this.picReceiptLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picReceiptLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(79)))), ((int)(((byte)(79)))));
-            this.picReceiptLogo.Location = new System.Drawing.Point(839, 354);
+            this.picReceiptLogo.Location = new System.Drawing.Point(845, 39);
             this.picReceiptLogo.Name = "picReceiptLogo";
             this.picReceiptLogo.Size = new System.Drawing.Size(242, 233);
             this.picReceiptLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -281,7 +284,7 @@
             // 
             this.btnUploadShopLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUploadShopLogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUploadShopLogo.Location = new System.Drawing.Point(839, 271);
+            this.btnUploadShopLogo.Location = new System.Drawing.Point(577, 278);
             this.btnUploadShopLogo.Name = "btnUploadShopLogo";
             this.btnUploadShopLogo.Size = new System.Drawing.Size(242, 40);
             this.btnUploadShopLogo.TabIndex = 6;
@@ -293,7 +296,7 @@
             // 
             this.picShopLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picShopLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(79)))), ((int)(((byte)(79)))));
-            this.picShopLogo.Location = new System.Drawing.Point(839, 32);
+            this.picShopLogo.Location = new System.Drawing.Point(577, 39);
             this.picShopLogo.Name = "picShopLogo";
             this.picShopLogo.Size = new System.Drawing.Size(242, 233);
             this.picShopLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -307,7 +310,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1095, 652);
+            this.tabPage2.Size = new System.Drawing.Size(1101, 616);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Printer";
             // 
@@ -316,18 +319,46 @@
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label8.Location = new System.Drawing.Point(15, 14);
+            this.label8.Location = new System.Drawing.Point(21, 14);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(144, 25);
             this.label8.TabIndex = 10;
             this.label8.Text = "Printer Settings";
+            // 
+            // btnLoadShop
+            // 
+            this.btnLoadShop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLoadShop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(115)))));
+            this.btnLoadShop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoadShop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoadShop.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnLoadShop.Location = new System.Drawing.Point(1022, 11);
+            this.btnLoadShop.Name = "btnLoadShop";
+            this.btnLoadShop.Size = new System.Drawing.Size(95, 38);
+            this.btnLoadShop.TabIndex = 13;
+            this.btnLoadShop.Text = "Shop";
+            this.btnLoadShop.UseVisualStyleBackColor = false;
+            this.btnLoadShop.Click += new System.EventHandler(this.btnLoadShop_Click);
+            // 
+            // pnlMain
+            // 
+            this.pnlMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnlMain.Controls.Add(this.adminTabControl);
+            this.pnlMain.Location = new System.Drawing.Point(0, 63);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(1128, 685);
+            this.pnlMain.TabIndex = 14;
             // 
             // AdminControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.Controls.Add(this.adminTabControl);
+            this.Controls.Add(this.pnlMain);
+            this.Controls.Add(this.btnLoadShop);
             this.Controls.Add(this.lblGreetings);
             this.Name = "AdminControl";
             this.Size = new System.Drawing.Size(1128, 751);
@@ -339,6 +370,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picShopLogo)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.pnlMain.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -368,5 +400,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtShopName;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnLoadShop;
+        private System.Windows.Forms.Panel pnlMain;
     }
 }

@@ -35,6 +35,19 @@ namespace RetailPOSA.UserControls
             loadShop();
         }//load
 
+        private void btnLoadShop_Click(object sender, EventArgs e)
+        {
+            ShopControl uc = new ShopControl();
+            loadControl(uc);
+        }
+
+        private void loadControl(UserControl uc)
+        {
+            pnlMain.Controls.Clear();
+            uc.Dock = DockStyle.Fill;
+            pnlMain.Controls.Add(uc);
+        }
+
         private void btnUploadShopLogo_Click(object sender, EventArgs e)
         {
             try
@@ -97,7 +110,7 @@ namespace RetailPOSA.UserControls
                 string shopLogoPath = Path.Combine(Application.StartupPath, "Logos", "shop_logo.png");
                 string receiptLogoPath = Path.Combine(Application.StartupPath, "Logos", "receipt_logo.png");
 
-                shopService.UpdateShop(shopID, txtShopName.Text, txtAddress.Text, txtContact.Text, shopLogoPath, receiptLogoPath, txtInvoicePrefix.Text, txtCurrency.Text);
+                shopService.UpdateShop(shopID, txtShopName.Text, txtAddress.Text, txtContact.Text, shopLogoPath, receiptLogoPath, txtInvoicePrefix.Text, txtCurrency.Text, 1);
 
                 if (this.shopLogoPath != shopLogoPath)
                 {
@@ -156,5 +169,7 @@ namespace RetailPOSA.UserControls
                 return new Bitmap(bmpTemp);
             }
         }
+
+        
     }//class
 }
