@@ -153,6 +153,7 @@
             this.navReports.TabIndex = 21;
             this.navReports.Text = "Reports";
             this.navReports.UseVisualStyleBackColor = false;
+            this.navReports.Click += new System.EventHandler(this.navReports_Click);
             // 
             // navSettings
             // 

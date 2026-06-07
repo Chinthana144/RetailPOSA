@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,6 +63,31 @@ namespace RetailPOSA.DialogBoxes
                 return;
             }
 
+            string shopName = txtShopName.Text.Replace(" ", "_");
+            string logoExt = Path.GetExtension(this.shopLogoPath);
+            string receiptExt = Path.GetExtension(this.receiptLogoPath);
+            string shopFileName = shopName + logoExt;
+            string receiptFileName = "receipt_" + shopName + receiptExt;
+
+            //image path
+            string shopLogoPath = Path.Combine(Application.StartupPath, "Logos", shopFileName);
+            string receiptLogoPath = Path.Combine(Application.StartupPath, "Logos", receiptFileName);
+
+            picShopLogo.Image.Dispose();
+            picShopLogo.Image = null;
+
+            picReceiptLogo.Image.Dispose();
+            picReceiptLogo.Image = null;
+
+            if (this.shopLogoPath != shopLogoPath)
+            {
+                File.Copy(this.shopLogoPath, shopLogoPath);
+            }
+            if (this.receiptLogoPath != receiptLogoPath)
+            {
+                File.Copy(this.receiptLogoPath, receiptLogoPath);
+            }
+            
             if (shopID > 0)
             {
                 int shopStatus = chkStatus.Checked ? 1 : 0;
@@ -132,9 +158,16 @@ namespace RetailPOSA.DialogBoxes
                 int status = Convert.ToInt32(shopData.Rows[0]["status"]);
                 chkStatus.Checked = status == 1 ? true : false;
 
-                picShopLogo.Image = Image.FromFile(shopData.Rows[0]["shop_logo"].ToString());
-                picReceiptLogo.Image = Image.FromFile(shopData.Rows[0]["receipt_logo"].ToString());
-
+                string shopPath = shopData.Rows[0]["shop_logo"].ToString();
+                string receiptPath = shopData.Rows[0]["receipt_logo"].ToString();
+                if (shopPath != "")
+                {
+                    picShopLogo.Image = Image.FromFile(shopData.Rows[0]["shop_logo"].ToString());
+                }
+                if (receiptPath != "")
+                {
+                    picReceiptLogo.Image = Image.FromFile(shopData.Rows[0]["receipt_logo"].ToString());
+                }
                 this.shopLogoPath = shopData.Rows[0]["shop_logo"].ToString();
                 this.receiptLogoPath = shopData.Rows[0]["receipt_logo"].ToString();
             }

@@ -113,6 +113,11 @@ namespace RetailPOSA.Forms
         }
 
         //========================= System =========================//
+        private void navReports_Click(object sender, EventArgs e)
+        {
+            ReportControl uc = new ReportControl();
+            loadControl(uc);
+        }
         private void navSettings_Click(object sender, EventArgs e)
         {
             SettingControl uc = new SettingControl();
@@ -298,10 +303,13 @@ namespace RetailPOSA.Forms
 
             DataTable shopData = shopService.GetShop();
 
-            string shopLogo = shopData.Rows[0]["shop_logo"].ToString();
+            if (shopData.Rows.Count != 0)
+            {
+                string shopLogo = shopData.Rows[0]["shop_logo"].ToString();
 
-            //MessageBox.Show(shopLogo);
-            picShopLogo.Image = Image.FromFile(shopLogo);
+                //MessageBox.Show(shopLogo);
+                picShopLogo.Image = Image.FromFile(shopLogo);
+            }
         }
 
         
