@@ -56,6 +56,7 @@
             this.btnTest.TabIndex = 20;
             this.btnTest.Text = "Test PDF";
             this.btnTest.UseVisualStyleBackColor = false;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // SalesReportControl
             // 
