@@ -17,7 +17,11 @@ namespace RetailPOSA.UserControls
         {
             InitializeComponent();
         }
-
+        private void ReportControl_Load(object sender, EventArgs e)
+        {
+            SalesReportControl uc = new SalesReportControl();
+            loadControl(uc);
+        }
         private void navRptSales_Click(object sender, EventArgs e)
         {
             SalesReportControl uc = new SalesReportControl();
@@ -30,5 +34,7 @@ namespace RetailPOSA.UserControls
             uc.Dock = DockStyle.Fill;
             pnlMain.Controls.Add(uc);
         }//load control
+
+        
     }//class
 }
