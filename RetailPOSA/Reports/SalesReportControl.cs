@@ -82,5 +82,20 @@ namespace RetailPOSA.Reports
         {
             calEndDate.Visible=false;
         }
+
+        //=========================== Report Buttons =========================//
+        private void btnDailySalesPDF_Click(object sender, EventArgs e)
+        {
+            string filePath = @"C:\Users\ASUS\OneDrive\Documents\Reports\DailySales.pdf";
+
+            DailySalesReport salesreport = new DailySalesReport();
+            salesreport.Generate(filePath, txtStartDate.Text, txtEndDate.Text);
+
+            Process.Start(
+            new ProcessStartInfo(filePath)
+            {
+                UseShellExecute = true
+            });
+        }
     }//clas
 }

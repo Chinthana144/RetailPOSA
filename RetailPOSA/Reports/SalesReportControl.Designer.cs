@@ -36,6 +36,7 @@
             this.txtStartDate = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtEndDate = new System.Windows.Forms.TextBox();
+            this.btnDailySalesPDF = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -56,9 +57,9 @@
             this.btnTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnTest.Location = new System.Drawing.Point(751, 64);
+            this.btnTest.Location = new System.Drawing.Point(733, 569);
             this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(158, 38);
+            this.btnTest.Size = new System.Drawing.Size(357, 50);
             this.btnTest.TabIndex = 20;
             this.btnTest.Text = "Test PDF";
             this.btnTest.UseVisualStyleBackColor = false;
@@ -82,7 +83,6 @@
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -128,11 +128,27 @@
             this.txtEndDate.TabIndex = 25;
             this.txtEndDate.Click += new System.EventHandler(this.txtEndDate_Click);
             // 
+            // btnDailySalesPDF
+            // 
+            this.btnDailySalesPDF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDailySalesPDF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(115)))));
+            this.btnDailySalesPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDailySalesPDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDailySalesPDF.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDailySalesPDF.Location = new System.Drawing.Point(733, 70);
+            this.btnDailySalesPDF.Name = "btnDailySalesPDF";
+            this.btnDailySalesPDF.Size = new System.Drawing.Size(357, 50);
+            this.btnDailySalesPDF.TabIndex = 27;
+            this.btnDailySalesPDF.Text = "Daily Sales Report PDF";
+            this.btnDailySalesPDF.UseVisualStyleBackColor = false;
+            this.btnDailySalesPDF.Click += new System.EventHandler(this.btnDailySalesPDF_Click);
+            // 
             // SalesReportControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.Controls.Add(this.btnDailySalesPDF);
             this.Controls.Add(this.calEndDate);
             this.Controls.Add(this.calStartDate);
             this.Controls.Add(this.label3);
@@ -159,5 +175,6 @@
         private System.Windows.Forms.TextBox txtStartDate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtEndDate;
+        private System.Windows.Forms.Button btnDailySalesPDF;
     }
 }

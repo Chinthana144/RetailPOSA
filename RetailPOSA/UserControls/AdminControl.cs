@@ -42,6 +42,12 @@ namespace RetailPOSA.UserControls
             loadControl(uc);
         }
 
+        private void btnLoadPaymethods_Click(object sender, EventArgs e)
+        {
+            PaymethodControl uc = new PaymethodControl();
+            loadControl(uc);
+        }
+
         private void loadControl(UserControl uc)
         {
             pnlMain.Controls.Clear();
@@ -68,5 +74,7 @@ namespace RetailPOSA.UserControls
                 MessageBox.Show("Error Occured!", "Error");
             }
         }
+
+        
     }//class
 }
