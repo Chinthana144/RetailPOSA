@@ -249,6 +249,7 @@
     <Compile Include="Services\CartDetailService.cs" />
     <Compile Include="Services\CartHeaderService.cs" />
     <Compile Include="Services\CategoryService.cs" />
+    <Compile Include="Services\GeneralSettingsService.cs" />
     <Compile Include="Services\GrnDetailService.cs" />
     <Compile Include="Services\GrnHeaderService.cs" />
     <Compile Include="Services\InventoryService.cs" />
@@ -287,6 +288,12 @@
     </Compile>
     <Compile Include="UserControls\CategoryControl.Designer.cs">
       <DependentUpon>CategoryControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\GeneralSettingsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\GeneralSettingsControl.Designer.cs">
+      <DependentUpon>GeneralSettingsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\GrnDetailControl.cs">
       <SubType>UserControl</SubType>
@@ -476,6 +483,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\CategoryControl.resx">
       <DependentUpon>CategoryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\GeneralSettingsControl.resx">
+      <DependentUpon>GeneralSettingsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\GrnDetailControl.resx">
       <DependentUpon>GrnDetailControl.cs</DependentUpon>

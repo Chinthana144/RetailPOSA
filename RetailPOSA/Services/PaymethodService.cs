@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace RetailPOSA.Services
 {
@@ -22,6 +23,19 @@ namespace RetailPOSA.Services
 
             return db.ExecuteNonQuery(query, parameters);
         }//insert
+
+        public int UpdatePaymethod(int id, string paymethod, int status)
+        {
+            string query = "UPDATE paymethods SET paymethod = @paymethod, status = @status WHERE id = @id;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("@id", id);
+            parameters.Add("@paymethod", paymethod);
+            parameters.Add("@status", status);
+
+            return db.ExecuteNonQuery(query, parameters);
+        }//update
 
         public DataTable GetAllPaymethods()
         {

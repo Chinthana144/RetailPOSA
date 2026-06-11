@@ -49,6 +49,7 @@
             this.btnPaymethods.TabIndex = 16;
             this.btnPaymethods.Text = "Paymethod";
             this.btnPaymethods.UseVisualStyleBackColor = false;
+            this.btnPaymethods.Click += new System.EventHandler(this.btnPaymethods_Click);
             // 
             // label2
             // 
