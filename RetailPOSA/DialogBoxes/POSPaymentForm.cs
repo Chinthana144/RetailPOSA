@@ -15,21 +15,24 @@ namespace RetailPOSA.DialogBoxes
 {
     public partial class POSPaymentForm : Form
     {
+        private int returnHeaderID = 0;
         private int cartHeaderID = 0;
         private decimal subTotal = 0;
-        public POSPaymentForm(int cartHeaderID)
+        private decimal returnAmount = 0;
+        public POSPaymentForm(int cartHeaderID, int returnHeaderID)
         {
             InitializeComponent();
 
             this.cartHeaderID = cartHeaderID;
-
-            GetCartTotals();
-        }
+            this.returnHeaderID = returnHeaderID;
+        }//constructor
 
         private void POSPaymentForm_Load(object sender, EventArgs e)
         {
+            lblReturnAmount.Visible = false;
+            GetCartTotals();
             loadPaymethods();
-        }
+        }//form load
 
         private void GetCartTotals()
         {
@@ -47,6 +50,20 @@ namespace RetailPOSA.DialogBoxes
             txtPayment.Text = subTotal.ToString();
             txtPayment.Focus();
             txtPayment.Select();
+
+            //get return amount
+            if (this.returnHeaderID > 0)
+            {
+                MessageBox.Show("working...");
+                //get return amount
+                SaleReturnHeaderService returnHeaderService = new SaleReturnHeaderService();
+                DataTable returnData = returnHeaderService.GetSaleReturnHeaderByID(returnHeaderID);
+
+                returnAmount = Convert.ToDecimal(returnData.Rows[0]["return_total"]);
+                lblReturnAmount.Visible = true;
+
+                lblReturnAmount.Text = "Return: " + returnAmount.ToString();
+            }//has return
         }
 
         private void loadPaymethods()
@@ -100,7 +117,7 @@ namespace RetailPOSA.DialogBoxes
             string issuedDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             
 
-            invoiceService.InsertInvoiceHeader(issuedDate, 0,0,0,0,0,0,0,userID,1);
+            invoiceService.InsertInvoiceHeader(issuedDate, 0,0,0,0,0,0,0,0,userID,1);
 
             int newInvoiceID = invoiceService.GetActiveInvoicebyUserID(userID);
 
@@ -136,10 +153,21 @@ namespace RetailPOSA.DialogBoxes
 
             }//foreach
 
-            decimal balance = paidAmount - subTotal;
-            //update invoice header
-            invoiceService.UpdateInvoiceHeader(newInvoiceID, rowCount, total, totalDiscount, subTotal, paymethodID, paidAmount, balance, 2);
+            if (returnHeaderID > 0)
+            {
+                subTotal = subTotal - this.returnAmount;
 
+                decimal balance = paidAmount - subTotal;
+                //update invoice header
+                invoiceService.UpdateInvoiceHeader(newInvoiceID, rowCount, total, totalDiscount, returnAmount, subTotal, paymethodID, paidAmount, balance, 2);
+            }
+            else
+            {
+                decimal balance = paidAmount - subTotal;
+                //update invoice header
+                invoiceService.UpdateInvoiceHeader(newInvoiceID, rowCount, total, totalDiscount, 0, subTotal, paymethodID, paidAmount, balance, 2);
+            }
+            
             //clear cart detail
             cartDetailService.ClearCart(cartHeaderID);
 
@@ -261,7 +289,7 @@ namespace RetailPOSA.DialogBoxes
         {
             if (decimal.TryParse(txtPayment.Text, out decimal result))
             {
-                decimal balance = result - subTotal;
+                decimal balance = result - subTotal + returnAmount;
                 if (balance > 0)
                 {
                     lblBalance.Text = "Balance: " + Math.Round(balance, 2).ToString();

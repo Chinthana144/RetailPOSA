@@ -15,7 +15,7 @@ namespace RetailPOSA.Services
         public int InsertSaleReturnHeader(int invoiceID, string submittedDateTime, string returnType, string reason, int itemCount, decimal total, int userID, int status)
         {
             string saleReturnNo = GetSaleReturnNo();
-            string query = "INSERT INTO sale_return_header(sale_return_no, invoice_id, submitted_datetime, return_type, reason, item_count, sale_total, user_id, status) " +
+            string query = "INSERT INTO sale_return_header(sale_return_no, invoice_id, submitted_datetime, return_type, reason, item_count, return_total, user_id, status) " +
                 "VALUES(@saleReturnNo, @invoiceID, @submittedDateTime, @returnType, @reason, @itemCount, @total, @userID, @status);";
             
             Dictionary<string, object> parameters = new Dictionary<string, object>();
@@ -34,11 +34,44 @@ namespace RetailPOSA.Services
 
         }//insert sale return header
 
+        public int UpdateSaleReturnInvoice(int id, int invoiceID, string submittedDate, string returnType, string reason, int userID, int status)
+        {
+            string query = "UPDATE sale_return_header SET invoice_id = @invoiceID, submitted_datetime = @submittedDate, return_type = @returnType, reason = @reason, user_id = @userID, status = @status WHERE id = @id;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("@id", id);
+            parameters.Add("@invoiceID", invoiceID);
+            parameters.Add("@submittedDate", submittedDate);
+            parameters.Add("@returnType", returnType);
+            parameters.Add("@reason", reason);
+            parameters.Add("@userID", userID);
+            parameters.Add("@status", status);
+
+            return db.ExecuteNonQuery(query, parameters);
+        }//update invoice_no, reson, type
+
+        public int UpdateSaleReturnHeaderTotals(int id, string submittedDate, int itemCount, decimal returnTotal, int userID, int status)
+        {
+            string query = "UPDATE sale_return_header SET submitted_datetime = @submittedDate, item_count = @itemCount, return_total = @returnTotal, user_id = @userID, status = @status WHERE id = @id;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("@id", id);
+            parameters.Add("@submittedDate", submittedDate);
+            parameters.Add("@itemCount", itemCount);
+            parameters.Add("@returnTotal", returnTotal);
+            parameters.Add("@userID", userID);
+            parameters.Add("@status", status);
+
+            return db.ExecuteNonQuery(query, parameters);
+        }//update return header
+
         public DataTable GetSaleReturnHeader(int limit, int offset)
         {
             string query = "SELECT sale_return_header.id, sale_return_no, " +
                 "invoice_id, invoice_header.invoice_no, invoice_header.sub_total, " +
-                "submitted_datetime, return_type, reason, sale_return_header.item_count, sale_total, sale_return_header.user_id, sale_return_header.status, " +
+                "submitted_datetime, return_type, reason, sale_return_header.item_count, return_total, sale_return_header.user_id, sale_return_header.status, " +
                 "users.username " +
                 "FROM sale_return_header " +
                 "INNER JOIN invoice_header ON invoice_header.id = sale_return_header.invoice_id " +
@@ -53,11 +86,28 @@ namespace RetailPOSA.Services
             return db.ExecuteQuery(query, parameters);
         }//get sale return header with pagination
 
+        public DataTable GetSaleReturnHeaderByID(int id)
+        {
+            string query = "SELECT sale_return_header.id, sale_return_no, " +
+                "invoice_id, invoice_header.invoice_no, invoice_header.sub_total, " +
+                "submitted_datetime, return_type, reason, sale_return_header.item_count, return_total, sale_return_header.user_id, sale_return_header.status, " +
+                "users.username " +
+                "FROM sale_return_header " +
+                "INNER JOIN invoice_header ON invoice_header.id = sale_return_header.invoice_id " +
+                "INNER JOIN  users ON users.user_id = sale_return_header.user_id " +
+                "WHERE sale_return_header.id = @id;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@id", id);
+
+            return db.ExecuteQuery(query, parameters);
+        }//get return header by id
+
         public DataTable SearchSaleReturnHeader(string searchTerm, int status, int limit, int offset)
         {
             string query = "SELECT sale_return_header.id, sale_return_no, " +
                 "invoice_id, invoice_header.invoice_no, invoice_header.sub_total, " +
-                "submitted_datetime, return_type, reason, sale_return_header.item_count, sale_total, sale_return_header.user_id, sale_return_header.status, " +
+                "submitted_datetime, return_type, reason, sale_return_header.item_count, return_total, sale_return_header.user_id, sale_return_header.status, " +
                 "users.username " +
                 "FROM sale_return_header " +
                 "INNER JOIN invoice_header ON invoice_header.id = sale_return_header.invoice_id " +

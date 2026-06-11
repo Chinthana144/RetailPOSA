@@ -16,11 +16,13 @@ namespace RetailPOSA.DialogBoxes
 {
     public partial class SaleReturnHeaderForm : Form
     {
+        private int returnHeaderID = 0;
         private string invoiceNo = string.Empty;
-        public SaleReturnHeaderForm(string invoiceNumber)
+        public SaleReturnHeaderForm(string invoiceNumber, int returnHeaderID)
         {
             InitializeComponent();
             this.invoiceNo = invoiceNumber;
+            this.returnHeaderID = returnHeaderID;
         }//constructor
 
         private void SaleReturnHeaderForm_Load(object sender, EventArgs e)
@@ -43,32 +45,53 @@ namespace RetailPOSA.DialogBoxes
                 string now = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
                 SaleReturnHeaderService headerService = new SaleReturnHeaderService();
-                
-                headerService.InsertSaleReturnHeader(invoiceID, now, returnType, reason, 0, 0, userID, 0);
 
-                //load return detail control
-                DataTable lastHeaderData = headerService.GetLastSaleReturnByUserID(userID);
-                if (lastHeaderData.Rows.Count > 0)
+                //check update
+                if (returnHeaderID > 0)
                 {
+                    headerService.UpdateSaleReturnInvoice(returnHeaderID, invoiceID, now, returnType, reason, userID, 0);
+                }//update
+                else
+                {
+                    headerService.InsertSaleReturnHeader(invoiceID, now, returnType, reason, 0, 0, userID, 0);
+
+                    //load return detail control
+                    DataTable lastHeaderData = headerService.GetLastSaleReturnByUserID(userID);
+
                     int headerID = Convert.ToInt32(lastHeaderData.Rows[0]["id"]);
                     SaleReturnDetailControl detailControl = new SaleReturnDetailControl(headerID);
                     //load sale return detail
                     Main mainForm = (Main)Application.OpenForms["Main"];
                     mainForm.loadControl(detailControl);
+                }//insert
 
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Failed to create sales return header.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
+                this.Close();
+                
             }//has invoice
             else {
                 MessageBox.Show("Invalid invoice number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }//btnAddSalesReturn_Click
+
+        private void loadReturnData()
+        {
+            if (returnHeaderID > 0)
+            {
+                SaleReturnHeaderService headerService = new SaleReturnHeaderService();
+
+                DataTable headerData = headerService.GetSaleReturnHeaderByID(returnHeaderID);
+
+                string invoiceNo = headerData.Rows[0]["invoice_no"].ToString();
+                string returnType = headerData.Rows[0]["return_type"].ToString();
+                string reason = headerData.Rows[0]["reason"].ToString();
+                
+                txtInvoiceNo.Text = invoiceNo;
+                cmbReturnType.Text = returnType;
+                txtReason.Text = reason;
+
+                btnAddSalesReturn.Text = "Update Sales Return";
+            }//has return header
+        }//load return data
     }//class
 }

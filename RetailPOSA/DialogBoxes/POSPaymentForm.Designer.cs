@@ -48,6 +48,7 @@
             this.btnNum8 = new System.Windows.Forms.Button();
             this.btnNum7 = new System.Windows.Forms.Button();
             this.lblDiscount = new System.Windows.Forms.Label();
+            this.lblReturnAmount = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // pnlPaymethods
@@ -325,12 +326,24 @@
             this.lblDiscount.TabIndex = 63;
             this.lblDiscount.Text = "Discount";
             // 
+            // lblReturnAmount
+            // 
+            this.lblReturnAmount.AutoSize = true;
+            this.lblReturnAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblReturnAmount.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblReturnAmount.Location = new System.Drawing.Point(25, 265);
+            this.lblReturnAmount.Name = "lblReturnAmount";
+            this.lblReturnAmount.Size = new System.Drawing.Size(142, 25);
+            this.lblReturnAmount.TabIndex = 64;
+            this.lblReturnAmount.Text = "Return Amount";
+            // 
             // POSPaymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(685, 477);
+            this.Controls.Add(this.lblReturnAmount);
             this.Controls.Add(this.lblDiscount);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnClear);
@@ -385,5 +398,6 @@
         private System.Windows.Forms.Button btnNum8;
         private System.Windows.Forms.Button btnNum7;
         private System.Windows.Forms.Label lblDiscount;
+        private System.Windows.Forms.Label lblReturnAmount;
     }
 }

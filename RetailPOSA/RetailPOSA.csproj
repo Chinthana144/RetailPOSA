@@ -12,6 +12,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -54,6 +56,9 @@
     <Reference Include="MySql.Data, Version=9.7.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.9.7.0\lib\net462\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="QuestPDF, Version=2026.5.0.0, Culture=neutral, PublicKeyToken=0f3c2b2315ff52c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuestPDF.2026.5.0\lib\netstandard2.0\QuestPDF.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -71,8 +76,8 @@
       <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
     </Reference>
     <Reference Include="System.Numerics" />
-    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
@@ -180,11 +185,23 @@
     <Compile Include="DialogBoxes\ProductForm.Designer.cs">
       <DependentUpon>ProductForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DialogBoxes\ReturnQtyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogBoxes\ReturnQtyForm.Designer.cs">
+      <DependentUpon>ReturnQtyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DialogBoxes\SaleReturnHeaderForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DialogBoxes\SaleReturnHeaderForm.Designer.cs">
       <DependentUpon>SaleReturnHeaderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogBoxes\ShopForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogBoxes\ShopForm.Designer.cs">
+      <DependentUpon>ShopForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DialogBoxes\SupplierForm.cs">
       <SubType>Form</SubType>
@@ -218,6 +235,14 @@
     <Compile Include="Models\Users.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\PDFs\DailySalesReport.cs" />
+    <Compile Include="Reports\ReportServices\SalesReportService.cs" />
+    <Compile Include="Reports\SalesReportControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reports\SalesReportControl.Designer.cs">
+      <DependentUpon>SalesReportControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Services\AdjustmentDetailService.cs" />
     <Compile Include="Services\AdjustmentHeaderService.cs" />
     <Compile Include="Services\AuthService.cs" />
@@ -229,6 +254,8 @@
     <Compile Include="Services\InventoryService.cs" />
     <Compile Include="Services\InvoiceDetailService.cs" />
     <Compile Include="Services\InvoiceService.cs" />
+    <Compile Include="Services\PaymethodService.cs" />
+    <Compile Include="Services\PermissionService.cs" />
     <Compile Include="Services\PriceChangeDetailService.cs" />
     <Compile Include="Services\PriceChangeHeaderService.cs" />
     <Compile Include="Services\ProductService.cs" />
@@ -285,6 +312,12 @@
     <Compile Include="UserControls\InvoiceControl.Designer.cs">
       <DependentUpon>InvoiceControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\PaymethodControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PaymethodControl.Designer.cs">
+      <DependentUpon>PaymethodControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\POSControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -309,6 +342,12 @@
     <Compile Include="UserControls\ProductControl.Designer.cs">
       <DependentUpon>ProductControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ReportControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ReportControl.Designer.cs">
+      <DependentUpon>ReportControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SaleReturnDetailControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -327,11 +366,23 @@
     <Compile Include="UserControls\SettingControl.Designer.cs">
       <DependentUpon>SettingControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ShopControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ShopControl.Designer.cs">
+      <DependentUpon>ShopControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SupplierControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\SupplierControl.Designer.cs">
       <DependentUpon>SupplierControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserAccessControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserAccessControl.Designer.cs">
+      <DependentUpon>UserAccessControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UsersControl.cs">
       <SubType>UserControl</SubType>
@@ -381,8 +432,14 @@
     <EmbeddedResource Include="DialogBoxes\ProductForm.resx">
       <DependentUpon>ProductForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DialogBoxes\ReturnQtyForm.resx">
+      <DependentUpon>ReturnQtyForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DialogBoxes\SaleReturnHeaderForm.resx">
       <DependentUpon>SaleReturnHeaderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogBoxes\ShopForm.resx">
+      <DependentUpon>ShopForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DialogBoxes\SupplierForm.resx">
       <DependentUpon>SupplierForm.cs</DependentUpon>
@@ -405,6 +462,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Reports\SalesReportControl.resx">
+      <DependentUpon>SalesReportControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\AdjustmentControl.resx">
       <DependentUpon>AdjustmentControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -429,6 +489,9 @@
     <EmbeddedResource Include="UserControls\InvoiceControl.resx">
       <DependentUpon>InvoiceControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PaymethodControl.resx">
+      <DependentUpon>PaymethodControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\POSControl.resx">
       <DependentUpon>POSControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -441,6 +504,9 @@
     <EmbeddedResource Include="UserControls\ProductControl.resx">
       <DependentUpon>ProductControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ReportControl.resx">
+      <DependentUpon>ReportControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SaleReturnDetailControl.resx">
       <DependentUpon>SaleReturnDetailControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -450,8 +516,14 @@
     <EmbeddedResource Include="UserControls\SettingControl.resx">
       <DependentUpon>SettingControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ShopControl.resx">
+      <DependentUpon>ShopControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SupplierControl.resx">
       <DependentUpon>SupplierControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserAccessControl.resx">
+      <DependentUpon>UserAccessControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UsersControl.resx">
       <DependentUpon>UsersControl.cs</DependentUpon>
@@ -470,5 +542,13 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\QuestPDF.2026.5.0\build\net4\QuestPDF.targets" Condition="Exists('..\packages\QuestPDF.2026.5.0\build\net4\QuestPDF.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\QuestPDF.2026.5.0\build\net4\QuestPDF.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\QuestPDF.2026.5.0\build\net4\QuestPDF.targets'))" />
+  </Target>
 </Project>

@@ -13,11 +13,11 @@ namespace RetailPOSA.Services
     {
         Database db = new Database();
 
-        public int InsertInvoiceHeader(string issuedDate, int itemCount, decimal total, decimal discounts, decimal subTotal, decimal paymethodID, decimal paidAmount, decimal balance, int userID, int status)
+        public int InsertInvoiceHeader(string issuedDate, int itemCount, decimal total, decimal discounts, decimal returnAmount, decimal subTotal, decimal paymethodID, decimal paidAmount, decimal balance, int userID, int status)
         {
             string invoiceNo = GetInvoiceNo();
-            string query = "INSERT INTO invoice_header(issued_date, invoice_no, item_count, total, discounts, sub_total, paymethod_id, paid_amount, balance, user_id, status) " +
-                "VALUES(@issuedDate, @invoiceNo, @itemCount, @total, @discounts, @subTotal, @paymethodID, @paidAmount, @balance, @userID, @status);";
+            string query = "INSERT INTO invoice_header(issued_date, invoice_no, item_count, total, discounts, return_amount, sub_total,  paymethod_id, paid_amount, balance, user_id, status) " +
+                "VALUES(@issuedDate, @invoiceNo, @itemCount, @total, @discounts, @returnAmount, @subTotal, @paymethodID, @paidAmount, @balance, @userID, @status);";
 
             Dictionary<string, object> parameters = new Dictionary<string, object>();
 
@@ -27,6 +27,7 @@ namespace RetailPOSA.Services
             parameters.Add("@total", total);
             parameters.Add("@discounts", discounts);
             parameters.Add("@subTotal", subTotal);
+            parameters.Add("@returnAmount", returnAmount);
             parameters.Add("@paymethodID", paymethodID);
             parameters.Add("@paidAmount", paidAmount);
             parameters.Add("@balance", balance);
@@ -57,12 +58,13 @@ namespace RetailPOSA.Services
 
         }//insert invoice detail
 
-        public int UpdateInvoiceHeader(int id, int itemCount, decimal totalPrice, decimal discounts, decimal finalTotal, int paymethodID, decimal paidAmount, decimal balance, int status)
+        public int UpdateInvoiceHeader(int id, int itemCount, decimal totalPrice, decimal discounts, decimal returnAmount, decimal finalTotal, int paymethodID, decimal paidAmount, decimal balance, int status)
         {
             string query = "UPDATE invoice_header SET " +
                 "item_count = @itemCount, " +
                 "total = @totalPrice, " +
                 "discounts = @discounts, " +
+                "return_amount = @returnAmount, " +
                 "sub_total = @finalTotal, " +
                 "paymethod_id = @paymethodID, " +
                 "paid_amount = @paidAmount, " +
@@ -76,6 +78,7 @@ namespace RetailPOSA.Services
             parameters.Add("@itemCount", itemCount);
             parameters.Add("@totalPrice", totalPrice);
             parameters.Add("@discounts", discounts);
+            parameters.Add("@returnAmount", returnAmount);
             parameters.Add("@finalTotal", finalTotal);
             parameters.Add("@paymethodID", paymethodID);
             parameters.Add("@paidAmount", paidAmount);
@@ -134,6 +137,7 @@ namespace RetailPOSA.Services
                 "item_count, " +
                 "total, " +
                 "discounts, " +
+                "return_amount, " +
                 "sub_total, " +
                 "paid_amount, " +
                 "balance, " +

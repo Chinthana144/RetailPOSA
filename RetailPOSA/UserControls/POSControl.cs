@@ -18,13 +18,15 @@ namespace RetailPOSA.UserControls
         public int selectedProductID = 0;
         private int cartHeaderID = 0;
         private int cartDetailID = 0;
+        private int returnHeaderID = 0;
 
         //get user id from session
         private int userID = Session.UserID;
 
-        public POSControl()
+        public POSControl(int returnHeaderID)
         {
             InitializeComponent();
+            this.returnHeaderID = returnHeaderID;
         }
 
         private void POSControl_Load(object sender, EventArgs e)
@@ -249,6 +251,8 @@ namespace RetailPOSA.UserControls
         {
             POSProductSearchForm posProductSearch = new POSProductSearchForm("", cartHeaderID);
             posProductSearch.ShowDialog();
+
+            loadCart();
         }
 
         private void btnDeleteCartItem_Click(object sender, EventArgs e)
@@ -264,7 +268,7 @@ namespace RetailPOSA.UserControls
 
         private void btnPay_Click(object sender, EventArgs e)
         {
-            POSPaymentForm posPaymentForm = new POSPaymentForm(cartHeaderID);
+            POSPaymentForm posPaymentForm = new POSPaymentForm(cartHeaderID, returnHeaderID);
 
             posPaymentForm.ShowDialog();
 

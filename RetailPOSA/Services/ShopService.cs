@@ -31,7 +31,7 @@ namespace RetailPOSA.Services
             return db.ExecuteNonQuery(query, parameters);
         }
 
-        public int UpdateShop(int id, string name, string address, string phone, string shopLogo, string receiptLogo, string invoicePrefix, string currency)
+        public int UpdateShop(int id, string name, string address, string phone, string shopLogo, string receiptLogo, string invoicePrefix, string currency, int status)
         {
             string query = "UPDATE shop SET " +
                 "name = @name, " +
@@ -40,7 +40,8 @@ namespace RetailPOSA.Services
                 "shop_logo = @shopLogo, " +
                 "receipt_logo = @receiptLogo," +
                 "invoice_prefix = @invoicePrefix, " +
-                "currency = @currency " +
+                "currency = @currency, " +
+                "status = @status " +
                 "WHERE id = @id;";
 
             Dictionary<string, object> parameters = new Dictionary<string, object>();
@@ -53,9 +54,27 @@ namespace RetailPOSA.Services
             parameters.Add("@receiptLogo", receiptLogo);
             parameters.Add("@invoicePrefix", invoicePrefix);
             parameters.Add("@currency", currency);
+            parameters.Add("@status", status);
 
             return db.ExecuteNonQuery(query, parameters);
         }//update shop
+
+        public DataTable GetAllShops()
+        {
+            string query = "SELECT * FROM shop;";
+            return db.ExecuteQuery(query);
+        }
+
+        public DataTable GetShopByID(int shopID)
+        {
+            string query = "SELECT * FROM shop WHERE id = @shopID;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("@shopID", shopID);
+
+            return db.ExecuteQuery(query, parameters);
+        }
 
         public DataTable GetShop()
         {

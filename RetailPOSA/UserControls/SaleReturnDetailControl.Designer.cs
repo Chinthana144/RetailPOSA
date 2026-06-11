@@ -31,8 +31,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dgvInvoiceDetail = new System.Windows.Forms.DataGridView();
             this.dgvReturnDetail = new System.Windows.Forms.DataGridView();
-            this.btnAddReturn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSubmitReturn = new System.Windows.Forms.Button();
+            this.lblRowCount = new System.Windows.Forms.Label();
+            this.lblReturnTotal = new System.Windows.Forms.Label();
+            this.btnRemoveReturnItem = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoiceDetail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReturnDetail)).BeginInit();
             this.SuspendLayout();
@@ -42,7 +45,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(16, 10);
+            this.label2.Location = new System.Drawing.Point(16, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(127, 28);
             this.label2.TabIndex = 38;
@@ -79,7 +82,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvReturnDetail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvReturnDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvReturnDetail.Location = new System.Drawing.Point(17, 375);
+            this.dgvReturnDetail.Location = new System.Drawing.Point(17, 376);
             this.dgvReturnDetail.MultiSelect = false;
             this.dgvReturnDetail.Name = "dgvReturnDetail";
             this.dgvReturnDetail.ReadOnly = true;
@@ -87,44 +90,86 @@
             this.dgvReturnDetail.RowHeadersWidth = 51;
             this.dgvReturnDetail.RowTemplate.Height = 24;
             this.dgvReturnDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvReturnDetail.Size = new System.Drawing.Size(1109, 289);
+            this.dgvReturnDetail.Size = new System.Drawing.Size(1109, 291);
             this.dgvReturnDetail.TabIndex = 41;
+            this.dgvReturnDetail.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReturnDetail_CellClick);
             // 
-            // btnAddReturn
+            // btnSubmitReturn
             // 
-            this.btnAddReturn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddReturn.Location = new System.Drawing.Point(921, 329);
-            this.btnAddReturn.Name = "btnAddReturn";
-            this.btnAddReturn.Size = new System.Drawing.Size(205, 40);
-            this.btnAddReturn.TabIndex = 42;
-            this.btnAddReturn.Text = "Add to Return";
-            this.btnAddReturn.UseVisualStyleBackColor = true;
-            this.btnAddReturn.Click += new System.EventHandler(this.btnAddReturn_Click);
+            this.btnSubmitReturn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSubmitReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnSubmitReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmitReturn.Location = new System.Drawing.Point(960, 681);
+            this.btnSubmitReturn.Name = "btnSubmitReturn";
+            this.btnSubmitReturn.Size = new System.Drawing.Size(166, 40);
+            this.btnSubmitReturn.TabIndex = 43;
+            this.btnSubmitReturn.Text = "Submit Return";
+            this.btnSubmitReturn.UseVisualStyleBackColor = false;
+            this.btnSubmitReturn.Click += new System.EventHandler(this.btnSubmitReturn_Click);
             // 
-            // button1
+            // lblRowCount
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(921, 670);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(205, 40);
-            this.button1.TabIndex = 43;
-            this.button1.Text = "Add Sale Return";
-            this.button1.UseVisualStyleBackColor = true;
+            this.lblRowCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblRowCount.AutoSize = true;
+            this.lblRowCount.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRowCount.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblRowCount.Location = new System.Drawing.Point(17, 670);
+            this.lblRowCount.Name = "lblRowCount";
+            this.lblRowCount.Size = new System.Drawing.Size(102, 24);
+            this.lblRowCount.TabIndex = 44;
+            this.lblRowCount.Text = "Row Count";
+            // 
+            // lblReturnTotal
+            // 
+            this.lblReturnTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblReturnTotal.AutoSize = true;
+            this.lblReturnTotal.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblReturnTotal.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblReturnTotal.Location = new System.Drawing.Point(17, 699);
+            this.lblReturnTotal.Name = "lblReturnTotal";
+            this.lblReturnTotal.Size = new System.Drawing.Size(51, 24);
+            this.lblReturnTotal.TabIndex = 45;
+            this.lblReturnTotal.Text = "Total";
+            // 
+            // btnRemoveReturnItem
+            // 
+            this.btnRemoveReturnItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemoveReturnItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnRemoveReturnItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveReturnItem.Location = new System.Drawing.Point(838, 681);
+            this.btnRemoveReturnItem.Name = "btnRemoveReturnItem";
+            this.btnRemoveReturnItem.Size = new System.Drawing.Size(116, 40);
+            this.btnRemoveReturnItem.TabIndex = 46;
+            this.btnRemoveReturnItem.Text = "Remove";
+            this.btnRemoveReturnItem.UseVisualStyleBackColor = false;
+            this.btnRemoveReturnItem.Click += new System.EventHandler(this.btnRemoveReturnItem_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Location = new System.Drawing.Point(15, 346);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(119, 28);
+            this.label1.TabIndex = 47;
+            this.label1.Text = "Return Cart";
             // 
             // SaleReturnDetailControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnAddReturn);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnRemoveReturnItem);
+            this.Controls.Add(this.lblReturnTotal);
+            this.Controls.Add(this.lblRowCount);
+            this.Controls.Add(this.btnSubmitReturn);
             this.Controls.Add(this.dgvReturnDetail);
             this.Controls.Add(this.dgvInvoiceDetail);
             this.Controls.Add(this.label2);
             this.Name = "SaleReturnDetailControl";
-            this.Size = new System.Drawing.Size(1140, 728);
+            this.Size = new System.Drawing.Size(1140, 739);
             this.Load += new System.EventHandler(this.SaleReturnDetailControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoiceDetail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReturnDetail)).EndInit();
@@ -138,7 +183,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgvInvoiceDetail;
         private System.Windows.Forms.DataGridView dgvReturnDetail;
-        private System.Windows.Forms.Button btnAddReturn;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSubmitReturn;
+        private System.Windows.Forms.Label lblRowCount;
+        private System.Windows.Forms.Label lblReturnTotal;
+        private System.Windows.Forms.Button btnRemoveReturnItem;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -16,5 +16,29 @@ namespace RetailPOSA.UserControls
         {
             InitializeComponent();
         }
-    }
+
+        private void SettingControl_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnUsers_Click(object sender, EventArgs e)
+        {
+            UsersControl uc = new UsersControl();
+            loadControl(uc);
+        }
+
+        private void loadControl(UserControl uc)
+        {
+            pnlMain.Controls.Clear();
+            uc.Dock = DockStyle.Fill;
+            pnlMain.Controls.Add(uc);
+        }//load control
+
+        private void btnUserAccess_Click(object sender, EventArgs e)
+        {
+            UserAccessControl uc = new UserAccessControl();
+            loadControl(uc);
+        }
+    }//class
 }
