@@ -265,6 +265,7 @@
     <Compile Include="Services\ShopService.cs" />
     <Compile Include="Services\SupplierService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="ThemeManager.cs" />
     <Compile Include="UserControls\AdjustmentControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
