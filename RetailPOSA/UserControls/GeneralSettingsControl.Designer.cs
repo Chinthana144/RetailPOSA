@@ -1064,6 +1064,7 @@
             // cmbStockType
             // 
             this.cmbStockType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(78)))), ((int)(((byte)(78)))));
+            this.cmbStockType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbStockType.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbStockType.ForeColor = System.Drawing.Color.White;
             this.cmbStockType.FormattingEnabled = true;

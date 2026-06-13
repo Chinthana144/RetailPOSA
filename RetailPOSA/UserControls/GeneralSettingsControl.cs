@@ -191,9 +191,6 @@ namespace RetailPOSA.UserControls
                 string hexColor = ColorTranslator.ToHtml(colorSelector.Color);
                 pnlPrimaryColor.BackColor = ColorTranslator.FromHtml(hexColor);
                 txtPrimaryColor.Text = hexColor;
-
-                lblPrimaryColor.BackColor = ColorTranslator.FromHtml(hexColor);
-                lblSecondarColor.BackColor = ColorTranslator.FromHtml(hexColor);
             }
         }//primary color
         private void btnSecondaryColor_Click(object sender, EventArgs e)
@@ -207,9 +204,6 @@ namespace RetailPOSA.UserControls
                 string hexColor = ColorTranslator.ToHtml(colorSelector.Color);
                 pnlSecondaryColor.BackColor = ColorTranslator.FromHtml(hexColor);
                 txtSecondaryColor.Text = hexColor;
-
-                lblPrimaryColor.ForeColor = ColorTranslator.FromHtml(hexColor);
-                lblSecondarColor.ForeColor = ColorTranslator.FromHtml(hexColor);
             }
         }//secondary color
         private void btnSelectBackColor_Click(object sender, EventArgs e)
@@ -223,9 +217,6 @@ namespace RetailPOSA.UserControls
                 string hexColor = ColorTranslator.ToHtml(colorSelector.Color);
                 pnlBackColor.BackColor = ColorTranslator.FromHtml(hexColor);
                 txtBackColor.Text = hexColor;
-
-                btnBackColor.BackColor = ColorTranslator.FromHtml(hexColor);
-                btnForeColor.BackColor = ColorTranslator.FromHtml(hexColor);
             }
         }//back color
         private void btnSelectForeColor_Click(object sender, EventArgs e)
@@ -239,9 +230,6 @@ namespace RetailPOSA.UserControls
                 string hexColor = ColorTranslator.ToHtml(colorSelector.Color);
                 pnlForeColor.BackColor = ColorTranslator.FromHtml(hexColor);
                 txtForeColor.Text = hexColor;
-
-                btnBackColor.ForeColor = ColorTranslator.FromHtml(hexColor);
-                btnForeColor.ForeColor = ColorTranslator.FromHtml(hexColor);
             }
         }
         private void btnSelectAccentColor_Click(object sender, EventArgs e)

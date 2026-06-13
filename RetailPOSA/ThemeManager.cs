@@ -33,13 +33,50 @@ namespace RetailPOSA
             Color successColor = ColorTranslator.FromHtml(successColorName);
             Color dangerColor = ColorTranslator.FromHtml(dangerColorName);
 
+            //parent color
+            parent.BackColor = primaryColor;
+
             foreach (Control ctrl in parent.Controls)
-            { 
+            {
                 //labels
-                if(ctrl is Label)
+                if (ctrl is Label)
                 {
-                    ctrl.BackColor = backColor;
+                    ctrl.BackColor = primaryColor;
                     ctrl.ForeColor = foreColor;
+                }
+                //text box
+                else if (ctrl is TextBox)
+                {
+                    ctrl.BackColor = secondaryColor;
+                    ctrl.ForeColor = foreColor;
+                }
+                //combo box
+                else if (ctrl is ComboBox cmb)
+                {
+                    cmb.BackColor = secondaryColor;
+                    cmb.ForeColor = foreColor;
+
+                    cmb.FlatStyle = FlatStyle.Flat;
+                }
+                //button
+                else if (ctrl is Button btn)
+                {
+                    btn.BackColor = backColor;
+                    btn.ForeColor = foreColor;
+
+                    btn.FlatStyle = FlatStyle.Flat;
+                    btn.FlatAppearance.BorderColor = accentColor;
+                }
+                //DataGridView
+                else if (ctrl is DataGridView dgv)
+                {
+                    dgv.BackgroundColor = secondaryColor;
+
+                    dgv.ColumnHeadersDefaultCellStyle.BackColor = secondaryColor;
+                    dgv.ColumnHeadersDefaultCellStyle.ForeColor = foreColor;
+
+                    dgv.DefaultCellStyle.BackColor = secondaryColor;
+                    dgv.DefaultCellStyle.ForeColor = foreColor;
                 }
 
                 //apply for child

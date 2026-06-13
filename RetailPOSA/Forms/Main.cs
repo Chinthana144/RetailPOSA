@@ -35,6 +35,7 @@ namespace RetailPOSA.Forms
 
         private void Main_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             lblUsername.Text = Session.UserName;
             lblRole.Text = Session.RoleName;
 
