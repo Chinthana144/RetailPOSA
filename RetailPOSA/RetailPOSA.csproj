@@ -290,6 +290,12 @@
     <Compile Include="UserControls\CategoryControl.Designer.cs">
       <DependentUpon>CategoryControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\DashboardControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\DashboardControl.Designer.cs">
+      <DependentUpon>DashboardControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\GeneralSettingsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -484,6 +490,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\CategoryControl.resx">
       <DependentUpon>CategoryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\DashboardControl.resx">
+      <DependentUpon>DashboardControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\GeneralSettingsControl.resx">
       <DependentUpon>GeneralSettingsControl.cs</DependentUpon>

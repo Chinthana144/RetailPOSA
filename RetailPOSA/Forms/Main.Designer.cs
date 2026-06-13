@@ -429,6 +429,7 @@
             this.navDashboard.TabIndex = 21;
             this.navDashboard.Text = "Dashboard";
             this.navDashboard.UseVisualStyleBackColor = false;
+            this.navDashboard.Click += new System.EventHandler(this.navDashboard_Click);
             // 
             // navProfile
             // 

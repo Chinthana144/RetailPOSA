@@ -36,6 +36,7 @@ namespace RetailPOSA.Forms
         private void Main_Load(object sender, EventArgs e)
         {
             ThemeManager.ApplyTheme(this);
+
             lblUsername.Text = Session.UserName;
             lblRole.Text = Session.RoleName;
 
@@ -44,7 +45,11 @@ namespace RetailPOSA.Forms
             initializeNavbar();
 
             loadShop();
-        }
+
+            //load dashboard
+            DashboardControl uc = new DashboardControl();
+            loadControl(uc);
+        }//main load
 
         public void loadControl(UserControl uc)
         {
@@ -52,6 +57,13 @@ namespace RetailPOSA.Forms
             uc.Dock = DockStyle.Fill;
             pnlContent.Controls.Add(uc);
         }//load control
+
+        //=========================== Home ========================//
+        private void navDashboard_Click(object sender, EventArgs e)
+        {
+            DashboardControl uc = new DashboardControl();
+            loadControl(uc);
+        }
 
         //========================= Catalog =========================//
         private void navCategories_Click(object sender, EventArgs e)
@@ -312,7 +324,5 @@ namespace RetailPOSA.Forms
                 picShopLogo.Image = Image.FromFile(shopLogo);
             }
         }
-
-        
     }//class
 }
