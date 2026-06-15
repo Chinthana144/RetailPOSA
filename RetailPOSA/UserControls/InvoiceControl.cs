@@ -36,7 +36,7 @@ namespace RetailPOSA.UserControls
             dgvInvoices.DataSource = headerData;
 
             dgvInvoices.Columns["id"].HeaderText = "ID";
-            dgvInvoices.Columns["issued_date"].HeaderText = "Date";
+            dgvInvoices.Columns["issued_datetime"].HeaderText = "Date";
             dgvInvoices.Columns["invoice_no"].HeaderText = "Invoice No";
             dgvInvoices.Columns["item_count"].HeaderText = "Count";
             dgvInvoices.Columns["total"].HeaderText = "Sale";

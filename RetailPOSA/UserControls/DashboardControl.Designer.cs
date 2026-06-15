@@ -29,15 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pnlInvoice = new System.Windows.Forms.Panel();
             this.lblTodayInvoice = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlMonthlySale = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblMonthSale = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pnlStock = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lblLowStock = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.pnlTodaySale = new System.Windows.Forms.Panel();
             this.lblTodaySale = new System.Windows.Forms.Label();
@@ -45,11 +48,13 @@
             this.lblShopName = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
             this.dateTimer = new System.Windows.Forms.Timer(this.components);
+            this.chrtDailySale = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlInvoice.SuspendLayout();
             this.pnlMonthlySale.SuspendLayout();
             this.pnlStock.SuspendLayout();
             this.pnlTodaySale.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chrtDailySale)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -110,7 +115,7 @@
             // pnlMonthlySale
             // 
             this.pnlMonthlySale.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pnlMonthlySale.Controls.Add(this.label7);
+            this.pnlMonthlySale.Controls.Add(this.lblMonthSale);
             this.pnlMonthlySale.Controls.Add(this.label3);
             this.pnlMonthlySale.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMonthlySale.Location = new System.Drawing.Point(562, 10);
@@ -119,16 +124,16 @@
             this.pnlMonthlySale.Size = new System.Drawing.Size(256, 127);
             this.pnlMonthlySale.TabIndex = 3;
             // 
-            // label7
+            // lblMonthSale
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label7.Location = new System.Drawing.Point(30, 65);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(133, 32);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "LKR:0.00";
+            this.lblMonthSale.AutoSize = true;
+            this.lblMonthSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMonthSale.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblMonthSale.Location = new System.Drawing.Point(30, 65);
+            this.lblMonthSale.Name = "lblMonthSale";
+            this.lblMonthSale.Size = new System.Drawing.Size(133, 32);
+            this.lblMonthSale.TabIndex = 3;
+            this.lblMonthSale.Text = "LKR:0.00";
             // 
             // label3
             // 
@@ -144,7 +149,7 @@
             // pnlStock
             // 
             this.pnlStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pnlStock.Controls.Add(this.label8);
+            this.pnlStock.Controls.Add(this.lblLowStock);
             this.pnlStock.Controls.Add(this.label4);
             this.pnlStock.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlStock.Location = new System.Drawing.Point(838, 10);
@@ -153,16 +158,16 @@
             this.pnlStock.Size = new System.Drawing.Size(258, 127);
             this.pnlStock.TabIndex = 3;
             // 
-            // label8
+            // lblLowStock
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label8.Location = new System.Drawing.Point(26, 65);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(105, 32);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "0 Items";
+            this.lblLowStock.AutoSize = true;
+            this.lblLowStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLowStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblLowStock.Location = new System.Drawing.Point(26, 65);
+            this.lblLowStock.Name = "lblLowStock";
+            this.lblLowStock.Size = new System.Drawing.Size(105, 32);
+            this.lblLowStock.TabIndex = 3;
+            this.lblLowStock.Text = "0 Items";
             // 
             // label4
             // 
@@ -237,10 +242,29 @@
             this.dateTimer.Interval = 500;
             this.dateTimer.Tick += new System.EventHandler(this.dateTimer_Tick);
             // 
+            // chrtDailySale
+            // 
+            this.chrtDailySale.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea1.Name = "ChartArea1";
+            this.chrtDailySale.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chrtDailySale.Legends.Add(legend1);
+            this.chrtDailySale.Location = new System.Drawing.Point(16, 219);
+            this.chrtDailySale.Name = "chrtDailySale";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chrtDailySale.Series.Add(series1);
+            this.chrtDailySale.Size = new System.Drawing.Size(1106, 435);
+            this.chrtDailySale.TabIndex = 4;
+            this.chrtDailySale.Text = "chart1";
+            // 
             // DashboardControl
             // 
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.Controls.Add(this.chrtDailySale);
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.lblShopName);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -256,6 +280,7 @@
             this.pnlStock.PerformLayout();
             this.pnlTodaySale.ResumeLayout(false);
             this.pnlTodaySale.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chrtDailySale)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -279,8 +304,9 @@
         private System.Windows.Forms.Label lblShopName;
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Label lblTodayInvoice;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblMonthSale;
+        private System.Windows.Forms.Label lblLowStock;
         private System.Windows.Forms.Timer dateTimer;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chrtDailySale;
     }
 }
