@@ -210,6 +210,28 @@ namespace RetailPOSA.Services
             return db.ExecuteQuery(query, parameters);
         }//get invoice by invoice no
 
+        public DataTable GetDailyTotal(string today)
+        {
+            string query = "SELECT count(*) as invoice_count, SUM(sub_total) as total_sale FROM invoice_header WHERE issued_date LIKE @today;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@today", $"%{today}%");
+
+            return db.ExecuteQuery(query, parameters);
+        }//ge daily total
+
+        public DataTable GetTotalByDateRange(string startDate, string endDate)
+        {
+            string query = "SELECT count(*) as invoice_count, SUM(sub_total) as total_sale FROM invoice_header WHERE issued_date BETWEEN @startDate AND @endDate;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@startDate", startDate);
+            parameters.Add("@endDate", endDate);
+
+            return db.ExecuteQuery(query, parameters);
+
+        }//get total by date range
+
         public DataTable GetPaymethods()
         {
             string query = "SELECT * FROM paymethods WHERE status = 1;";
