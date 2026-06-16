@@ -86,8 +86,7 @@ namespace RetailPOSA.UserControls
             {
                 loadInvoices();
             }
-
-        }
+        }//search timer
 
         private void searchInvoices(string searchTerm)
         { 

@@ -35,20 +35,7 @@ namespace RetailPOSA.UserControls
         {
             pnlMain.Controls.Clear();
             uc.Dock = DockStyle.Fill;
-            pnlMain.Controls.Add(uc);
-
-            switch (this.tabID)
-            {
-                case 1:
-                    navRptSales.BackColor = Color.FromArgb(122, 122, 122, 1);
-                    navRptInventory.BackColor = Color.FromArgb(76, 76, 76, 1);
-                    navRptPurchase.BackColor = Color.FromArgb(76, 76, 76, 1);
-                    navRptFinanacial.BackColor = Color.FromArgb(76, 76, 76, 1);
-                break;
-
-                default:
-                break;
-            }//switch
+            pnlMain.Controls.Add(uc);        
         }//load control
 
         

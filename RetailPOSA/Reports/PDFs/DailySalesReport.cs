@@ -53,7 +53,7 @@ namespace RetailPOSA.Reports.PDFs
                                 columns.RelativeColumn();
                                 columns.RelativeColumn();
                                 columns.RelativeColumn();
-                                columns.ConstantColumn(50);
+                                columns.ConstantColumn(70);
                                 //columns.RelativeColumn();
                                 //columns.RelativeColumn();
                             });
@@ -74,7 +74,7 @@ namespace RetailPOSA.Reports.PDFs
                             foreach (DataRow row in salesData.Rows)
                             {
                                 table.Cell().Padding(8).Text(i.ToString()).FontSize(10);
-                                table.Cell().Padding(8).Text(row["issued_date"].ToString()).FontSize(10);
+                                table.Cell().Padding(8).Text(row["issued_datetime"].ToString().Substring(0,10)).FontSize(10);
                                 table.Cell().Padding(8).Text(row["invoice_no"].ToString()).FontSize(10);
                                 table.Cell().Padding(8).Text(row["item_count"].ToString()).FontSize(10);
                                 table.Cell().Padding(8).Text(row["total"].ToString()).FontSize(10);

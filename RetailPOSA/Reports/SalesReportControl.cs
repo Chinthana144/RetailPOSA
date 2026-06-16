@@ -25,6 +25,7 @@ namespace RetailPOSA.Reports
         }
         private void SalesReportControl_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             //hide
             calStartDate.Visible = false;
             calEndDate.Visible = false;

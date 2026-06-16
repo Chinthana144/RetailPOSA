@@ -66,6 +66,25 @@ namespace RetailPOSA.Services
             return db.ExecuteNonQuery(query, parameters);
         }//update
 
+        public string GetSettingsValueByKey(string settingKey)
+        {
+            string query = "SELECT settings_value FROM general_settings WHERE settings_key = @settingKey LIMIT 1;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@settingKey", settingKey);
+
+            DataTable dt = db.ExecuteQuery(query, parameters);
+
+            if (dt.Rows.Count > 0)
+            {
+                return dt.Rows[0]["settings_value"].ToString();
+            }
+            else
+            {
+                return "";
+            }
+        }//get setting value
+
         //check exist
         private int CheckSettingExists(string settingKey)
         {
