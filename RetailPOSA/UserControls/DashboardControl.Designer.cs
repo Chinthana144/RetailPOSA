@@ -32,6 +32,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pnlInvoice = new System.Windows.Forms.Panel();
             this.lblTodayInvoice = new System.Windows.Forms.Label();
@@ -49,12 +50,15 @@
             this.lblTime = new System.Windows.Forms.Label();
             this.dateTimer = new System.Windows.Forms.Timer(this.components);
             this.chrtDailySale = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.lblTopSaleTitle = new System.Windows.Forms.Label();
+            this.dgvTopProducts = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlInvoice.SuspendLayout();
             this.pnlMonthlySale.SuspendLayout();
             this.pnlStock.SuspendLayout();
             this.pnlTodaySale.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrtDailySale)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTopProducts)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -75,7 +79,7 @@
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1106, 147);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1085, 147);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // pnlInvoice
@@ -84,10 +88,10 @@
             this.pnlInvoice.Controls.Add(this.lblTodayInvoice);
             this.pnlInvoice.Controls.Add(this.label2);
             this.pnlInvoice.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlInvoice.Location = new System.Drawing.Point(286, 10);
+            this.pnlInvoice.Location = new System.Drawing.Point(281, 10);
             this.pnlInvoice.Margin = new System.Windows.Forms.Padding(10);
             this.pnlInvoice.Name = "pnlInvoice";
-            this.pnlInvoice.Size = new System.Drawing.Size(256, 127);
+            this.pnlInvoice.Size = new System.Drawing.Size(251, 127);
             this.pnlInvoice.TabIndex = 2;
             // 
             // lblTodayInvoice
@@ -118,10 +122,10 @@
             this.pnlMonthlySale.Controls.Add(this.lblMonthSale);
             this.pnlMonthlySale.Controls.Add(this.label3);
             this.pnlMonthlySale.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMonthlySale.Location = new System.Drawing.Point(562, 10);
+            this.pnlMonthlySale.Location = new System.Drawing.Point(552, 10);
             this.pnlMonthlySale.Margin = new System.Windows.Forms.Padding(10);
             this.pnlMonthlySale.Name = "pnlMonthlySale";
-            this.pnlMonthlySale.Size = new System.Drawing.Size(256, 127);
+            this.pnlMonthlySale.Size = new System.Drawing.Size(251, 127);
             this.pnlMonthlySale.TabIndex = 3;
             // 
             // lblMonthSale
@@ -152,10 +156,10 @@
             this.pnlStock.Controls.Add(this.lblLowStock);
             this.pnlStock.Controls.Add(this.label4);
             this.pnlStock.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlStock.Location = new System.Drawing.Point(838, 10);
+            this.pnlStock.Location = new System.Drawing.Point(823, 10);
             this.pnlStock.Margin = new System.Windows.Forms.Padding(10);
             this.pnlStock.Name = "pnlStock";
-            this.pnlStock.Size = new System.Drawing.Size(258, 127);
+            this.pnlStock.Size = new System.Drawing.Size(252, 127);
             this.pnlStock.TabIndex = 3;
             // 
             // lblLowStock
@@ -189,7 +193,7 @@
             this.pnlTodaySale.Location = new System.Drawing.Point(10, 10);
             this.pnlTodaySale.Margin = new System.Windows.Forms.Padding(10);
             this.pnlTodaySale.Name = "pnlTodaySale";
-            this.pnlTodaySale.Size = new System.Drawing.Size(256, 127);
+            this.pnlTodaySale.Size = new System.Drawing.Size(251, 127);
             this.pnlTodaySale.TabIndex = 1;
             // 
             // lblTodaySale
@@ -231,7 +235,7 @@
             this.lblTime.AutoSize = true;
             this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblTime.Location = new System.Drawing.Point(788, 13);
+            this.lblTime.Location = new System.Drawing.Point(784, 13);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(331, 32);
             this.lblTime.TabIndex = 3;
@@ -256,20 +260,59 @@
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chrtDailySale.Series.Add(series1);
-            this.chrtDailySale.Size = new System.Drawing.Size(1106, 435);
+            this.chrtDailySale.Size = new System.Drawing.Size(1085, 435);
             this.chrtDailySale.TabIndex = 4;
             this.chrtDailySale.Text = "chart1";
+            // 
+            // lblTopSaleTitle
+            // 
+            this.lblTopSaleTitle.AutoSize = true;
+            this.lblTopSaleTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTopSaleTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblTopSaleTitle.Location = new System.Drawing.Point(20, 674);
+            this.lblTopSaleTitle.Name = "lblTopSaleTitle";
+            this.lblTopSaleTitle.Size = new System.Drawing.Size(193, 25);
+            this.lblTopSaleTitle.TabIndex = 5;
+            this.lblTopSaleTitle.Text = "Top Selling Products";
+            // 
+            // dgvTopProducts
+            // 
+            this.dgvTopProducts.AllowUserToAddRows = false;
+            this.dgvTopProducts.AllowUserToDeleteRows = false;
+            this.dgvTopProducts.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvTopProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvTopProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTopProducts.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvTopProducts.Location = new System.Drawing.Point(16, 711);
+            this.dgvTopProducts.MultiSelect = false;
+            this.dgvTopProducts.Name = "dgvTopProducts";
+            this.dgvTopProducts.ReadOnly = true;
+            this.dgvTopProducts.RowHeadersVisible = false;
+            this.dgvTopProducts.RowHeadersWidth = 51;
+            this.dgvTopProducts.RowTemplate.Height = 24;
+            this.dgvTopProducts.Size = new System.Drawing.Size(1085, 334);
+            this.dgvTopProducts.TabIndex = 6;
             // 
             // DashboardControl
             // 
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.Controls.Add(this.dgvTopProducts);
+            this.Controls.Add(this.lblTopSaleTitle);
             this.Controls.Add(this.chrtDailySale);
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.lblShopName);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "DashboardControl";
-            this.Size = new System.Drawing.Size(1138, 707);
+            this.Size = new System.Drawing.Size(1117, 1078);
             this.Load += new System.EventHandler(this.DashboardControl_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.pnlInvoice.ResumeLayout(false);
@@ -281,6 +324,7 @@
             this.pnlTodaySale.ResumeLayout(false);
             this.pnlTodaySale.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrtDailySale)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTopProducts)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -308,5 +352,7 @@
         private System.Windows.Forms.Label lblLowStock;
         private System.Windows.Forms.Timer dateTimer;
         private System.Windows.Forms.DataVisualization.Charting.Chart chrtDailySale;
+        private System.Windows.Forms.Label lblTopSaleTitle;
+        private System.Windows.Forms.DataGridView dgvTopProducts;
     }
 }

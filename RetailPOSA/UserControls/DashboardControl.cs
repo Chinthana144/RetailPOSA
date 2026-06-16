@@ -25,6 +25,7 @@ namespace RetailPOSA.UserControls
             loadShop();
             loadKPI();
             loadChat();
+            loadTopItems();
             dateTimer.Start();       
         }
 
@@ -99,6 +100,29 @@ namespace RetailPOSA.UserControls
 
         }//load chart
 
+        private void loadTopItems()
+        {
+            string today = DateTime.Now.ToString("yyyy-MM-dd");
+            string lastDay = DateTime.Parse(today).AddDays(-30).ToString("yyyy-MM-dd");
+
+            InvoiceDetailService detailService = new InvoiceDetailService();
+
+            DataTable topData = detailService.GetTopSellingProducts(lastDay);
+
+            lblTopSaleTitle.Text = "Top selling items since " + lastDay;
+
+            dgvTopProducts.DataSource = topData;
+
+            dgvTopProducts.Columns["count"].HeaderText = "Count";
+            dgvTopProducts.Columns["category"].HeaderText = "Category";
+            dgvTopProducts.Columns["barcode"].HeaderText = "Barcode";
+            dgvTopProducts.Columns["name"].HeaderText = "Product";
+            dgvTopProducts.Columns["total_qty"].HeaderText = "Sold Qty";
+            dgvTopProducts.Columns["minimum_stock"].HeaderText = "Min Stock";
+
+            dgvTopProducts.Columns["count"].Width = 80;
+        }//load top table
+
         private void dateTimer_Tick(object sender, EventArgs e)
         {
             dateTimer.Stop();
@@ -108,5 +132,7 @@ namespace RetailPOSA.UserControls
             lblTime.Text = todate;
             dateTimer.Start();
         }
+
+
     }//class
 }

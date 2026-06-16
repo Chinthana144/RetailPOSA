@@ -103,6 +103,7 @@
             this.dgvCart.RowHeadersWidth = 51;
             this.dgvCart.RowTemplate.Height = 24;
             this.dgvCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCart.ShowCellToolTips = false;
             this.dgvCart.Size = new System.Drawing.Size(730, 583);
             this.dgvCart.TabIndex = 12;
             this.dgvCart.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCart_CellClick);
