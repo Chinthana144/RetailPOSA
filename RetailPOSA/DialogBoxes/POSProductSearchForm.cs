@@ -25,6 +25,7 @@ namespace RetailPOSA.DialogBoxes
 
         private void POSProductSearchForm_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             txtSearch.Text = searchTerm;
             InventoryService inventoryService = new InventoryService();
             DataTable searchResults = inventoryService.SearchActiveInventory(searchTerm);

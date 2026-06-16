@@ -27,6 +27,7 @@ namespace RetailPOSA.DialogBoxes
 
         private void SaleReturnHeaderForm_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             cmbReturnType.SelectedIndex = 0;
         }
 

@@ -23,6 +23,8 @@ namespace RetailPOSA.UserControls
 
         private void CategoryControl_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
+
             loadAllCategories();
         }
 

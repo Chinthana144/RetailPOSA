@@ -22,6 +22,7 @@ namespace RetailPOSA.UserControls
 
         private void InvoiceControl_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             loadInvoices();
             lblPageNo.Text = $"Page {currentPage}";
         }

@@ -24,6 +24,7 @@ namespace RetailPOSA.UserControls
 
         private void AdminControl_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             //create logo folder if not exist
             string logoFolder = Path.Combine(Application.StartupPath, "Logos");
             if (!Directory.Exists(logoFolder))

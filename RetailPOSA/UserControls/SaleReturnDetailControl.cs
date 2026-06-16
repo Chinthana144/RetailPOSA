@@ -27,6 +27,7 @@ namespace RetailPOSA.UserControls
 
         private void SaleReturnDetailControl_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             loadInvoiceDetail();
 
             loadReturnDetail();

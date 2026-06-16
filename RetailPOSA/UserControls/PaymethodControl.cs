@@ -22,6 +22,7 @@ namespace RetailPOSA.UserControls
 
         private void PaymethodControl_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             loadPaymethods();
 
             btnPaymethods.Text = selectedID > 0 ? "Update Paymethod" : "Add Paymethod";

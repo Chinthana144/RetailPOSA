@@ -72,11 +72,17 @@ namespace RetailPOSA
                 {
                     dgv.BackgroundColor = secondaryColor;
 
+                    dgv.BorderStyle = BorderStyle.None;
+                    dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+
                     dgv.ColumnHeadersDefaultCellStyle.BackColor = secondaryColor;
                     dgv.ColumnHeadersDefaultCellStyle.ForeColor = foreColor;
 
                     dgv.DefaultCellStyle.BackColor = secondaryColor;
                     dgv.DefaultCellStyle.ForeColor = foreColor;
+
+                    dgv.DefaultCellStyle.SelectionBackColor = accentColor;
+                    dgv.DefaultCellStyle.SelectionForeColor = foreColor;
                 }
 
                 //apply for child

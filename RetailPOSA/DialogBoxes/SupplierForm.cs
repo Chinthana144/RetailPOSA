@@ -23,6 +23,7 @@ namespace RetailPOSA.DialogBoxes
         }
         private void SupplierForm_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             btnSupplier.Text = selectedID == 0 ? "Add Supplier" : "Update Supplier";
 
             if (selectedID > 0)

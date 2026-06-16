@@ -22,6 +22,8 @@ namespace RetailPOSA.UserControls
         }
         private void InventoryControl_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
+
             loadInventory();
         }
 

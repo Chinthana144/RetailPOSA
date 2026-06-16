@@ -25,6 +25,8 @@ namespace RetailPOSA.UserControls
         }
         private void GrnHeaderControl_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
+
             loadGrnHeaders();
 
             btnEditGrn.Enabled = false;

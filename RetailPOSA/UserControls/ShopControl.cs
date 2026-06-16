@@ -22,6 +22,7 @@ namespace RetailPOSA.UserControls
 
         private void ShopControl_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             loadShops();
         }
 

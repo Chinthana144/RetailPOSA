@@ -24,6 +24,7 @@ namespace RetailPOSA.UserControls
         }
         private void SaleReturnHeaderControl_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             cmbStatus.SelectedIndex = 0;
             btnReturnItems.Enabled = false;
             btnOpenPOS.Enabled = false;

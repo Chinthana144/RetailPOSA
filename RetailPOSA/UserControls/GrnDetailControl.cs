@@ -26,6 +26,8 @@ namespace RetailPOSA.UserControls
         }
         private void GrnDetailControl_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
+
             loadGrnHeader();
 
             loadGrnDetails();

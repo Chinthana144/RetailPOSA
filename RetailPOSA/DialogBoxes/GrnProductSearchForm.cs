@@ -26,6 +26,7 @@ namespace RetailPOSA.DialogBoxes
 
         private void GrnProductSearchForm_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             btnAddProduct.Enabled = false;
         }
 

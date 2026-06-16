@@ -26,6 +26,7 @@ namespace RetailPOSA.UserControls
 
         private void PriceChangeDetailControl_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             loadHeaderData();
 
             loadPriceChangeDetails();

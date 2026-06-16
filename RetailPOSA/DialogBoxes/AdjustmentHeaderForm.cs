@@ -28,6 +28,7 @@ namespace RetailPOSA.DialogBoxes
 
         private void AdjustmentHeaderForm_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             cmbAdjustmentType.SelectedIndex = 0;
 
             loadHeaderData();

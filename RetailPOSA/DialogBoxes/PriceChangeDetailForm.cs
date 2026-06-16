@@ -25,6 +25,7 @@ namespace RetailPOSA.DialogBoxes
 
         private void PriceChangeDetailForm_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             loadData();
         }//load form
 

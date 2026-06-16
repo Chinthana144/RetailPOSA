@@ -20,6 +20,7 @@ namespace RetailPOSA.UserControls
         }
         private void ReportControl_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             SalesReportControl uc = new SalesReportControl();
             loadControl(uc);
         }

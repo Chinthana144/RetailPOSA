@@ -22,6 +22,7 @@ namespace RetailPOSA.UserControls
 
         private void DashboardControl_Load(object sender, EventArgs e)
         {
+            loadTheme();
             loadShop();
             loadKPI();
             loadChat();
@@ -123,16 +124,114 @@ namespace RetailPOSA.UserControls
             dgvTopProducts.Columns["count"].Width = 80;
         }//load top table
 
+        
+        private void loadTheme()
+        { 
+            GeneralSettingsService settingsService = new GeneralSettingsService();
+
+            string primaryColorName = settingsService.GetColor("primary_color") ?? "#2d2d2d";
+            string secondaryColorName = settingsService.GetColor("secondary_color") ?? "#4d4d4d";
+            string backColorName = settingsService.GetColor("back_color") ?? "#3d3d3d";
+            string foreColorName = settingsService.GetColor("fore_color") ?? "#fefefe";
+            string accentColorName = settingsService.GetColor("accent_color") ?? "#b4ef22";
+            string successColorName = settingsService.GetColor("success_color") ?? "#23cf17";
+            string dangerColorName = settingsService.GetColor("danger_color") ?? "#f52f50";
+
+            Color primaryColor = ColorTranslator.FromHtml(primaryColorName);
+            Color secondaryColor = ColorTranslator.FromHtml(secondaryColorName);
+            Color backColor = ColorTranslator.FromHtml(backColorName);
+            Color foreColor = ColorTranslator.FromHtml(foreColorName);
+            Color accentColor = ColorTranslator.FromHtml(accentColorName);
+            Color successColor = ColorTranslator.FromHtml(successColorName);
+            Color dangerColor = ColorTranslator.FromHtml(dangerColorName);
+
+            this.BackColor = primaryColor;
+
+            foreach (Control ctrl in this.Controls)
+            {
+                //labels
+                if (ctrl is Label)
+                {
+                    ctrl.BackColor = primaryColor;
+                    ctrl.ForeColor = foreColor;
+                }
+                else if (ctrl is Panel)
+                {
+                    ctrl.BackColor = backColor;
+                    ctrl.ForeColor = foreColor;
+                }
+                else if (ctrl is Chart)
+                {
+                    ctrl.BackColor = backColor;
+                }
+            }//foreach control
+
+            //chart colors
+            chrtDailySale.BorderlineColor = secondaryColor;
+            ChartArea chartArea = chrtDailySale.ChartAreas[0];
+            chartArea.BackColor = primaryColor;
+
+            chartArea.AxisX.LabelStyle.ForeColor = foreColor;
+            chartArea.AxisY.LabelStyle.ForeColor = foreColor;
+
+            chartArea.AxisX.LineColor = foreColor;
+            chartArea.AxisY.LineColor = foreColor;
+
+            chartArea.AxisX.MajorGrid.LineColor = secondaryColor;
+            chartArea.AxisY.MajorGrid.LineColor = secondaryColor;
+
+            chartArea.AxisX.MajorGrid.Enabled = false;
+
+            Legend legend = chrtDailySale.Legends[0];
+            legend.Enabled = false;
+
+            Series series = chrtDailySale.Series[0];
+            series["PointWidth"] = "0.6";
+
+            //table
+            DataGridView dgv = dgvTopProducts;
+
+            dgv.BackgroundColor = backColor;
+            dgv.GridColor = secondaryColor;
+
+            dgv.BorderStyle = BorderStyle.None;
+            dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+
+            // Header Style
+            dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgv.ColumnHeadersHeight = 40;
+            dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = backColor;
+            dgv.ColumnHeadersDefaultCellStyle.ForeColor = foreColor;
+
+            //cell style
+            dgv.DefaultCellStyle.BackColor = backColor;
+            dgv.DefaultCellStyle.ForeColor = foreColor;
+
+            dgv.DefaultCellStyle.SelectionBackColor = accentColor;
+            dgv.DefaultCellStyle.SelectionForeColor = foreColor;
+
+        }//color theme
+
+        //======================= Timers =====================//
         private void dateTimer_Tick(object sender, EventArgs e)
         {
             dateTimer.Stop();
-            
+
             string todate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
             lblTime.Text = todate;
             dateTimer.Start();
         }
 
-
+        private void dataFetchTimer_Tick(object sender, EventArgs e)
+        {
+            dataFetchTimer.Stop();
+            loadKPI();
+            loadChat();
+            loadTopItems();
+            dataFetchTimer.Start();
+        }
     }//class
 }

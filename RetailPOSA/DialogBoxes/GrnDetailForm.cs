@@ -25,6 +25,7 @@ namespace RetailPOSA.DialogBoxes
 
         private void GrnDetailForm_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             loadProductDetails();
 
             //expiry

@@ -25,6 +25,7 @@ namespace RetailPOSA.DialogBoxes
 
         private void GrnHeaderForm_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             pnlSupplierResult.Visible = false;
             btnAddGRN.Text = grnHeaderID > 0 ? "Update GRN" : "Add GRN";
 

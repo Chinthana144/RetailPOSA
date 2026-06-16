@@ -178,7 +178,7 @@ namespace RetailPOSA.Services
                 "FROM invoice_header " +
                 "INNER JOIN paymethods ON paymethods.id = invoice_header.paymethod_id " +
                 "INNER JOIN users ON users.user_id = invoice_header.user_id " +
-                "WHERE issued_date LIKE @searchTerm OR invoice_no LIKE @searchTerm OR username LIKE @searchTerm " +
+                "WHERE issued_datetime LIKE @searchTerm OR invoice_no LIKE @searchTerm OR username LIKE @searchTerm " +
                 "ORDER BY id DESC ";
 
             Dictionary<string, object> parameters = new Dictionary<string, object>();

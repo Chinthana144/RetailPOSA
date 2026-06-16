@@ -27,6 +27,7 @@ namespace RetailPOSA.DialogBoxes
 
         private void PriceChangeHeaderForm_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             btnPriceChange.Text = headerID > 0 ? "Update Price Change" : "Create Price Change";
 
             if (headerID > 0)

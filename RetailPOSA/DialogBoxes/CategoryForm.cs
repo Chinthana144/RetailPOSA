@@ -23,6 +23,7 @@ namespace RetailPOSA.DialogBoxes
 
         private void CategoryForm_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             CategoryService service = new CategoryService();
 
             DataTable dt = new DataTable();

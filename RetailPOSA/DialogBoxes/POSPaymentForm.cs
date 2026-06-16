@@ -29,6 +29,7 @@ namespace RetailPOSA.DialogBoxes
 
         private void POSPaymentForm_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             lblReturnAmount.Visible = false;
             GetCartTotals();
             loadPaymethods();
