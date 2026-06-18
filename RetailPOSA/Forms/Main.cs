@@ -27,7 +27,10 @@ namespace RetailPOSA.Forms
         private int panelHeight = 120;
 
         private int panel = 1;
-    
+
+        PermissionService permissionService = new PermissionService();
+        private int roleID = 0;
+
         public Main()
         {
             InitializeComponent();
@@ -39,6 +42,7 @@ namespace RetailPOSA.Forms
 
             lblUsername.Text = Session.UserName;
             lblRole.Text = Session.RoleName;
+            this.roleID = Session.RoleID;
 
             pnlSidebar.Dock = DockStyle.Left;
 
@@ -46,9 +50,18 @@ namespace RetailPOSA.Forms
 
             loadShop();
 
-            //load dashboard
-            DashboardControl uc = new DashboardControl();
-            loadControl(uc);
+            //check Dashboard access
+            //dashboard page  = 1
+            if (permissionService.CheckPermissionView(roleID, 1))
+            {
+                DashboardControl uc = new DashboardControl();
+                loadControl(uc);
+            }
+            else
+            {
+                ProfileControl profileControl = new ProfileControl();
+                loadControl(profileControl);
+            }
         }//main load
 
         public void loadControl(UserControl uc)
@@ -61,98 +74,299 @@ namespace RetailPOSA.Forms
         //=========================== Home ========================//
         private void navDashboard_Click(object sender, EventArgs e)
         {
-            DashboardControl uc = new DashboardControl();
+            //dashboard page  = 1
+            if (permissionService.CheckPermissionView(roleID, 1))
+            {
+                DashboardControl uc = new DashboardControl();
+                loadControl(uc);
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Sorry, you don't have access to view this page.",
+                    "Access Denied",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation
+                    );
+            }//access denied
+        }//dashboard
+        private void navProfile_Click(object sender, EventArgs e)
+        {
+            /*
+             * every user have access to profile
+             * can change password
+             */
+            ProfileControl uc = new ProfileControl();
             loadControl(uc);
-        }
-
+        }//profile
         //========================= Catalog =========================//
         private void navCategories_Click(object sender, EventArgs e)
         {
-            CategoryControl uc = new CategoryControl();
-            loadControl(uc);
+            //category page  = 3
+            if (permissionService.CheckPermissionView(roleID, 3))
+            {
+                CategoryControl uc = new CategoryControl();
+                loadControl(uc);
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Sorry, you don't have access to view this page.",
+                    "Access Denied",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation
+                    );
+            }//access denied
         }
 
         private void navProducts_Click(object sender, EventArgs e)
         {
-            ProductControl uc = new ProductControl();
-            loadControl(uc);
-        }
+            //product page  = 4
+            if (permissionService.CheckPermissionView(roleID, 4))
+            {
+                ProductControl uc = new ProductControl();
+                loadControl(uc);
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Sorry, you don't have access to view this page.",
+                    "Access Denied",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation
+                    );
+            }//access denied
+        }//product page
 
         private void navSuppliers_Click(object sender, EventArgs e)
         {
-            SupplierControl uc = new SupplierControl();
-            loadControl(uc);
-        }
+            //supplier page  = 5
+            if (permissionService.CheckPermissionView(roleID, 5))
+            {
+                SupplierControl uc = new SupplierControl();
+                loadControl(uc);
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Sorry, you don't have access to view this page.",
+                    "Access Denied",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation
+                    );
+            }//access denied            
+        }//supplier page
 
         //========================= Sales =========================//
         private void navPOS_Click(object sender, EventArgs e)
         {
-            POSControl uc = new POSControl(0);
-            loadControl(uc);
-        }
+            //pos page  = 10
+            if (permissionService.CheckPermissionView(roleID, 10))
+            {
+                POSControl uc = new POSControl(0);
+                loadControl(uc);
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Sorry, you don't have access to view this page.",
+                    "Access Denied",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation
+                    );
+            }//access denied             
+        }//pos page
 
         private void navInvoices_Click(object sender, EventArgs e)
         {
-            InvoiceControl uc = new InvoiceControl();
-            loadControl(uc);
-        }
+            //invoice page  = 11
+            if (permissionService.CheckPermissionView(roleID, 11))
+            {
+                InvoiceControl uc = new InvoiceControl();
+                loadControl(uc);
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Sorry, you don't have access to view this page.",
+                    "Access Denied",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation
+                    );
+            }//access denied             
+        }//invoice page
         private void navReturn_Click(object sender, EventArgs e)
         {
-            SaleReturnHeaderControl uc = new SaleReturnHeaderControl();
-            loadControl(uc);
-        }
+            //sales return page  = 12
+            if (permissionService.CheckPermissionView(roleID, 12))
+            {
+                SaleReturnHeaderControl uc = new SaleReturnHeaderControl();
+                loadControl(uc);
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Sorry, you don't have access to view this page.",
+                    "Access Denied",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation
+                    );
+            }//access denied             
+        }//return page
 
         //========================= Inventory =========================//
         private void navGRN_Click(object sender, EventArgs e)
         {
-            GrnHeaderControl uc = new GrnHeaderControl();
-            loadControl(uc);
-        }
+            //grn page  = 6
+            if (permissionService.CheckPermissionView(roleID, 6))
+            {
+                GrnHeaderControl uc = new GrnHeaderControl();
+                loadControl(uc);
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Sorry, you don't have access to view this page.",
+                    "Access Denied",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation
+                    );
+            }//access denied             
+        }//grn page
 
         private void navInventory_Click(object sender, EventArgs e)
         {
-            InventoryControl uc = new InventoryControl();
-            loadControl(uc);
-        }
+            //inventory page  = 7
+            if (permissionService.CheckPermissionView(roleID, 7))
+            {
+                InventoryControl uc = new InventoryControl();
+                loadControl(uc);
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Sorry, you don't have access to view this page.",
+                    "Access Denied",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation
+                    );
+            }//access denied             
+        }//inventory page
         private void navAdjustment_Click(object sender, EventArgs e)
         {
-            AdjustmentControl uc = new AdjustmentControl();
-            loadControl(uc);
-        }
+            //adjustment page  = 8
+            if (permissionService.CheckPermissionView(roleID, 8))
+            {
+                AdjustmentControl uc = new AdjustmentControl();
+                loadControl(uc);
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Sorry, you don't have access to view this page.",
+                    "Access Denied",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation
+                    );
+            }//access denied             
+        }//adjustment page
         private void navPriceChange_Click(object sender, EventArgs e)
         {
-            PriceChangeHeaderControl uc = new PriceChangeHeaderControl();
-            loadControl(uc);
-        }
+            //price change page  = 5
+            if (permissionService.CheckPermissionView(roleID, 9))
+            {
+                PriceChangeHeaderControl uc = new PriceChangeHeaderControl();
+                loadControl(uc);
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Sorry, you don't have access to view this page.",
+                    "Access Denied",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation
+                    );
+            }//access denied             
+        }//price change
 
         //========================= System =========================//
         private void navReports_Click(object sender, EventArgs e)
         {
-            ReportControl uc = new ReportControl();
-            loadControl(uc);
-        }
+            //reports page  = 13
+            if (permissionService.CheckPermissionView(roleID, 13))
+            {
+                ReportControl uc = new ReportControl();
+                loadControl(uc);
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Sorry, you don't have access to view this page.",
+                    "Access Denied",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation
+                    );
+            }//access denied             
+        }//report page
         private void navSettings_Click(object sender, EventArgs e)
         {
-            SettingControl uc = new SettingControl();
-            loadControl(uc);
-        }
+            //setting page  = 14
+            if (permissionService.CheckPermissionView(roleID, 14))
+            {
+                SettingControl uc = new SettingControl();
+                loadControl(uc);
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Sorry, you don't have access to view this page.",
+                    "Access Denied",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation
+                    );
+            }//access denied            
+        }//settings page
         private void navUsers_Click(object sender, EventArgs e)
         {
-            UsersControl uc = new UsersControl();
-            loadControl(uc);
-        }
+            //users page  = 15
+            if (permissionService.CheckPermissionView(roleID, 15))
+            {
+                UsersControl uc = new UsersControl();
+                loadControl(uc);
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Sorry, you don't have access to view this page.",
+                    "Access Denied",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation
+                    );
+            }//access denied             
+        }//users
         private void navAdminPanel_Click(object sender, EventArgs e)
         {
-            AdminControl uc = new AdminControl();
-            loadControl(uc);
-        }
+            if (roleID == 1)
+            {
+                AdminControl uc = new AdminControl();
+                loadControl(uc);
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Sorry, you don't have access to view this page.",
+                    "Access Denied",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation
+                    );
+            }//access denied  
+        }//admin page
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
             //close the application when the main form is closed
             Application.Exit();
         }
-        
 
         //=========================== Navigation Main Buttons ==========================//
 
@@ -324,5 +538,7 @@ namespace RetailPOSA.Forms
                 picShopLogo.Image = Image.FromFile(shopLogo);
             }
         }
+
+        
     }//class
 }

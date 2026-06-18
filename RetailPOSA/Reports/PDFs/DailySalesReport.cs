@@ -36,11 +36,6 @@ namespace RetailPOSA.Reports.PDFs
 
                             column.Item()
                                 .PaddingTop(10);
-
-                            column.Item()
-                                .Text("DAILY SALES REPORT")
-                                .FontSize(16)
-                                .Bold();
                         });
 
                     page.Content()
@@ -116,6 +111,7 @@ namespace RetailPOSA.Reports.PDFs
 
                 row.RelativeItem()
                     .PaddingLeft(10)
+                    .AlignCenter()
                     .Column(column =>
                     {
                         column.Item()
@@ -130,8 +126,15 @@ namespace RetailPOSA.Reports.PDFs
                             .Text("Tel: " + shopPhone);
 
                     });
+
+                row.RelativeItem()
+                    .Padding(5)
+                    .Text("Daily Sales Report")
+                    .AlignCenter()
+                    .FontSize(18)
+                    .Bold();
             });
-        }
+        }//Header
 
     }//class
 }

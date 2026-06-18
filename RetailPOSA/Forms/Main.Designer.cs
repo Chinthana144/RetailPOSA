@@ -443,6 +443,7 @@
             this.navProfile.TabIndex = 22;
             this.navProfile.Text = "Profile";
             this.navProfile.UseVisualStyleBackColor = false;
+            this.navProfile.Click += new System.EventHandler(this.navProfile_Click);
             // 
             // btnNavCatalog
             // 

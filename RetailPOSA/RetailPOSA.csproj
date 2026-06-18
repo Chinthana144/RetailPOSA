@@ -359,6 +359,12 @@
     <Compile Include="UserControls\ProductControl.Designer.cs">
       <DependentUpon>ProductControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ProfileControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ProfileControl.Designer.cs">
+      <DependentUpon>ProfileControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ReportControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -526,6 +532,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ProductControl.resx">
       <DependentUpon>ProductControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ProfileControl.resx">
+      <DependentUpon>ProfileControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ReportControl.resx">
       <DependentUpon>ReportControl.cs</DependentUpon>

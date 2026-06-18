@@ -62,7 +62,28 @@ namespace RetailPOSA.Services
             parameters.Add("@status", status);
 
             return db.ExecuteNonQuery(query, parameters);
-        }
+        }//update
+
+        public bool CheckPermissionView(int roleID, int pageID)
+        {
+            string query = "SELECT * FROM role_permissions WHERE role_id = @roleID AND page_id = @pageID AND view = 1;";
+            
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@roleID", roleID);
+            parameters.Add("@pageID", pageID);
+
+            DataTable dt = db.ExecuteQuery(query, parameters);
+
+            //Admin permission
+            if (roleID == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return dt.Rows.Count > 0 ? true : false;
+            }
+        }//check permission
 
         public DataTable GetPermissions(int roleID, int pageID)
         {
