@@ -27,6 +27,9 @@ namespace RetailPOSA.Reports.PDFs
             string supplierName = headerData.Rows[0]["supplier_name"].ToString();
             string supplierContact = headerData.Rows[0]["contact_no"].ToString();
 
+            //get details
+            GrnDetailService detailService = new GrnDetailService();
+            DataTable detailData = detailService.GetGrnDetailsByGrnHeaderID(grnHeaderID);
 
             Document.Create(container => {
                 container.Page(page => {
@@ -57,11 +60,73 @@ namespace RetailPOSA.Reports.PDFs
                             });
                         });
 
-                    //page.Content()
-                    //    .Table(table =>
-                    //    {
-                            
-                    //    });
+                    page.Content()
+                        .Table(table =>
+                        {
+                            table.ColumnsDefinition(columns => {
+                                columns.ConstantColumn(30);
+                                columns.RelativeColumn();
+                                columns.RelativeColumn();
+                                columns.ConstantColumn(50);//qty
+                                columns.ConstantColumn(50);//free qty
+                                columns.ConstantColumn(50);//purchase price
+                                columns.ConstantColumn(50);//selling price
+                                columns.ConstantColumn(50);//discount
+                                columns.ConstantColumn(50);//final price
+                                columns.ConstantColumn(75);//total price
+                            });
+                            table.Header(header => {
+                                header.Cell().BorderBottom(2).Text("#").FontSize(10);
+                                header.Cell().BorderBottom(2).Padding(4).Text("Barcode").FontSize(10);
+                                header.Cell().BorderBottom(2).Padding(4).Text("Product").FontSize(10);
+                                header.Cell().BorderBottom(2).Padding(4).Text("Qty").FontSize(10);
+                                header.Cell().BorderBottom(2).Padding(4).Text("Free").FontSize(10);
+                                header.Cell().BorderBottom(2).Padding(4).Text("Pur.Price").FontSize(10);
+                                header.Cell().BorderBottom(2).Padding(4).Text("Sel.Price").FontSize(10);
+                                header.Cell().BorderBottom(2).Padding(4).Text("Disc").FontSize(10);
+                                header.Cell().BorderBottom(2).Padding(4).Text("Price").FontSize(10);
+                                header.Cell().BorderBottom(2).Padding(4).Text("Total").FontSize(10);
+
+                            });
+
+                            int i = 1;
+                            decimal purchaseTotal = 0;
+                            foreach (DataRow row in detailData.Rows)
+                            {
+                                //decimal qty = Convert.ToDecimal(row["qty"].ToString());
+                                string displayQty = Convert.ToDecimal(row["qty"]).ToString("0.###");
+                                string freeQty = Convert.ToDecimal(row["free_qty"]).ToString("0.###");
+
+                                table.Cell().Padding(4).Text(i.ToString()).FontSize(10);
+                                table.Cell().Padding(4).Text(row["barcode"].ToString()).FontSize(10);
+                                table.Cell().Padding(4).Text(row["product_name"].ToString()).FontSize(10);
+                                table.Cell().Padding(4).Text(displayQty).FontSize(10);
+                                table.Cell().Padding(4).Text(freeQty).FontSize(10);
+                                table.Cell().Padding(4).Text(row["purchase_price"].ToString()).FontSize(10);
+                                table.Cell().Padding(4).Text(row["selling_price"].ToString()).FontSize(10);
+                                table.Cell().Padding(4).Text(row["discount"].ToString()).FontSize(10);
+                                table.Cell().Padding(4).Text(row["final_price"].ToString()).FontSize(10);
+                                table.Cell().Padding(4).Text(row["purchase_total"].ToString()).FontSize(10);
+
+                                purchaseTotal += Convert.ToDecimal(row["purchase_total"]);
+                                i++;
+                            }//foreach
+
+                            table.Cell()
+                                .ColumnSpan(9)
+                                .AlignRight()
+                                .Padding(8)
+                                .Text("Purchase Total")
+                                .FontSize(12)
+                                .Bold();
+
+                            table.Cell()
+                                .AlignRight()
+                                .Padding(8)
+                                .Text(purchaseTotal.ToString())
+                                .FontSize(12)
+                                .Bold();
+                        });
                 });
             }).GeneratePdf(filePath);
         }//generate
