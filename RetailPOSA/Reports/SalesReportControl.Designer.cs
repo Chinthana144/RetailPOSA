@@ -37,6 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtEndDate = new System.Windows.Forms.TextBox();
             this.btnDailySalesPDF = new System.Windows.Forms.Button();
+            this.btnDailySummaryPDF = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -143,11 +144,27 @@
             this.btnDailySalesPDF.UseVisualStyleBackColor = false;
             this.btnDailySalesPDF.Click += new System.EventHandler(this.btnDailySalesPDF_Click);
             // 
+            // btnDailySummaryPDF
+            // 
+            this.btnDailySummaryPDF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDailySummaryPDF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(115)))));
+            this.btnDailySummaryPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDailySummaryPDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDailySummaryPDF.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDailySummaryPDF.Location = new System.Drawing.Point(733, 153);
+            this.btnDailySummaryPDF.Name = "btnDailySummaryPDF";
+            this.btnDailySummaryPDF.Size = new System.Drawing.Size(357, 50);
+            this.btnDailySummaryPDF.TabIndex = 28;
+            this.btnDailySummaryPDF.Text = "Daily Sales Summary PDF";
+            this.btnDailySummaryPDF.UseVisualStyleBackColor = false;
+            this.btnDailySummaryPDF.Click += new System.EventHandler(this.btnDailySummaryPDF_Click);
+            // 
             // SalesReportControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.Controls.Add(this.btnDailySummaryPDF);
             this.Controls.Add(this.btnDailySalesPDF);
             this.Controls.Add(this.calEndDate);
             this.Controls.Add(this.calStartDate);
@@ -176,5 +193,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtEndDate;
         private System.Windows.Forms.Button btnDailySalesPDF;
+        private System.Windows.Forms.Button btnDailySummaryPDF;
     }
 }

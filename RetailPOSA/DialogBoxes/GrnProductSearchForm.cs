@@ -61,6 +61,12 @@ namespace RetailPOSA.DialogBoxes
                 selectedProductID = Convert.ToInt32(row.Cells["id"].Value);
 
                 if (selectedProductID > 0) { btnAddProduct.Enabled = true; }
+
+                GrnDetailForm grnDetailForm = new GrnDetailForm(selectedProductID, this.grnID);
+
+                grnDetailForm.ShowDialog();
+
+                this.Close();
             }
         }
 

@@ -238,6 +238,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\PDFs\CommonPDF.cs" />
     <Compile Include="Reports\PDFs\DailySalesReport.cs" />
+    <Compile Include="Reports\PDFs\DailySummaryReport.cs" />
     <Compile Include="Reports\PDFs\GRNReport.cs" />
     <Compile Include="Reports\ReportServices\SalesReportService.cs" />
     <Compile Include="Reports\SalesReportControl.cs">

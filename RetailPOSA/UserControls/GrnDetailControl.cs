@@ -1,10 +1,12 @@
 ﻿using RetailPOSA.DialogBoxes;
 using RetailPOSA.Forms;
+using RetailPOSA.Reports.PDFs;
 using RetailPOSA.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -130,8 +132,24 @@ namespace RetailPOSA.UserControls
                 grnHeaderService.UpdateGrnHeaderStatus(grnID, submittedDate, itemCount, TotalPurchasePrice, 2);
 
                 //open report
+                GeneralSettingsService settingsService = new GeneralSettingsService();
+                string reportBasePath = settingsService.GetSettingsValueByKey("report_path");
+                var reportSubmittedDate = DateTime.Parse(submittedDate);
 
+                string reportPath = reportBasePath + "\\GRN_report_" + grnID + "_" + reportSubmittedDate.ToString("yyyy_MM_dd") + ".pdf";
 
+                GRNReport grnReport = new GRNReport();
+                grnReport.Generate(reportPath, grnID);
+                Process.Start(
+                new ProcessStartInfo(reportPath)
+                {
+                    UseShellExecute = true
+                });
+
+                GrnHeaderControl grnHeaderControl = new GrnHeaderControl();
+
+                Main mainForm = (Main)Application.OpenForms["Main"];
+                mainForm.loadControl(grnHeaderControl);
             }//yes
             else 
             { 
