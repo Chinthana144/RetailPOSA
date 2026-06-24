@@ -98,6 +98,7 @@
             this.navRptInventory.TabIndex = 18;
             this.navRptInventory.Text = "Inventory";
             this.navRptInventory.UseVisualStyleBackColor = false;
+            this.navRptInventory.Click += new System.EventHandler(this.navRptInventory_Click);
             // 
             // navRptSales
             // 

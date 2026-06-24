@@ -30,6 +30,11 @@ namespace RetailPOSA.UserControls
             SalesReportControl uc = new SalesReportControl();
             loadControl(uc);
         }
+        private void navRptInventory_Click(object sender, EventArgs e)
+        {
+            InventoryReportControl uc = new InventoryReportControl();
+            loadControl (uc);
+        }
 
         public void loadControl(UserControl uc)
         {
