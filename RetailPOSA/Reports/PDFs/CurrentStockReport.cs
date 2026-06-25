@@ -21,8 +21,8 @@ namespace RetailPOSA.Reports.PDFs
 
             Document.Create(container => {
                 container.Page(page => {
-                    page.Size(PageSizes.A4);
-                    page.PageColor(Colors.White);
+                    page.Size(PageSizes.A4);                    
+                    page.PageColor(Colors.White);                   
                     page.Margin(20);
 
                     page.Header()

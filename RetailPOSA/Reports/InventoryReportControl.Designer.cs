@@ -53,6 +53,7 @@
             this.btnLowStockPDF.TabIndex = 38;
             this.btnLowStockPDF.Text = "Low Stock Report PDF";
             this.btnLowStockPDF.UseVisualStyleBackColor = false;
+            this.btnLowStockPDF.Click += new System.EventHandler(this.btnLowStockPDF_Click);
             // 
             // btnCurrentStockPDF
             // 
@@ -155,6 +156,7 @@
             this.btnExpiryPDF.TabIndex = 39;
             this.btnExpiryPDF.Text = "Expiry Report PDF";
             this.btnExpiryPDF.UseVisualStyleBackColor = false;
+            this.btnExpiryPDF.Click += new System.EventHandler(this.btnExpiryPDF_Click);
             // 
             // InventoryReportControl
             // 

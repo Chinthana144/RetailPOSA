@@ -246,7 +246,9 @@
     <Compile Include="Reports\PDFs\CurrentStockReport.cs" />
     <Compile Include="Reports\PDFs\DailySalesReport.cs" />
     <Compile Include="Reports\PDFs\DailySummaryReport.cs" />
+    <Compile Include="Reports\PDFs\ExpiryStockReport.cs" />
     <Compile Include="Reports\PDFs\GRNReport.cs" />
+    <Compile Include="Reports\PDFs\LowStockReport.cs" />
     <Compile Include="Reports\ReportServices\InventoryReportService.cs" />
     <Compile Include="Reports\ReportServices\SalesReportService.cs" />
     <Compile Include="Reports\SalesReportControl.cs">

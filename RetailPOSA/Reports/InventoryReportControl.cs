@@ -85,5 +85,40 @@ namespace RetailPOSA.Reports
                 UseShellExecute = true
             });
         }//current stock report
+
+        private void btnLowStockPDF_Click(object sender, EventArgs e)
+        {
+            string today = DateTime.Now.ToString("yyyy-MM-dd");
+            //get file path
+            GeneralSettingsService settingsService = new GeneralSettingsService();
+            string reportBasePath = settingsService.GetSettingsValueByKey("report_path");
+            string reportPath = reportBasePath + "\\Low_Stock" + today + ".pdf";
+
+            LowStockReport lowStockReport = new LowStockReport();
+            lowStockReport.Generate(reportPath);
+
+            Process.Start(
+            new ProcessStartInfo(reportPath)
+            {
+                UseShellExecute = true
+            });
+        }
+
+        private void btnExpiryPDF_Click(object sender, EventArgs e)
+        {
+            //get file path
+            GeneralSettingsService settingsService = new GeneralSettingsService();
+            string reportBasePath = settingsService.GetSettingsValueByKey("report_path");
+            string reportPath = reportBasePath + "\\Expiry_Stock_" + txtStartDate.Text + "_"+ txtEndDate.Text +".pdf";
+
+            ExpiryStockReport expiryStockReport = new ExpiryStockReport();
+            expiryStockReport.Generate(reportPath, txtStartDate.Text, txtEndDate.Text);
+
+            Process.Start(
+            new ProcessStartInfo(reportPath)
+            {
+                UseShellExecute = true
+            });
+        }
     }//class
 }
