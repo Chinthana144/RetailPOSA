@@ -42,12 +42,11 @@
             // 
             // btnLowStockPDF
             // 
-            this.btnLowStockPDF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLowStockPDF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(115)))));
             this.btnLowStockPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLowStockPDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLowStockPDF.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnLowStockPDF.Location = new System.Drawing.Point(750, 173);
+            this.btnLowStockPDF.Location = new System.Drawing.Point(23, 157);
             this.btnLowStockPDF.Name = "btnLowStockPDF";
             this.btnLowStockPDF.Size = new System.Drawing.Size(357, 50);
             this.btnLowStockPDF.TabIndex = 38;
@@ -57,12 +56,11 @@
             // 
             // btnCurrentStockPDF
             // 
-            this.btnCurrentStockPDF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCurrentStockPDF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(115)))));
             this.btnCurrentStockPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCurrentStockPDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCurrentStockPDF.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnCurrentStockPDF.Location = new System.Drawing.Point(750, 92);
+            this.btnCurrentStockPDF.Location = new System.Drawing.Point(23, 76);
             this.btnCurrentStockPDF.Name = "btnCurrentStockPDF";
             this.btnCurrentStockPDF.Size = new System.Drawing.Size(357, 50);
             this.btnCurrentStockPDF.TabIndex = 37;
@@ -72,7 +70,8 @@
             // 
             // calEndDate
             // 
-            this.calEndDate.Location = new System.Drawing.Point(431, 98);
+            this.calEndDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.calEndDate.Location = new System.Drawing.Point(842, 94);
             this.calEndDate.Name = "calEndDate";
             this.calEndDate.TabIndex = 32;
             this.calEndDate.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.calEndDate_DateSelected);
@@ -80,7 +79,8 @@
             // 
             // calStartDate
             // 
-            this.calStartDate.Location = new System.Drawing.Point(69, 98);
+            this.calStartDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.calStartDate.Location = new System.Drawing.Point(480, 94);
             this.calStartDate.Name = "calStartDate";
             this.calStartDate.TabIndex = 31;
             this.calStartDate.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.calStartDate_DateSelected);
@@ -88,10 +88,11 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(433, 68);
+            this.label3.Location = new System.Drawing.Point(844, 64);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 21);
             this.label3.TabIndex = 36;
@@ -99,11 +100,12 @@
             // 
             // txtEndDate
             // 
+            this.txtEndDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtEndDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(78)))), ((int)(((byte)(78)))));
             this.txtEndDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEndDate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEndDate.ForeColor = System.Drawing.Color.White;
-            this.txtEndDate.Location = new System.Drawing.Point(431, 92);
+            this.txtEndDate.Location = new System.Drawing.Point(842, 88);
             this.txtEndDate.Name = "txtEndDate";
             this.txtEndDate.Size = new System.Drawing.Size(262, 32);
             this.txtEndDate.TabIndex = 35;
@@ -111,10 +113,11 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(71, 68);
+            this.label2.Location = new System.Drawing.Point(482, 64);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 21);
             this.label2.TabIndex = 34;
@@ -122,11 +125,12 @@
             // 
             // txtStartDate
             // 
+            this.txtStartDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtStartDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(78)))), ((int)(((byte)(78)))));
             this.txtStartDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStartDate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStartDate.ForeColor = System.Drawing.Color.White;
-            this.txtStartDate.Location = new System.Drawing.Point(69, 92);
+            this.txtStartDate.Location = new System.Drawing.Point(480, 88);
             this.txtStartDate.Name = "txtStartDate";
             this.txtStartDate.Size = new System.Drawing.Size(262, 32);
             this.txtStartDate.TabIndex = 33;
@@ -145,12 +149,11 @@
             // 
             // btnExpiryPDF
             // 
-            this.btnExpiryPDF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExpiryPDF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(115)))));
             this.btnExpiryPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExpiryPDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExpiryPDF.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnExpiryPDF.Location = new System.Drawing.Point(750, 254);
+            this.btnExpiryPDF.Location = new System.Drawing.Point(23, 238);
             this.btnExpiryPDF.Name = "btnExpiryPDF";
             this.btnExpiryPDF.Size = new System.Drawing.Size(357, 50);
             this.btnExpiryPDF.TabIndex = 39;
