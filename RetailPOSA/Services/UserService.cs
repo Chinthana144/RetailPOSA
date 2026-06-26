@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace RetailPOSA.Services
 {
@@ -39,6 +40,35 @@ namespace RetailPOSA.Services
             return db.ExecuteNonQuery(query, parameters);
         }//update user
 
+        public int UpdateUserName(int id, string username)
+        {
+            string query = "SELECT * FROM users WHERE username = @userName;";
+            Dictionary<string, object> userParameters = new Dictionary<string, object>();
+            userParameters.Add("@username", username);
+
+            DataTable dt = db.ExecuteQuery(query, userParameters);
+            if (dt.Rows.Count > 0)
+            {
+                return 0;
+            }
+            else {
+                string updateQuery = "UPDATE users SET username = @username WHERE user_id = 1;";
+                Dictionary<string, object> parameters = new Dictionary<string, object>();
+                parameters.Add("@username", username);
+
+                return db.ExecuteNonQuery(updateQuery, parameters);
+            }
+        }//update username
+
+        public int UpdatePassword(int id, string password)
+        {
+            string updateQuery = "UPDATE users SET password = @password WHERE user_id = 1;";
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@password", password);
+
+            return db.ExecuteNonQuery(updateQuery, parameters);
+        }//update password
+
         public DataTable GetAllUsers()
         { 
             string query = "SELECT user_id, roles.name, username FROM users" + 
@@ -48,7 +78,9 @@ namespace RetailPOSA.Services
 
         public DataTable GetUserById(int id)
         {
-            string query = "SELECT user_id, role_id, username FROM users WHERE user_id = @id;";
+            string query = "SELECT user_id, role_id, roles.name as role_name, username, password FROM users " +
+                "INNER JOIN roles ON roles.id = users.role_id "+
+                "WHERE user_id = @id;";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@id", id);
 

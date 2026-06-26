@@ -26,6 +26,7 @@ namespace RetailPOSA.DialogBoxes
 
         private void ReturnQtyForm_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             loadInvoiceData();
         }
         private void txtReturnQty_KeyUp(object sender, KeyEventArgs e)

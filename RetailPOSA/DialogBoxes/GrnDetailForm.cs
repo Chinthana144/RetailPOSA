@@ -25,6 +25,7 @@ namespace RetailPOSA.DialogBoxes
 
         private void GrnDetailForm_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             loadProductDetails();
 
             //expiry
@@ -89,11 +90,16 @@ namespace RetailPOSA.DialogBoxes
 
             DateTime today = DateTime.Now;
             DateTime expiryDate = dtpExpiry.Value;
+            string expireDate = expiryDate.ToString("yyyy-MM-dd");
 
-            if(isExpiry && expiryDate <= today)
+            if (isExpiry && expiryDate <= today)
             {
                 MessageBox.Show("Please enter a valid expiry date.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
+            else
+            {
+                expireDate = expiryDate.ToString("yyyy-MM-dd") == "" ? today.ToString("yyyy-MM-dd") : expiryDate.ToString("yyyy-MM-dd");
             }
 
             GrnDetailService grnDetailService = new GrnDetailService();
@@ -107,7 +113,7 @@ namespace RetailPOSA.DialogBoxes
 
             decimal purchaseTotal = (qty) * purchasePrice;
 
-            int result = grnDetailService.InsertGrnDetail(grnID, productID, qty, freeQty, purchasePrice, sellingPrice, discount, finalPrice, isExpiry ? dtpExpiry.Value.ToString("yyyy-MM-dd") : null, purchaseTotal, 1);
+            int result = grnDetailService.InsertGrnDetail(grnID, productID, qty, freeQty, purchasePrice, sellingPrice, discount, finalPrice, expireDate, purchaseTotal, 1);
 
             if (result == 0)
             { 

@@ -13,26 +13,34 @@ namespace RetailPOSA.UserControls
 {
     public partial class ReportControl : UserControl
     {
+        private int tabID = 1;
         public ReportControl()
         {
             InitializeComponent();
         }
         private void ReportControl_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             SalesReportControl uc = new SalesReportControl();
             loadControl(uc);
         }
         private void navRptSales_Click(object sender, EventArgs e)
         {
+            tabID = 1;
             SalesReportControl uc = new SalesReportControl();
             loadControl(uc);
+        }
+        private void navRptInventory_Click(object sender, EventArgs e)
+        {
+            InventoryReportControl uc = new InventoryReportControl();
+            loadControl (uc);
         }
 
         public void loadControl(UserControl uc)
         {
             pnlMain.Controls.Clear();
             uc.Dock = DockStyle.Fill;
-            pnlMain.Controls.Add(uc);
+            pnlMain.Controls.Add(uc);        
         }//load control
 
         

@@ -22,6 +22,7 @@ namespace RetailPOSA.UserControls
 
         private void UserAccessControl_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             loadRoles();
             loadPages();
 

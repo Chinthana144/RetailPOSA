@@ -31,6 +31,7 @@ namespace RetailPOSA.UserControls
 
         private void POSControl_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             //get cart id
             cartHeaderID = CheckCartHeader();
             //load cart

@@ -13,7 +13,7 @@ namespace RetailPOSA.Services
         Database db = new Database();
         public int Login(string username, string password)
         { 
-            string query = "SELECT u.user_id, u.username, r.name AS role_name " +
+            string query = "SELECT u.user_id, u.username, r.id as role_id, r.name AS role_name " +
                 "FROM users u " +
                 "JOIN roles r ON u.role_id = r.id " +
                 "WHERE u.username = @username AND u.password = @password;";
@@ -27,10 +27,10 @@ namespace RetailPOSA.Services
 
             if(dt.Rows.Count > 0)
             {
-                //return Convert.ToInt32(dt.Rows[0]["user_id"]);
-                
+                //initialize session values
                 Session.UserID = Convert.ToInt32(dt.Rows[0]["user_id"]);
                 Session.UserName = dt.Rows[0]["username"].ToString();
+                Session.RoleID = Convert.ToInt32(dt.Rows[0]["role_id"]);
                 Session.RoleName = dt.Rows[0]["role_name"].ToString();
 
                 return 1; // Login successful

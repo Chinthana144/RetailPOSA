@@ -25,6 +25,7 @@ namespace RetailPOSA.DialogBoxes
 
         private void ShopForm_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             loadShopData();
         }
 

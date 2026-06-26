@@ -1,4 +1,9 @@
-﻿using System;
+﻿using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using QuestPDF.Infrastructure;
+using RetailPOSA.Reports.PDFs;
+using RetailPOSA.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,10 +13,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using QuestPDF.Fluent;
-using QuestPDF.Helpers;
-using QuestPDF.Infrastructure;
-using RetailPOSA.Reports.PDFs;
 
 namespace RetailPOSA.Reports
 {
@@ -25,6 +26,7 @@ namespace RetailPOSA.Reports
         }
         private void SalesReportControl_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             //hide
             calStartDate.Visible = false;
             calEndDate.Visible = false;
@@ -97,5 +99,22 @@ namespace RetailPOSA.Reports
                 UseShellExecute = true
             });
         }
+
+        private void btnDailySummaryPDF_Click(object sender, EventArgs e)
+        {
+            //get file path
+            GeneralSettingsService settingsService = new GeneralSettingsService();
+            string reportBasePath = settingsService.GetSettingsValueByKey("report_path");
+            string reportPath = reportBasePath + "\\Daily_Summary_" + txtStartDate.Text + "_" + txtEndDate.Text + ".pdf";
+
+            DailySummaryReport summaryReport = new DailySummaryReport();
+            summaryReport.Generate(reportPath, txtStartDate.Text, txtEndDate.Text);
+
+            Process.Start(
+            new ProcessStartInfo(reportPath)
+            {
+                UseShellExecute = true
+            });
+        }//sullary report
     }//clas
 }

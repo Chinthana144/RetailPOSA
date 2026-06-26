@@ -23,6 +23,7 @@ namespace RetailPOSA.DialogBoxes
 
         private void ProductForm_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             loadCategories();
 
             loadEditProduct();

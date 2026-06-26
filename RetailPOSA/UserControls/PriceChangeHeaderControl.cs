@@ -26,6 +26,7 @@ namespace RetailPOSA.UserControls
 
         private void PriceChangeHeaderControl_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             cmbStatus.SelectedIndex = 0;
 
             btnAddItems.Enabled = false;

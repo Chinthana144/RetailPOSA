@@ -86,6 +86,7 @@
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -235,7 +236,20 @@
     <Compile Include="Models\Users.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\InventoryReportControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reports\InventoryReportControl.Designer.cs">
+      <DependentUpon>InventoryReportControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\PDFs\CommonPDF.cs" />
+    <Compile Include="Reports\PDFs\CurrentStockReport.cs" />
     <Compile Include="Reports\PDFs\DailySalesReport.cs" />
+    <Compile Include="Reports\PDFs\DailySummaryReport.cs" />
+    <Compile Include="Reports\PDFs\ExpiryStockReport.cs" />
+    <Compile Include="Reports\PDFs\GRNReport.cs" />
+    <Compile Include="Reports\PDFs\LowStockReport.cs" />
+    <Compile Include="Reports\ReportServices\InventoryReportService.cs" />
     <Compile Include="Reports\ReportServices\SalesReportService.cs" />
     <Compile Include="Reports\SalesReportControl.cs">
       <SubType>UserControl</SubType>
@@ -249,6 +263,7 @@
     <Compile Include="Services\CartDetailService.cs" />
     <Compile Include="Services\CartHeaderService.cs" />
     <Compile Include="Services\CategoryService.cs" />
+    <Compile Include="Services\GeneralSettingsService.cs" />
     <Compile Include="Services\GrnDetailService.cs" />
     <Compile Include="Services\GrnHeaderService.cs" />
     <Compile Include="Services\InventoryService.cs" />
@@ -264,6 +279,7 @@
     <Compile Include="Services\ShopService.cs" />
     <Compile Include="Services\SupplierService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="ThemeManager.cs" />
     <Compile Include="UserControls\AdjustmentControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -287,6 +303,18 @@
     </Compile>
     <Compile Include="UserControls\CategoryControl.Designer.cs">
       <DependentUpon>CategoryControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DashboardControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\DashboardControl.Designer.cs">
+      <DependentUpon>DashboardControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\GeneralSettingsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\GeneralSettingsControl.Designer.cs">
+      <DependentUpon>GeneralSettingsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\GrnDetailControl.cs">
       <SubType>UserControl</SubType>
@@ -341,6 +369,12 @@
     </Compile>
     <Compile Include="UserControls\ProductControl.Designer.cs">
       <DependentUpon>ProductControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ProfileControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ProfileControl.Designer.cs">
+      <DependentUpon>ProfileControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ReportControl.cs">
       <SubType>UserControl</SubType>
@@ -462,6 +496,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Reports\InventoryReportControl.resx">
+      <DependentUpon>InventoryReportControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\SalesReportControl.resx">
       <DependentUpon>SalesReportControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -476,6 +513,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\CategoryControl.resx">
       <DependentUpon>CategoryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\DashboardControl.resx">
+      <DependentUpon>DashboardControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\GeneralSettingsControl.resx">
+      <DependentUpon>GeneralSettingsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\GrnDetailControl.resx">
       <DependentUpon>GrnDetailControl.cs</DependentUpon>
@@ -503,6 +546,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ProductControl.resx">
       <DependentUpon>ProductControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ProfileControl.resx">
+      <DependentUpon>ProfileControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ReportControl.resx">
       <DependentUpon>ReportControl.cs</DependentUpon>

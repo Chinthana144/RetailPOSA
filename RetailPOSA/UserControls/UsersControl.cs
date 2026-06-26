@@ -23,10 +23,9 @@ namespace RetailPOSA.UserControls
 
         private void UsersControl_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             LoadUserTable();
-
             btnEditUser.Enabled = false;
-
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)
@@ -36,14 +35,13 @@ namespace RetailPOSA.UserControls
             uf.ShowDialog();
 
             LoadUserTable();
-            //uf.Dispose();
         }
 
         private void LoadUserTable()
         { 
             UserService userService = new UserService();
             DataTable usersTable = userService.GetAllUsers();
-            // Assuming you have a DataGridView named dgvUsers
+            
             dgvUsers.DataSource = usersTable;
 
             dgvUsers.Columns[0].HeaderText = "ID";

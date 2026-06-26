@@ -12,6 +12,8 @@ namespace RetailPOSA.Models
 
         public static string UserName { get; set; }
 
+        public static int RoleID { get; set; }
+
         public static string RoleName { get; set; }
 
     }//class

@@ -138,5 +138,14 @@ namespace RetailPOSA.Services
             return db.ExecuteQuery(query, parameters);
         }
 
+        public DataTable GetLowStockCount()
+        {
+            string query = "SELECT count(*) as low_stock FROM inventory " +
+                "INNER JOIN products ON products.id = inventory.product_id " +
+                "WHERE inventory.current_qty < products.minimum_stock;";
+
+            return db.ExecuteQuery(query);
+        }//get low stock
+
     }//class
 }

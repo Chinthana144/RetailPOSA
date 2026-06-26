@@ -28,6 +28,7 @@ namespace RetailPOSA.DialogBoxes
 
         private void UsersForm_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             btnAddUser.Text = "Add User";
 
             loadRoles();

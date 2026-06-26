@@ -1,10 +1,12 @@
 ﻿using RetailPOSA.DialogBoxes;
 using RetailPOSA.Forms;
+using RetailPOSA.Reports.PDFs;
 using RetailPOSA.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -26,6 +28,8 @@ namespace RetailPOSA.UserControls
         }
         private void GrnDetailControl_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
+
             loadGrnHeader();
 
             loadGrnDetails();
@@ -91,51 +95,69 @@ namespace RetailPOSA.UserControls
 
         private void btnSubmitGrn_Click(object sender, EventArgs e)
         {
-            //fetch grn details
-            GrnDetailService grnDetailService = new GrnDetailService();
-            DataTable dt = grnDetailService.GetGrnDetailsByGrnHeaderID(grnID);
-
-            InventoryService inventoryService = new InventoryService();
-
-            GrnHeaderService grnHeaderService = new GrnHeaderService();
-
-            int itemCount = dt.Rows.Count;
-            decimal TotalPurchasePrice = dt.AsEnumerable().Sum(row => row.Field<decimal>("purchase_price"));
-
-            foreach (DataRow row in dt.Rows)
-            { 
-                int grnHeaderID = Convert.ToInt32(row["grn_header_id"]);
-                int productID = Convert.ToInt32(row["product_id"]);
-                decimal qty = Convert.ToDecimal(row["qty"]) + Convert.ToDecimal(row["free_qty"]);
-                decimal purchasePrice = Convert.ToDecimal(row["purchase_price"]);
-                decimal sellingPrice = Convert.ToDecimal(row["selling_price"]);
-                decimal discount = Convert.ToDecimal(row["discount"]);
-                decimal finalPrice = Convert.ToDecimal(row["final_price"]);
-                decimal purchaseTotal = Convert.ToDecimal(row["purchase_total"]);
-                DateTime expiryDate = DateTime.Parse(row["expiry_date"].ToString());
-                int status = 1;
-
-                inventoryService.InsertInventory(grnHeaderID, productID, qty, qty, purchasePrice, sellingPrice, discount, finalPrice, purchaseTotal, expiryDate, status);
-
-            }//foreach
-
-            string submittedDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-
-            //Update GRN header status to completed
-            grnHeaderService.UpdateGrnHeaderStatus(grnID, submittedDate, itemCount, TotalPurchasePrice, 2);
-
-            DialogResult result = MessageBox.Show("GRN submitted successfully! Do you want to print the GRN?", "Success", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            DialogResult result = MessageBox.Show("Do you want to submit GRN?", "Submit GRN", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (result == DialogResult.Yes)
             {
-                //goto print form
-            }
+                //fetch grn details
+                GrnDetailService grnDetailService = new GrnDetailService();
+                DataTable dt = grnDetailService.GetGrnDetailsByGrnHeaderID(grnID);
+
+                InventoryService inventoryService = new InventoryService();
+
+                GrnHeaderService grnHeaderService = new GrnHeaderService();
+
+                int itemCount = dt.Rows.Count;
+                decimal TotalPurchasePrice = dt.AsEnumerable().Sum(row => row.Field<decimal>("purchase_price"));
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    int grnHeaderID = Convert.ToInt32(row["grn_header_id"]);
+                    int productID = Convert.ToInt32(row["product_id"]);
+                    decimal qty = Convert.ToDecimal(row["qty"]) + Convert.ToDecimal(row["free_qty"]);
+                    decimal purchasePrice = Convert.ToDecimal(row["purchase_price"]);
+                    decimal sellingPrice = Convert.ToDecimal(row["selling_price"]);
+                    decimal discount = Convert.ToDecimal(row["discount"]);
+                    decimal finalPrice = Convert.ToDecimal(row["final_price"]);
+                    decimal purchaseTotal = Convert.ToDecimal(row["purchase_total"]);
+                    DateTime expiryDate = DateTime.Parse(row["expiry_date"].ToString());
+                    int status = 1;
+
+                    inventoryService.InsertInventory(grnHeaderID, productID, qty, qty, purchasePrice, sellingPrice, discount, finalPrice, purchaseTotal, expiryDate, status);
+
+                }//foreach
+
+                string submittedDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+                //Update GRN header status to completed
+                grnHeaderService.UpdateGrnHeaderStatus(grnID, submittedDate, itemCount, TotalPurchasePrice, 2);
+
+                //open report
+                GeneralSettingsService settingsService = new GeneralSettingsService();
+                string reportBasePath = settingsService.GetSettingsValueByKey("report_path");
+                var reportSubmittedDate = DateTime.Parse(submittedDate);
+
+                string reportPath = reportBasePath + "\\GRN_report_" + grnID + "_" + reportSubmittedDate.ToString("yyyy_MM_dd") + ".pdf";
+
+                GRNReport grnReport = new GRNReport();
+                grnReport.Generate(reportPath, grnID);
+                Process.Start(
+                new ProcessStartInfo(reportPath)
+                {
+                    UseShellExecute = true
+                });
+
+                GrnHeaderControl grnHeaderControl = new GrnHeaderControl();
+
+                Main mainForm = (Main)Application.OpenForms["Main"];
+                mainForm.loadControl(grnHeaderControl);
+            }//yes
             else 
             { 
                 GrnHeaderControl grnHeaderControl = new GrnHeaderControl();
 
                 Main mainForm = (Main)Application.OpenForms["Main"];
                 mainForm.loadControl(grnHeaderControl);
-            }
+            }//no
         }//submit grn
 
         private void btnDeleteProduct_Click(object sender, EventArgs e)

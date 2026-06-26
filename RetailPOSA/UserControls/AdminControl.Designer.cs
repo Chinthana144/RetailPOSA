@@ -67,6 +67,7 @@
             this.pnlMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlMain.AutoScroll = true;
             this.pnlMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnlMain.Location = new System.Drawing.Point(0, 63);
             this.pnlMain.Name = "pnlMain";
@@ -80,12 +81,13 @@
             this.btnGeneralSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGeneralSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGeneralSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnGeneralSettings.Location = new System.Drawing.Point(538, 11);
+            this.btnGeneralSettings.Location = new System.Drawing.Point(519, 11);
             this.btnGeneralSettings.Name = "btnGeneralSettings";
-            this.btnGeneralSettings.Size = new System.Drawing.Size(181, 38);
+            this.btnGeneralSettings.Size = new System.Drawing.Size(200, 38);
             this.btnGeneralSettings.TabIndex = 15;
             this.btnGeneralSettings.Text = "General Settings";
             this.btnGeneralSettings.UseVisualStyleBackColor = false;
+            this.btnGeneralSettings.Click += new System.EventHandler(this.btnGeneralSettings_Click);
             // 
             // btnLoadBackup
             // 

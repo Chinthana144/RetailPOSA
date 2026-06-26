@@ -29,6 +29,7 @@ namespace RetailPOSA.DialogBoxes
 
         private void POSPaymentForm_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             lblReturnAmount.Visible = false;
             GetCartTotals();
             loadPaymethods();
@@ -114,10 +115,11 @@ namespace RetailPOSA.DialogBoxes
             CartHeaderService cartHeaderService = new CartHeaderService();
             CartDetailService cartDetailService = new CartDetailService();
 
+            string invoiceDate = DateTime.Now.ToString("yyyy-MM-dd");
             string issuedDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             
 
-            invoiceService.InsertInvoiceHeader(issuedDate, 0,0,0,0,0,0,0,0,userID,1);
+            invoiceService.InsertInvoiceHeader(invoiceDate, issuedDate, 0,0,0,0,0,0,0,0,userID,1);
 
             int newInvoiceID = invoiceService.GetActiveInvoicebyUserID(userID);
 

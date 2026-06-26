@@ -13,14 +13,15 @@ namespace RetailPOSA.Services
     {
         Database db = new Database();
 
-        public int InsertInvoiceHeader(string issuedDate, int itemCount, decimal total, decimal discounts, decimal returnAmount, decimal subTotal, decimal paymethodID, decimal paidAmount, decimal balance, int userID, int status)
+        public int InsertInvoiceHeader(string invoiceDate, string issuedDate, int itemCount, decimal total, decimal discounts, decimal returnAmount, decimal subTotal, decimal paymethodID, decimal paidAmount, decimal balance, int userID, int status)
         {
             string invoiceNo = GetInvoiceNo();
-            string query = "INSERT INTO invoice_header(issued_date, invoice_no, item_count, total, discounts, return_amount, sub_total,  paymethod_id, paid_amount, balance, user_id, status) " +
-                "VALUES(@issuedDate, @invoiceNo, @itemCount, @total, @discounts, @returnAmount, @subTotal, @paymethodID, @paidAmount, @balance, @userID, @status);";
+            string query = "INSERT INTO invoice_header(invoice_date, issued_datetime, invoice_no, item_count, total, discounts, return_amount, sub_total,  paymethod_id, paid_amount, balance, user_id, status) " +
+                "VALUES(@invoiceDate, @issuedDate, @invoiceNo, @itemCount, @total, @discounts, @returnAmount, @subTotal, @paymethodID, @paidAmount, @balance, @userID, @status);";
 
             Dictionary<string, object> parameters = new Dictionary<string, object>();
 
+            parameters.Add("@invoiceDate", invoiceDate);
             parameters.Add("@issuedDate", issuedDate);
             parameters.Add("@invoiceNo", invoiceNo);
             parameters.Add("@itemCount", itemCount);
@@ -132,7 +133,8 @@ namespace RetailPOSA.Services
         {
             string query = "SELECT "+
                 "invoice_header.id, "+
-                "issued_date, " +
+                "invoice_date, " +
+                "issued_datetime, " +
                 "invoice_no, " +
                 "item_count, " +
                 "total, " +
@@ -162,7 +164,8 @@ namespace RetailPOSA.Services
         {
             string query = "SELECT " +
                 "invoice_header.id, " +
-                "issued_date, " +
+                "invoice_date, " +
+                "issued_datetime, " +
                 "invoice_no, " +
                 "item_count, " +
                 "total, " +
@@ -175,7 +178,7 @@ namespace RetailPOSA.Services
                 "FROM invoice_header " +
                 "INNER JOIN paymethods ON paymethods.id = invoice_header.paymethod_id " +
                 "INNER JOIN users ON users.user_id = invoice_header.user_id " +
-                "WHERE issued_date LIKE @searchTerm OR invoice_no LIKE @searchTerm OR username LIKE @searchTerm " +
+                "WHERE issued_datetime LIKE @searchTerm OR invoice_no LIKE @searchTerm OR username LIKE @searchTerm " +
                 "ORDER BY id DESC ";
 
             Dictionary<string, object> parameters = new Dictionary<string, object>();
@@ -189,7 +192,8 @@ namespace RetailPOSA.Services
         {
             string query = "SELECT " +
                 "invoice_header.id, " +
-                "issued_date, " +
+                "invoice_date, " +
+                "issued_datetime, " +
                 "invoice_no, " +
                 "item_count, " +
                 "total, " +
@@ -209,6 +213,35 @@ namespace RetailPOSA.Services
 
             return db.ExecuteQuery(query, parameters);
         }//get invoice by invoice no
+
+        public DataTable GetDailyTotal(string today)
+        {
+            string query = "SELECT count(*) as invoice_count, SUM(sub_total) as total_sale FROM invoice_header WHERE invoice_date LIKE @today;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@today", $"%{today}%");
+
+            return db.ExecuteQuery(query, parameters);
+        }//ge daily total
+
+        public DataTable GetTotalByDateRange(string startDate, string endDate)
+        {
+            string query = "SELECT count(*) as invoice_count, SUM(sub_total) as total_sale FROM invoice_header WHERE invoice_date BETWEEN @startDate AND @endDate;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@startDate", startDate);
+            parameters.Add("@endDate", endDate);
+
+            return db.ExecuteQuery(query, parameters);
+
+        }//get total by date range
+
+        public DataTable GetChartData()
+        {
+            string query = "SELECT invoice_date, count(*) as inv_count, sum(sub_total) as total_sale FROM invoice_header group by invoice_date ORDER BY invoice_date ASC LIMIT 30;";
+
+            return db.ExecuteQuery(query);
+        }//get chart data
 
         public DataTable GetPaymethods()
         {

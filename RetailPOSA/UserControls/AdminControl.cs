@@ -24,6 +24,7 @@ namespace RetailPOSA.UserControls
 
         private void AdminControl_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             //create logo folder if not exist
             string logoFolder = Path.Combine(Application.StartupPath, "Logos");
             if (!Directory.Exists(logoFolder))
@@ -31,8 +32,8 @@ namespace RetailPOSA.UserControls
                 Directory.CreateDirectory(logoFolder);
             }
 
-            //show shops
-            ShopControl uc = new ShopControl();
+            //load general settings
+            GeneralSettingsControl uc = new GeneralSettingsControl();
             loadControl(uc);
         }//load
 
@@ -48,6 +49,12 @@ namespace RetailPOSA.UserControls
             loadControl(uc);
         }
 
+        private void btnGeneralSettings_Click(object sender, EventArgs e)
+        {
+            GeneralSettingsControl uc = new GeneralSettingsControl();
+            loadControl(uc);
+        }
+
         private void loadControl(UserControl uc)
         {
             pnlMain.Controls.Clear();
@@ -55,26 +62,5 @@ namespace RetailPOSA.UserControls
             pnlMain.Controls.Add(uc);
         }
 
-        private void btnUploadShopLogo_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                OpenFileDialog dialog = new OpenFileDialog();
-                dialog.Filter = "Image Files|*.jpg;*.jpeg;*.png";
-
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    //picShopLogo.Image = Image.FromFile(dialog.FileName);
-                    //picShopLogo.Image = LoadImage(dialog.FileName);
-                    this.shopLogoPath = dialog.FileName;
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error Occured!", "Error");
-            }
-        }
-
-        
     }//class
 }

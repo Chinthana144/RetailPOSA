@@ -33,7 +33,7 @@ namespace RetailPOSA.Services
 
         public DataTable GetGrnDetailsByGrnHeaderID(int grnHeaderID)
         {
-            string query = "SELECT gd.id, gd.grn_header_id, gd.product_id, p.name AS product_name, gd.qty, gd.free_qty, gd.purchase_price, gd.selling_price, gd.discount, gd.final_price, gd.expiry_date, gd.purchase_total " +
+            string query = "SELECT gd.id, gd.grn_header_id, gd.product_id, p.barcode, p.name AS product_name, gd.qty, gd.free_qty, gd.purchase_price, gd.selling_price, gd.discount, gd.final_price, gd.expiry_date, gd.purchase_total " +
                 "FROM grn_details gd " +
                 "JOIN products p ON gd.product_id = p.id " +
                 "WHERE gd.grn_header_id = @grn_header_id;";

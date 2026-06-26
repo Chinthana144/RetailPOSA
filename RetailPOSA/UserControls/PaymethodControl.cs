@@ -22,9 +22,10 @@ namespace RetailPOSA.UserControls
 
         private void PaymethodControl_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             loadPaymethods();
 
-            btnPaymethods.Text = selectedID == 0 ? "Add Paymethod" : "Update Paymethod";
+            btnPaymethods.Text = selectedID > 0 ? "Update Paymethod" : "Add Paymethod";
         }
 
         private void loadPaymethods()
@@ -39,7 +40,11 @@ namespace RetailPOSA.UserControls
             dgvPaymethods.Columns["status"].HeaderText = "Status";
 
             dgvPaymethods.Columns["id"].Width = 50;
-        }
+
+            selectedID = 0;
+            btnPaymethods.Text = selectedID > 0 ? "Update Paymethod" : "Add Paymethod";
+            txtPaymethod.Text = "";
+        }//laod paymethod
 
         private void dgvPaymethods_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -55,6 +60,28 @@ namespace RetailPOSA.UserControls
 
                 btnPaymethods.Text = "Update Paymethod";
             }
+        }
+
+        private void btnPaymethods_Click(object sender, EventArgs e)
+        {
+            if (txtPaymethod.Text == "")
+            {
+                MessageBox.Show("Please enter payment method.", "Invalid Entry", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }//null check
+
+            PaymethodService paymethodService = new PaymethodService();
+            int status = chkStatus.Checked ? 1 : 0;
+            if (selectedID > 0)
+            {
+                paymethodService.UpdatePaymethod(selectedID, txtPaymethod.Text, status);
+            }//update
+            else
+            { 
+                paymethodService.InsertPaymethod(txtPaymethod.Text, status);
+            }//insert
+
+            loadPaymethods();
         }
     }//class
 }

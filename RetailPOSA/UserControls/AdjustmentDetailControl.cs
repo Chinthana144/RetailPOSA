@@ -27,6 +27,7 @@ namespace RetailPOSA.UserControls
 
         private void AdjustmentDetailControl_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             loadHeaderDetails();
 
             loadAdjustmentDetails();

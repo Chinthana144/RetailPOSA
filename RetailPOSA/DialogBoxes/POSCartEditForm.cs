@@ -39,6 +39,7 @@ namespace RetailPOSA.DialogBoxes
         }
         private void POSCartEditForm_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             txtQty.Text = this.qty.ToString();
             txtQty.Focus();
             txtQty.Select();

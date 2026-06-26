@@ -25,6 +25,7 @@ namespace RetailPOSA.UserControls
 
         private void AdjustmentControl_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             btnAddItems.Enabled = false;
             btnEditAdjustment.Enabled = false;
 

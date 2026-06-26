@@ -1,10 +1,12 @@
 ﻿using RetailPOSA.DialogBoxes;
 using RetailPOSA.Forms;
+using RetailPOSA.Reports.PDFs;
 using RetailPOSA.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -25,6 +27,8 @@ namespace RetailPOSA.UserControls
         }
         private void GrnHeaderControl_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
+
             loadGrnHeaders();
 
             btnEditGrn.Enabled = false;
@@ -116,13 +120,30 @@ namespace RetailPOSA.UserControls
 
                 int status = Convert.ToInt32(row.Cells["status"].Value);
 
-                if (selectedID > 0 && status == 1) 
-                { 
+                if (selectedID > 0 && status == 1)
+                {
                     btnEditGrn.Enabled = true;
                     btnAddItems.Enabled = true;
                 }
-            }
-        }
+                else if (selectedID > 0 && status == 2)
+                {
+                    //open report
+                    GeneralSettingsService settingsService = new GeneralSettingsService();
+                    string reportBasePath = settingsService.GetSettingsValueByKey("report_path");
+                    var submittedDate = DateTime.Parse(row.Cells["date_submitted"].Value.ToString());
+
+                    string reportPath = reportBasePath + "\\GRN_report_" + selectedID + "_" + submittedDate.ToString("yyyy_MM_dd") + ".pdf";
+
+                    GRNReport grnReport = new GRNReport();
+                    grnReport.Generate(reportPath, selectedID);
+                    Process.Start(
+                    new ProcessStartInfo(reportPath)
+                    {
+                        UseShellExecute = true
+                    });
+                }//open report
+            }//has index
+        }//cell click
 
         private void btnEditGrn_Click(object sender, EventArgs e)
         {

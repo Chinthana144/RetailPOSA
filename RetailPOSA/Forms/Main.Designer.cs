@@ -429,6 +429,7 @@
             this.navDashboard.TabIndex = 21;
             this.navDashboard.Text = "Dashboard";
             this.navDashboard.UseVisualStyleBackColor = false;
+            this.navDashboard.Click += new System.EventHandler(this.navDashboard_Click);
             // 
             // navProfile
             // 
@@ -442,6 +443,7 @@
             this.navProfile.TabIndex = 22;
             this.navProfile.Text = "Profile";
             this.navProfile.UseVisualStyleBackColor = false;
+            this.navProfile.Click += new System.EventHandler(this.navProfile_Click);
             // 
             // btnNavCatalog
             // 

@@ -22,6 +22,7 @@ namespace RetailPOSA.UserControls
 
         private void InvoiceControl_Load(object sender, EventArgs e)
         {
+            ThemeManager.ApplyTheme(this);
             loadInvoices();
             lblPageNo.Text = $"Page {currentPage}";
         }
@@ -36,7 +37,7 @@ namespace RetailPOSA.UserControls
             dgvInvoices.DataSource = headerData;
 
             dgvInvoices.Columns["id"].HeaderText = "ID";
-            dgvInvoices.Columns["issued_date"].HeaderText = "Date";
+            dgvInvoices.Columns["issued_datetime"].HeaderText = "Date";
             dgvInvoices.Columns["invoice_no"].HeaderText = "Invoice No";
             dgvInvoices.Columns["item_count"].HeaderText = "Count";
             dgvInvoices.Columns["total"].HeaderText = "Sale";
@@ -85,8 +86,7 @@ namespace RetailPOSA.UserControls
             {
                 loadInvoices();
             }
-
-        }
+        }//search timer
 
         private void searchInvoices(string searchTerm)
         { 
