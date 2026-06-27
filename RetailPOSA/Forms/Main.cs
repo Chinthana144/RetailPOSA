@@ -213,6 +213,10 @@ namespace RetailPOSA.Forms
                     );
             }//access denied             
         }//return page
+        private void navExpenses_Click(object sender, EventArgs e)
+        {
+            //expenses page = 17
+        }//expenses page
 
         //========================= Inventory =========================//
         private void navGRN_Click(object sender, EventArgs e)
@@ -402,7 +406,7 @@ namespace RetailPOSA.Forms
             initializeNavbar();
             menuOpen = false;
             this.selectedPanel = pnlSale;
-            this.panelHeight = 150;
+            this.panelHeight = 200;
             panel = 4;
             MenuTimer.Start();
         }
