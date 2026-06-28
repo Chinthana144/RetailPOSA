@@ -211,11 +211,26 @@ namespace RetailPOSA.Forms
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation
                     );
-            }//access denied             
+            }//access denied
         }//return page
         private void navExpenses_Click(object sender, EventArgs e)
         {
             //expenses page = 17
+            if (permissionService.CheckPermissionView(roleID, 17))
+            {
+                ExpenseControl uc = new ExpenseControl();
+                loadControl(uc);
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Sorry, you don't have access to view this page.",
+                    "Access Denied",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation
+                    );
+            }//access denied
+
         }//expenses page
 
         //========================= Inventory =========================//
