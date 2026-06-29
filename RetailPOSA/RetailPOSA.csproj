@@ -261,6 +261,7 @@
     <Compile Include="Reports\PDFs\ExpiryStockReport.cs" />
     <Compile Include="Reports\PDFs\GRNReport.cs" />
     <Compile Include="Reports\PDFs\LowStockReport.cs" />
+    <Compile Include="Reports\PDFs\UserSalesReport.cs" />
     <Compile Include="Reports\PurchaseReportControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
