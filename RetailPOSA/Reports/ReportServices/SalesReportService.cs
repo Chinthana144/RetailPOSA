@@ -61,5 +61,21 @@ namespace RetailPOSA.Reports.ReportServices
             return db.ExecuteQuery(query, parameters);
         }//get user sale
 
+        public DataTable GetExpenses(string startDate, string endDate)
+        {
+            string query = "SELECT "+
+                "expenses.id,  datetime, category_name, category_id, description, amount, expenses.user_id, expenses.status, username "+
+                "FROM expenses "+
+                "INNER JOIN expense_categories ON expense_categories.id = expenses.category_id "+
+                "INNER JOIN users ON users.user_id = expenses.user_id "+
+                "WHERE datetime between @startDate AND @endDate;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@startDate", startDate);
+            parameters.Add("@endDate", endDate);
+
+            return db.ExecuteQuery(query, parameters);
+        }//get expenses
+
     }//class
 }
