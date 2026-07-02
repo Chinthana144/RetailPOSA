@@ -125,7 +125,6 @@ The system provides an intuitive user interface that enables cashiers and admini
 
 ## Screenshots
 
-```html
 <p align="center">
   <img src="screenshots/dashboard.png" width="40%" />
   <img src="screenshots/pos_screen.png" width="40%" />
@@ -146,7 +145,6 @@ The system provides an intuitive user interface that enables cashiers and admini
   <img src="screenshots/shop_page.png" width="40%" />
   <img src="screenshots/sales_report.png" width="40%" />
 </p>
-```
 
 ---
 
