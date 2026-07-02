@@ -126,24 +126,24 @@ The system provides an intuitive user interface that enables cashiers and admini
 ## Screenshots
 
 <p align="center">
-  <img src="screenshots/dashboard.png" width="40%" />
-  <img src="screenshots/pos_screen.png" width="40%" />
+  <img src="RetailPOSA/screenshots/dashboard.png" width="40%" />
+  <img src="RetailPOSA/screenshots/pos_screen.png" width="40%" />
 </p>
 <p>
-  <img src="screenshots/products_page.png" width="40%" />
-  <img src="screenshots/invoices_page.png" width="40%" />
+  <img src="RetailPOSA/screenshots/products_page.png" width="40%" />
+  <img src="RetailPOSA/screenshots/invoices_page.png" width="40%" />
 </p>
 <p>
-  <img src="screenshots/grn.png" width="40%" />
-  <img src="screenshots/inventory.png" width="40%" />
+  <img src="RetailPOSA/screenshots/grn.png" width="40%" />
+  <img src="RetailPOSA/screenshots/inventory.png" width="40%" />
 </p>
 <p>
-  <img src="screenshots/rbac.png" width="40%" />
-  <img src="screenshots/settings.png" width="40%" />
+  <img src="RetailPOSA/screenshots/rbac.png" width="40%" />
+  <img src="RetailPOSA/screenshots/settings.png" width="40%" />
 </p>
 <p>
-  <img src="screenshots/shop_page.png" width="40%" />
-  <img src="screenshots/sales_report.png" width="40%" />
+  <img src="RetailPOSA/screenshots/shop_page.png" width="40%" />
+  <img src="RetailPOSA/screenshots/sales_report.png" width="40%" />
 </p>
 
 ---
