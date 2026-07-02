@@ -627,7 +627,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="screenshots\dashboard.png" />
+    <Content Include="screenshots\grn.png" />
+    <Content Include="screenshots\inventory.png" />
+    <Content Include="screenshots\invoices_page.png" />
+    <Content Include="screenshots\pos_screen.png" />
+    <Content Include="screenshots\products_page.png" />
+    <Content Include="screenshots\rbac.png" />
+    <Content Include="screenshots\sales_report.png" />
+    <Content Include="screenshots\settings.png" />
+    <Content Include="screenshots\shop_page.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\QuestPDF.2026.5.0\build\net4\QuestPDF.targets" Condition="Exists('..\packages\QuestPDF.2026.5.0\build\net4\QuestPDF.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
