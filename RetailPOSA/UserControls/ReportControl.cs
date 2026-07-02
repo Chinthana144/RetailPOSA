@@ -35,6 +35,11 @@ namespace RetailPOSA.UserControls
             InventoryReportControl uc = new InventoryReportControl();
             loadControl (uc);
         }
+        private void navRptPurchase_Click(object sender, EventArgs e)
+        {
+            PurchaseReportControl uc = new PurchaseReportControl();
+            loadControl(uc);
+        }
 
         public void loadControl(UserControl uc)
         {
@@ -43,6 +48,6 @@ namespace RetailPOSA.UserControls
             pnlMain.Controls.Add(uc);        
         }//load control
 
-        
+       
     }//class
 }

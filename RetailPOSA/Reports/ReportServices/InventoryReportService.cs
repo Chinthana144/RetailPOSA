@@ -39,7 +39,7 @@ namespace RetailPOSA.Reports.ReportServices
                 "inventory.id, grn_header_id, product_id, initial_qty, current_qty, purchase_price, selling_price, discount, final_price, purchase_total, expiry_date, barcode, name, second_name " +
                 "FROM inventory " +
                 "INNER JOIN products ON products.id = inventory.product_id " +
-                "WHERE current_qty > 0 AND expiry_date BETWEEN @startDate AND @endDate;";
+                "WHERE current_qty > 0 AND has_expiry = 1 AND expiry_date BETWEEN @startDate AND @endDate;";
 
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@startDate", startDate);

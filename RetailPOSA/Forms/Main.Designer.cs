@@ -62,6 +62,7 @@
             this.lblUsername = new System.Windows.Forms.Label();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.MenuTimer = new System.Windows.Forms.Timer(this.components);
+            this.navExpenses = new System.Windows.Forms.Button();
             this.pnlSidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picShopLogo)).BeginInit();
             this.pnlSystem.SuspendLayout();
@@ -171,12 +172,13 @@
             // 
             // pnlSale
             // 
+            this.pnlSale.Controls.Add(this.navExpenses);
             this.pnlSale.Controls.Add(this.navReturn);
             this.pnlSale.Controls.Add(this.navPOS);
             this.pnlSale.Controls.Add(this.navInvoices);
-            this.pnlSale.Location = new System.Drawing.Point(258, 480);
+            this.pnlSale.Location = new System.Drawing.Point(261, 315);
             this.pnlSale.Name = "pnlSale";
-            this.pnlSale.Size = new System.Drawing.Size(250, 180);
+            this.pnlSale.Size = new System.Drawing.Size(250, 237);
             this.pnlSale.TabIndex = 23;
             // 
             // navReturn
@@ -293,7 +295,7 @@
             this.pnlCatalog.Controls.Add(this.navSuppliers);
             this.pnlCatalog.Controls.Add(this.navCategories);
             this.pnlCatalog.Controls.Add(this.navProducts);
-            this.pnlCatalog.Location = new System.Drawing.Point(259, 294);
+            this.pnlCatalog.Location = new System.Drawing.Point(265, 129);
             this.pnlCatalog.Name = "pnlCatalog";
             this.pnlCatalog.Size = new System.Drawing.Size(250, 180);
             this.pnlCatalog.TabIndex = 23;
@@ -412,7 +414,7 @@
             // 
             this.pnlHome.Controls.Add(this.navDashboard);
             this.pnlHome.Controls.Add(this.navProfile);
-            this.pnlHome.Location = new System.Drawing.Point(259, 168);
+            this.pnlHome.Location = new System.Drawing.Point(265, 3);
             this.pnlHome.Name = "pnlHome";
             this.pnlHome.Size = new System.Drawing.Size(250, 120);
             this.pnlHome.TabIndex = 19;
@@ -499,6 +501,20 @@
             this.MenuTimer.Interval = 10;
             this.MenuTimer.Tick += new System.EventHandler(this.MenuTimer_Tick);
             // 
+            // navExpenses
+            // 
+            this.navExpenses.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(93)))), ((int)(((byte)(93)))));
+            this.navExpenses.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.navExpenses.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.navExpenses.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.navExpenses.Location = new System.Drawing.Point(0, 178);
+            this.navExpenses.Name = "navExpenses";
+            this.navExpenses.Size = new System.Drawing.Size(250, 50);
+            this.navExpenses.TabIndex = 24;
+            this.navExpenses.Text = "Expenses";
+            this.navExpenses.UseVisualStyleBackColor = false;
+            this.navExpenses.Click += new System.EventHandler(this.navExpenses_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -558,5 +574,6 @@
         private System.Windows.Forms.Button navSettings;
         private System.Windows.Forms.PictureBox picShopLogo;
         private System.Windows.Forms.Button navReturn;
+        private System.Windows.Forms.Button navExpenses;
     }
 }

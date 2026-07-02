@@ -115,6 +115,40 @@ namespace RetailPOSA.Reports
             {
                 UseShellExecute = true
             });
-        }//sullary report
+        }//summary report
+
+        private void btnUserSalePDF_Click(object sender, EventArgs e)
+        {
+            //get file path
+            GeneralSettingsService settingsService = new GeneralSettingsService();
+            string reportBasePath = settingsService.GetSettingsValueByKey("report_path");
+            string reportPath = reportBasePath + "\\User_Sales_" + txtStartDate.Text + "_" + txtEndDate.Text + ".pdf";
+
+            UserSalesReport userSalesReport = new UserSalesReport();
+            userSalesReport.Generate(reportPath, txtStartDate.Text, txtEndDate.Text);
+
+            Process.Start(
+            new ProcessStartInfo(reportPath)
+            {
+                UseShellExecute = true
+            });
+        }//user sales report
+
+        private void btnExpensePDF_Click(object sender, EventArgs e)
+        {
+            //get file path
+            GeneralSettingsService settingsService = new GeneralSettingsService();
+            string reportBasePath = settingsService.GetSettingsValueByKey("report_path");
+            string reportPath = reportBasePath + "\\Expenses_" + txtStartDate.Text + "_" + txtEndDate.Text + ".pdf";
+
+            ExpenseReport expenseReport = new ExpenseReport();
+            expenseReport.Generate(reportPath, txtStartDate.Text, txtEndDate.Text);
+
+            Process.Start(
+            new ProcessStartInfo(reportPath)
+            {
+                UseShellExecute = true
+            });
+        }//expenses
     }//clas
 }

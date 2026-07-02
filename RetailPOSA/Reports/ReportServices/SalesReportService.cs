@@ -45,5 +45,37 @@ namespace RetailPOSA.Reports.ReportServices
             return db.ExecuteQuery(query, parameters);
         }//get daiy summary
 
+        public DataTable GetUserSales(string startDate, string endDate)
+        {
+            string query = "SELECT "+
+                "count(*) as row_count, username, SUM(total) as sale_total,  SUM(discounts) as total_discounts, SUM(return_amount) as total_returns, SUM(sub_total) as sub_total "+
+                "FROM invoice_header "+
+                "INNER JOIN users ON users.user_id = invoice_header.user_id "+
+                "WHERE invoice_date BETWEEN @startDate AND @endDate " +
+                "GROUP BY invoice_header.user_id;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@startDate", startDate);
+            parameters.Add("@endDate", endDate);
+
+            return db.ExecuteQuery(query, parameters);
+        }//get user sale
+
+        public DataTable GetExpenses(string startDate, string endDate)
+        {
+            string query = "SELECT "+
+                "expenses.id,  datetime, category_name, category_id, description, amount, expenses.user_id, expenses.status, username "+
+                "FROM expenses "+
+                "INNER JOIN expense_categories ON expense_categories.id = expenses.category_id "+
+                "INNER JOIN users ON users.user_id = expenses.user_id "+
+                "WHERE datetime between @startDate AND @endDate;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@startDate", startDate);
+            parameters.Add("@endDate", endDate);
+
+            return db.ExecuteQuery(query, parameters);
+        }//get expenses
+
     }//class
 }

@@ -84,6 +84,7 @@
             this.navRptPurchase.TabIndex = 17;
             this.navRptPurchase.Text = "Purchase";
             this.navRptPurchase.UseVisualStyleBackColor = false;
+            this.navRptPurchase.Click += new System.EventHandler(this.navRptPurchase_Click);
             // 
             // navRptInventory
             // 

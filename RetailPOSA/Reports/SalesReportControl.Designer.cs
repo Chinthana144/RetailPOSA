@@ -38,6 +38,8 @@
             this.txtEndDate = new System.Windows.Forms.TextBox();
             this.btnDailySalesPDF = new System.Windows.Forms.Button();
             this.btnDailySummaryPDF = new System.Windows.Forms.Button();
+            this.btnUserSalePDF = new System.Windows.Forms.Button();
+            this.btnExpensePDF = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -107,7 +109,6 @@
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -159,11 +160,43 @@
             this.btnDailySummaryPDF.UseVisualStyleBackColor = false;
             this.btnDailySummaryPDF.Click += new System.EventHandler(this.btnDailySummaryPDF_Click);
             // 
+            // btnUserSalePDF
+            // 
+            this.btnUserSalePDF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUserSalePDF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(115)))));
+            this.btnUserSalePDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUserSalePDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUserSalePDF.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnUserSalePDF.Location = new System.Drawing.Point(733, 239);
+            this.btnUserSalePDF.Name = "btnUserSalePDF";
+            this.btnUserSalePDF.Size = new System.Drawing.Size(357, 50);
+            this.btnUserSalePDF.TabIndex = 29;
+            this.btnUserSalePDF.Text = "User Sales Report PDF";
+            this.btnUserSalePDF.UseVisualStyleBackColor = false;
+            this.btnUserSalePDF.Click += new System.EventHandler(this.btnUserSalePDF_Click);
+            // 
+            // btnExpensePDF
+            // 
+            this.btnExpensePDF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExpensePDF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(115)))));
+            this.btnExpensePDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExpensePDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExpensePDF.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnExpensePDF.Location = new System.Drawing.Point(733, 326);
+            this.btnExpensePDF.Name = "btnExpensePDF";
+            this.btnExpensePDF.Size = new System.Drawing.Size(357, 50);
+            this.btnExpensePDF.TabIndex = 30;
+            this.btnExpensePDF.Text = "Expense Report PDF";
+            this.btnExpensePDF.UseVisualStyleBackColor = false;
+            this.btnExpensePDF.Click += new System.EventHandler(this.btnExpensePDF_Click);
+            // 
             // SalesReportControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.Controls.Add(this.btnExpensePDF);
+            this.Controls.Add(this.btnUserSalePDF);
             this.Controls.Add(this.btnDailySummaryPDF);
             this.Controls.Add(this.btnDailySalesPDF);
             this.Controls.Add(this.calEndDate);
@@ -194,5 +227,7 @@
         private System.Windows.Forms.TextBox txtEndDate;
         private System.Windows.Forms.Button btnDailySalesPDF;
         private System.Windows.Forms.Button btnDailySummaryPDF;
+        private System.Windows.Forms.Button btnUserSalePDF;
+        private System.Windows.Forms.Button btnExpensePDF;
     }
 }
