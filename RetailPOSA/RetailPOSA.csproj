@@ -628,6 +628,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="retailPosA20261117.sql" />
     <Content Include="screenshots\dashboard.png" />
     <Content Include="screenshots\grn.png" />
     <Content Include="screenshots\inventory.png" />
